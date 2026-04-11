@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Faberlic — Sizga mos imkoniyat</title>
+
+	<!-- ============================================================
+     KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
+     ============================================================ -->
+	<script>
+		const CONSULTANT = {
+			name: "Malika Yusupova", // Konsultant ismi
+			photo: "https://placehold.co/120x120/d4a574/fff?text=M", // Rasm URL
+			telegram: "https://t.me/your_handle", // Telegram link
+			regLink: "https://faberlic.com/reg", // Ro'yxatdan o'tish havolasi
+			city: "Toshkent", // Shahar
+			shortStory: "Men ham avval shubhalandim. Ikki yil oldin uy bekasi edim, qo'shimcha daromad kerak edi. Singlim taklif qildi — birinchi oyda 350 000 so'm topdim. Hozir bu mening asosiy ishim."
+		};
+	</script>
+	<!-- ============================================================ -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700&display=swap"
+		rel="stylesheet">
+
+	<style>
+		:root {
+			--cream: #fdf6ee;
+			--warm: #f5e6d0;
+			--terracotta: #c0623a;
+			--terra-light: #e8835f;
+			--terra-dark: #8b3a1e;
+			--text: #2d1f17;
+			--muted: #7a6255;
+			--green: #4a7c59;
+			--green-light: #e8f5ed;
+			--card-bg: #fffaf5;
+			--border: #e8d5c0;
+			--shadow: rgba(139, 58, 30, 0.12);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Nunito', sans-serif;
+			background: var(--cream);
+			color: var(--text);
+			font-size: 16px;
+			line-height: 1.7;
+			overflow-x: hidden;
+		}
+
+		/* ── UTILITY ── */
+		.container {
+			max-width: 520px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.accent {
+			color: var(--terracotta);
+			font-style: italic;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.tag {
+			display: inline-block;
+			background: var(--terra-dark);
+			color: #fff;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			padding: 4px 12px;
+			border-radius: 20px;
+			margin-bottom: 12px;
+		}
+
+		.section {
+			padding: 48px 0;
+		}
+
+		.section+.section {
+			border-top: 1px solid var(--border);
+		}
+
+		/* ── HERO ── */
+		#hero {
+			background: linear-gradient(160deg, #2d1f17 0%, #6b3520 100%);
+			color: #fff;
+			padding: 56px 0 48px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#hero::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+			pointer-events: none;
+		}
+
+		#hero .tag {
+			background: var(--terra-light);
+			color: #fff;
+		}
+
+		#hero h1 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(28px, 7vw, 38px);
+			line-height: 1.25;
+			margin-bottom: 16px;
+		}
+
+		#hero h1 em {
+			color: var(--terra-light);
+			font-style: italic;
+		}
+
+		#hero .sub {
+			font-size: 15px;
+			opacity: 0.85;
+			margin-bottom: 28px;
+			line-height: 1.6;
+		}
+
+		.hero-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 50px;
+			padding: 8px 18px;
+			font-size: 13px;
+			backdrop-filter: blur(4px);
+		}
+
+		.hero-badge span {
+			font-size: 18px;
+		}
+
+		/* ── EMPATHY ── */
+		#empathy {
+			background: var(--warm);
+		}
+
+		#empathy .thought-box {
+			background: #fff;
+			border-left: 4px solid var(--terracotta);
+			border-radius: 0 12px 12px 0;
+			padding: 16px 20px;
+			margin: 20px 0;
+			font-style: italic;
+			color: var(--muted);
+			font-size: 15px;
+		}
+
+		#empathy .thought-box strong {
+			color: var(--text);
+			font-style: normal;
+		}
+
+		/* ── WHAT IS ── */
+		.fact-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			margin: 24px 0;
+		}
+
+		.fact-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			padding: 18px 16px;
+			text-align: center;
+		}
+
+		.fact-card .num {
+			font-family: 'Playfair Display', serif;
+			font-size: 28px;
+			color: var(--terracotta);
+			font-weight: 700;
+			display: block;
+		}
+
+		.fact-card .label {
+			font-size: 12px;
+			color: var(--muted);
+			line-height: 1.4;
+			margin-top: 4px;
+		}
+
+		/* ── HOW IT WORKS ── */
+		.steps {
+			margin: 24px 0;
+		}
+
+		.step {
+			display: flex;
+			gap: 16px;
+			margin-bottom: 24px;
+			align-items: flex-start;
+			animation: fadeUp 0.5s ease both;
+		}
+
+		.step-num {
+			flex-shrink: 0;
+			width: 40px;
+			height: 40px;
+			background: var(--terracotta);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 16px;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.step-body h4 {
+			font-size: 15px;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+
+		.step-body p {
+			font-size: 14px;
+			color: var(--muted);
+		}
+
+		/* ── OBJECTIONS ── */
+		#objections {
+			background: #fff5f0;
+		}
+
+		.objection {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			margin-bottom: 16px;
+			overflow: hidden;
+		}
+
+		.obj-header {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 16px 18px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.obj-q {
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--terra-dark);
+			flex: 1;
+		}
+
+		.obj-q::before {
+			content: '"';
+		}
+
+		.obj-q::after {
+			content: '"';
+		}
+
+		.obj-toggle {
+			flex-shrink: 0;
+			width: 28px;
+			height: 28px;
+			background: var(--warm);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			transition: transform 0.3s ease;
+		}
+
+		.objection.open .obj-toggle {
+			transform: rotate(45deg);
+		}
+
+		.obj-answer {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease, padding 0.3s ease;
+			padding: 0 18px;
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.75;
+		}
+
+		.objection.open .obj-answer {
+			max-height: 300px;
+			padding: 0 18px 18px;
+		}
+
+		.obj-answer strong {
+			color: var(--text);
+		}
+
+		/* ── TESTIMONIALS ── */
+		.testi-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 20px;
+			padding: 22px 20px;
+			margin-bottom: 16px;
+			position: relative;
+		}
+
+		.testi-card::before {
+			content: '\201C';
+			font-family: 'Playfair Display', serif;
+			font-size: 64px;
+			color: var(--terra-light);
+			opacity: 0.3;
+			position: absolute;
+			top: -4px;
+			left: 14px;
+			line-height: 1;
+		}
+
+		.testi-text {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 16px;
+			font-style: italic;
+		}
+
+		.testi-author {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.testi-avatar {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			object-fit: cover;
+			background: var(--warm);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			overflow: hidden;
+		}
+
+		.testi-name {
+			font-weight: 700;
+			font-size: 14px;
+		}
+
+		.testi-meta {
+			font-size: 12px;
+			color: var(--muted);
+		}
+
+		.stars {
+			color: #f59e0b;
+			font-size: 12px;
+			letter-spacing: 1px;
+		}
+
+		/* ── CONSULTANT ── */
+		#consultant {
+			background: var(--warm);
+		}
+
+		.consult-card {
+			background: #fff;
+			border-radius: 24px;
+			padding: 28px 22px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 16px;
+			box-shadow: 0 8px 32px var(--shadow);
+		}
+
+		#consultant-photo {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid var(--terra-light);
+		}
+
+		.consult-name {
+			font-family: 'Playfair Display', serif;
+			font-size: 22px;
+			color: var(--terra-dark);
+		}
+
+		.consult-story {
+			font-size: 14px;
+			color: var(--muted);
+			font-style: italic;
+		}
+
+		/* ── CTA ── */
+		#cta {
+			background: linear-gradient(160deg, var(--terra-dark) 0%, var(--terracotta) 100%);
+			color: #fff;
+			text-align: center;
+			padding: 52px 0;
+		}
+
+		#cta h2 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(24px, 6vw, 32px);
+			margin-bottom: 10px;
+		}
+
+		#cta p {
+			opacity: 0.88;
+			font-size: 15px;
+			margin-bottom: 28px;
+		}
+
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			max-width: 340px;
+			margin: 0 auto 14px;
+			padding: 16px 24px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			border: none;
+			text-decoration: none;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.btn:active {
+			transform: scale(0.97);
+		}
+
+		.btn-primary {
+			background: #fff;
+			color: var(--terra-dark);
+			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+		}
+
+		.btn-primary:hover {
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+			transform: translateY(-1px);
+		}
+
+		.btn-secondary {
+			background: rgba(255, 255, 255, 0.15);
+			color: #fff;
+			border: 2px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.btn-icon {
+			font-size: 20px;
+		}
+
+		.fine-print {
+			font-size: 12px;
+			opacity: 0.65;
+			margin-top: 20px;
+		}
+
+		/* ── SECTION TITLES ── */
+		.section-title {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(22px, 5vw, 28px);
+			color: var(--text);
+			margin-bottom: 8px;
+			line-height: 1.3;
+		}
+
+		.section-sub {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 24px;
+		}
+
+		/* ── STICKY CTA BAR ── */
+		.sticky-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--terra-dark);
+			padding: 12px 20px;
+			z-index: 100;
+			display: flex;
+			gap: 10px;
+			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+			transform: translateY(100%);
+			transition: transform 0.4s ease;
+		}
+
+		.sticky-bar.visible {
+			transform: translateY(0);
+		}
+
+		.sticky-bar .btn {
+			margin: 0;
+			flex: 1;
+			padding: 13px 10px;
+			font-size: 13px;
+		}
+
+		.sticky-bar .btn-primary {
+			background: var(--terra-light);
+			color: #fff;
+		}
+
+		.sticky-bar .btn-secondary {
+			background: rgba(255, 255, 255, 0.12);
+			border-color: rgba(255, 255, 255, 0.3);
+		}
+
+		/* ── ANIMATIONS ── */
+		@keyframes fadeUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.fade-in {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 0.6s ease, transform 0.6s ease;
+		}
+
+		.fade-in.visible {
+			opacity: 1;
+			transform: none;
+		}
+
+		/* ── PROGRESS BAR ── */
+		#progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: var(--terra-light);
+			z-index: 200;
+			width: 0%;
+			transition: width 0.1s linear;
+		}
+
+		footer {
+			text-align: center;
+			padding: 24px;
+			font-size: 12px;
+			color: var(--muted);
+			border-top: 1px solid var(--border);
+		}
+
+		/* ── WOMEN PROOF ── */
+		.women-proof {
+			margin: 24px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.wp-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 14px 16px;
+		}
+
+		.wp-icon {
+			font-size: 22px;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+
+		.wp-text {
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		/* ── ZERO TEASER ── */
+		.zero-box {
+			display: flex;
+			gap: 16px;
+			align-items: flex-start;
+			background: linear-gradient(135deg, #fffbf0, #fff3e0);
+			border: 2px solid #f0c070;
+			border-radius: 18px;
+			padding: 20px 18px;
+		}
+
+		.zero-icon {
+			font-size: 28px;
+			flex-shrink: 0;
+		}
+
+		.zero-text strong {
+			display: block;
+			font-size: 16px;
+			color: var(--terra-dark);
+			margin-bottom: 6px;
+		}
+
+		.zero-text p {
+			font-size: 14px;
+			color: var(--muted);
+			margin: 0;
+		}
+
+		/* ── COMMUNITY ── */
+		.community-card {
+			background: linear-gradient(135deg, #f0fdf4, #e8f5ed);
+			border: 1px solid #b6dfc4;
+			border-radius: 20px;
+			padding: 22px 20px;
+			margin-top: 4px;
+		}
+
+		.comm-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 10px;
+		}
+
+		.comm-icon {
+			font-size: 24px;
+		}
+
+		.comm-header strong {
+			font-size: 16px;
+			color: var(--green);
+		}
+
+		.comm-text {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 18px;
+		}
+
+		.comm-features {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.comm-feat {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+			font-size: 14px;
+			color: var(--text);
+		}
+
+		.comm-feat span:first-child {
+			flex-shrink: 0;
+			font-size: 16px;
+		}
+
+		/* ── URGENCY ── */
+		.urgency-bar {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			justify-content: center;
+			background: rgba(255, 255, 255, 0.12);
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			border-radius: 50px;
+			padding: 10px 20px;
+			font-size: 13px;
+			margin-bottom: 24px;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.urgency-bar strong {
+			color: #fff;
+		}
+
+		/* ── DIVIDER ── */
+		.wave-divider {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: -1px 0;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="progress"></div>
+
+	<!-- ══════════════════════════════════════
+     1. HERO
+	══════════════════════════════════════ -->
+	<section id="hero">
+		<div class="container">
+			<div class="tag">18 yildan beri O‘zbekistonda ishlayotgan tizim</div>
+			<h1>Uydan turib <em>haqiqiy</em> daromad — bu mumkin</h1>
+			<p class="sub">Siz hozir "yana onlayn pul ishlash deyishadi, lekin baribir natija chiqmaydi" deb o‘ylayotgan
+				bo‘lsangiz — o‘qing. Men ham shunday deb o‘ylagan edim.</p>
+			<div class="hero-badge">
+				👩 O‘zim shu yo‘l bilan ishlayapman.
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     2. EMPATHY
+	══════════════════════════════════════ -->
+	<section id="empathy" class="section fade-in">
+		<div class="container">
+			<div class="tag">Tushunaman</div>
+			<h2 class="section-title">Siz nima o'ylayotganingizni bilaman</h2>
+
+			<div class="thought-box"><strong>"Bu ham yana aldab pul topish yo'llaridan biri."</strong><br>Yoki: "Sotib
+				bo'lmaydi." Yoki: "Vaqtim yo'q."</div>
+
+			<p>Men ham shunday deb o'ylagan edim. Tanishlarimning aksariyati ham shunday deydi. Va ularning <strong>hammasi
+					ham noto'g'ri emas</strong> — chunki ko'p yomon sxemalar bor.</p>
+
+			<p style="margin-top:14px;">Shuning uchun men bu sahifada hech qanday va'da bermay, <strong>faqat
+					haqiqatni</strong> aytaman. O'qib, o'zingiz qaror qiling.</p>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     3. WHAT IS FABERLIC
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Kompaniya haqida</div>
+			<h2 class="section-title">Faberlic aslida nima?</h2>
+			<p class="section-sub">Bu oddiy savdo — farqi shuki, siz do‘kon ochmaysiz, telefon orqali ishlaysiz.</p>
+
+			<div class="women-proof">
+				<div class="wp-item">
+					<div class="wp-icon">🏠</div>
+					<div class="wp-text">Uy bekalari, o'qituvchilar, qishloq ayollari — hammasi oddiy hayotdan boshlagan.
+					</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">📱</div>
+					<div class="wp-text">Faqat telefon kerak. Do'kon, ombor, yoki ofis shart emas.</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">🇺🇿</div>
+					<div class="wp-text">18 yildan beri O'zbekistonda — sizning qo'shningiz allaqachon ishlatgan bo'lishi
+						mumkin.
+					</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">🌸</div>
+					<div class="wp-text">Atirlar, kosmetikalar, parvarish vositalari, kiyimlar, bolalar uchun kerakli
+						narsalar —
+						odamlar har oy baribir sotib oladigan mahsulotlar.</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     4. HOW IT WORKS
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Amalda qanday ishlaydi</div>
+			<h2 class="section-title">Hech narsani bilmasangiz ham boshlashingiz mumkin</h2>
+			<p class="section-sub">Birinchi oyda qilish kerak bo'lgan narsa — atigi uchta qadam:</p>
+
+			<div class="steps">
+				<div class="step">
+					<div class="step-num">1</div>
+					<div class="step-body">
+						<h4>Ro'yxatdan o'ting</h4>
+						<p>Konsultant sifatida bepul ro'yxatdan o'tasiz. Hujjat kerak emas, to'lov kerak emas.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">2</div>
+					<div class="step-body">
+						<h4>Telegram gruppa oching</h4>
+						<p>Telegramda gruppa ochasiz va tanishlaringizni qo‘shasiz. Maxsus bot reklamani o‘zi tayyorlaydi —
+							nima
+							yozishni o‘ylamaysiz, rasm qidirib o‘tirmaysiz. Siz faqat gruppaga joylaysiz.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">3</div>
+					<div class="step-body">
+						<h4>Daromad qilishni boshlang</h4>
+						<p>Kompaniyadan ichki narxda olasiz, katalog narxida sotasiz.</p>
+					</div>
+				</div>
+			</div>
+
+			<div
+				style="background:var(--green-light); border-radius:14px; padding:16px 18px; font-size:14px; color:var(--green);">
+				<strong style="display:block; margin-bottom:4px;">💡 Haqiqiy raqam:</strong>
+				Ba’zilar birinchi oyda kichik pul topadi — 200–300 ming. Keyin asta-sekin ko‘payadi.
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     5. ZERO INVESTMENT TEASER
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="zero-box">
+				<div class="zero-icon">💡</div>
+				<div class="zero-text">
+					<strong>Qo'lda pul bo'lmasa ham boshlash mumkin</strong>
+					<p>
+						Eng oson yo‘li shunday: avval odamlardan buyurtma olasiz, pulni oldindan olasiz, keyin kompaniyadan
+						buyurtma
+						qilasiz.
+						Shuning uchun boshlash uchun o‘z pulingiz kerak emas.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     6. OBJECTIONS
+	══════════════════════════════════════ -->
+	<section id="objections" class="section fade-in">
+		<div class="container">
+			<div class="tag">Savollar va shubhalar</div>
+			<h2 class="section-title">Eng ko'p aytilgan gaplar</h2>
+			<p class="section-sub">Bosib o'qing — har biriga to'g'ridan-to'g'ri javob beraman.</p>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Bu MLM firibgarlik</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>To'g'ri savol.</strong> Ko'p yomon sxemalar bor. Lekin farq qilish usuli oddiy: mahsulot haqiqiy
+					va
+					odamlar uni iste'mol qilsa — bu biznes. Faberlic'da atirlar, kremlar, kiyimlar sotiladi. Sizning
+					qo'shningiz
+					katalogdan buyurtma bergan bo'lishi mumkin — bilmaydingiz xolos. Biror pulni bermay, biror paketdan
+					sotib, o'z
+					ko'zingiz bilan ko'ring.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Men sotishni bilmayman</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Siz sotmaysiz — ko'rsatasiz.</strong> Katalogni tanishingizga yuborish sotish emas. "Shu krem
+					juda
+					yaxshi, bir ko'r" — bu ham sotish emas. Bu siz har kuni qilayotgan gap. Faberlic konsultantlarining
+					ko'pchiligi sotishni bilmagan holda boshlagan. Birinchi buyurtma doimo qo'shni yoki qarindoshdan keladi.
+					<strong>Mahsulot haqida hech narsa bilmasangiz ham bo'ladi</strong> — makhsus bot bor, mahsulot raqamini
+					yuborsangiz tarkibi, foydalanish usuli, narxi — hammasini aytib beradi.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Vaqtim yo'q, uch bolam bor</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Eng ko'p daromad topadigan konsultantlar — aynan uch bolali ayollar.</strong> Chunki ularning
+					keng
+					doirasi bor. Telegram'da post yuborish — 5 daqiqa. Kuniga yarım soat kifoya qiladi. Bola yotganidan keyin
+					yoki
+					tushlik paytida. Majburiy ish soati yo'q, siz o'zingiz boshqarasiz.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Erim yoki oilam ruxsat bermaydi</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Bu eng qiyin to'siq — va men uni yengillashtirolmayman.</strong> Lekin shuni aytay: ko'p erlar
+					xotinining birinchi oylik daromadini ko'rgandan keyin o'zlari raqib bo'lib qolishadi. Avval kichik
+					boshlang —
+					bitta buyurtma qabul qiling, bitta daromad oling. Natijani ko'rsating. Ruxsat so'ramasdan ham ham
+					Telegram
+					orqali jimgina boshlash mumkin.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Boshlash uchun pulim yo'q</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Bu eng ko'p beriladigan savol — va javob oddiy.</strong> Avval buyurtma olasiz, xaridordan
+					oldindan
+					pul olinadi, keyin kompaniyaga beriladi. Siz o'z pulingizni ishlatmaysiz. Ro'yxatdan o'tish bepul.
+					Katalog —
+					Telegram'dagi rasm. Boshlash uchun bitta so'm ham kerak emas. Qo'shilgach, bu usulni to'liq
+					tushuntiraman.
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     7. TESTIMONIALS
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Tajribalar</div>
+			<h2 class="section-title">Oddiy ayollar — haqiqiy gaplar</h2>
+			<p class="section-sub">Bular mening atrofimdan. Ularni shaxsan bilaman.</p>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Avval "kerak emas" dedim. Keyin qiziquvchanlik bilan bir oy sinab ko'rdim. Birinchi oyda 420 000 so'm
+					topdim
+					— faqat Telegram guruhim orqali. Hozir 8 oy bo'ldi, o'z jamoam bor."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌸</div>
+					<div>
+						<div class="testi-name">Nodira X., Farg'ona</div>
+						<div class="testi-meta">Uy bekasi, 2 bolali · <span class="stars">★★★★★</span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Men qishloqdan. Shu yerda Faberlic katalogi topilmaydi deb o'ylardim. Lekin hammasi telefon orqali —
+					buyurtmalar ham, to'lovlar ham. Oyiga 600 000 so'm — bu mening uchun katta narsa."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌻</div>
+					<div>
+						<div class="testi-name">Shahnoza M., Namangan viloyati</div>
+						<div class="testi-meta">Dehqon oilasidan · <span class="stars">★★★★★</span></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Ikki yil oldin turmushga chiqdim, ishlashni to'xtatdim. O'zimni g'am bosdi. Faberlic orqali nafaqat
+					daromad —
+					o'z ishim, o'z pulum bor. Bu ko'proq ruhiy ozodlik."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌹</div>
+					<div>
+						<div class="testi-name">Mohira T., Toshkent</div>
+						<div class="testi-meta">25 yosh, yangi oila · <span class="stars">★★★★★</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     7b. COMMUNITY
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Jamoa</div>
+			<h2 class="section-title">Siz hech qachon yolg'iz bo'lmaysiz</h2>
+			<p class="section-sub">Bu ko'pchilik uchun eng muhim narsa — bilmayman, qo'rqaman, xato qilsam nima bo'ladi?
+			</p>
+
+			<div class="community-card">
+				<div class="comm-header">
+					<span class="comm-icon">🤝</span>
+					<strong>Yopiq guruhimizga qo'shilasiz</strong>
+				</div>
+				<p class="comm-text">Bu yerda siz kabi oddiy ayollar — uy bekalari, onalar, yangi boshlovchilar. Hammasi
+					allaqachon ishlayapti va daromad topayapti.</p>
+
+				<div class="comm-features">
+					<div class="comm-feat">
+						<span>💬</span>
+						<span>Savol bersangiz — bir daqiqada javob olasiz. Kecha ham, bugun ham</span>
+					</div>
+					<div class="comm-feat">
+						<span>📚</span>
+						<span>Birinchi kundan boshlab nima qilish kerakligini bosqichma-bosqich ko'rsatamiz</span>
+					</div>
+					<div class="comm-feat">
+						<span>🎉</span>
+						<span>Birinchi buyurtmangiz kelganda — biz bilan birga xursand bo'lamiz</span>
+					</div>
+					<div class="comm-feat">
+						<span>🚫</span>
+						<span>Hech kim sizni majburlamaydi, bosim qilmaydi — o'z sur'atda ishlaysiz</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="consultant" class="section fade-in">
+		<div class="container">
+			<div class="tag">Men haqimda</div>
+			<div class="consult-card">
+				<img id="consultant-photo" src="" alt="Konsultant rasmi">
+				<div>
+					<div class="consult-name" id="consultant-name"></div>
+					<div class="testi-meta" style="margin-top:4px;" id="consultant-city"></div>
+				</div>
+				<p class="consult-story" id="consultant-story"></p>
+				<p style="font-size:13px; color:var(--muted); text-align:center;">Savol bo'lsa — Telegramda yozing. Bosim
+					yo'q,
+					majburiyat yo'q. Shunchaki suhbatlashaylik.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     9. CTA
+	══════════════════════════════════════ -->
+	<section id="cta">
+		<div class="container">
+			<div class="tag" style="background:rgba(255,255,255,0.2); color:#fff;">Qaror qiling</div>
+			<h2>Sinab ko'rish uchun yo'qotadigan narsangiz yo'q</h2>
+			<p>Ro'yxatdan o'tish bepul. Birinchi qadam faqat bir daqiqa vaqt oladi.</p>
+
+			<div class="urgency-bar">
+				<span>🟢</span> Bu oy jamoamizga <strong id="joinCount">3 nafar</strong> yangi opa qo'shildi
+			</div>
+
+			<a class="btn btn-primary" id="cta-telegram" href="#" target="_blank">
+				<span class="btn-icon">💬</span>
+				Telegramda yozing
+			</a>
+			<a class="btn btn-secondary" id="cta-reg" href="#" target="_blank">
+				<span class="btn-icon">✍️</span>
+				Ro'yxatdan o'tish (bepul)
+			</a>
+
+			<div class="fine-print">Ro'yxatdan o'tganingizda hech qanday to'lov talab qilinmaydi.<br>Istalgan vaqtda chiqib
+				ketishingiz mumkin.</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			Faberlic rasmiy konsultanti · Uzbekiston<br>
+			<span style="opacity:0.5; font-size:11px;">Sahifa ma'lumotlari Faberlic marketing rejasi asosida
+				tuzilgan</span>
+		</div>
+	</footer>
+
+	<!-- ── STICKY BAR ── -->
+	<!-- <div class="sticky-bar" id="stickyBar">
+  <a class="btn btn-primary" id="sticky-telegram" href="#" target="_blank">
+    <span class="btn-icon">💬</span> Telegram
+  </a>
+  <a class="btn btn-secondary" id="sticky-reg" href="#" target="_blank">
+    <span class="btn-icon">✍️</span> Ro'yxat (bepul)
+  </a>
+</div> -->
+
+	<script>
+		// ── Fill consultant data ──
+		document.addEventListener('DOMContentLoaded', () => {
+			document.getElementById('consultant-photo').src = CONSULTANT.photo;
+			document.getElementById('consultant-name').textContent = CONSULTANT.name;
+			document.getElementById('consultant-city').textContent = CONSULTANT.city + ' · Faberlic konsultanti';
+			document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
+
+			['cta-telegram', 'sticky-telegram'].forEach(id => {
+				document.getElementById(id).href = CONSULTANT.telegram;
+			});
+			['cta-reg', 'sticky-reg'].forEach(id => {
+				document.getElementById(id).href = CONSULTANT.regLink;
+			});
+		});
+
+		// ── Progress bar ──
+		window.addEventListener('scroll', () => {
+			const s = document.documentElement;
+			const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+			document.getElementById('progress').style.width = pct + '%';
+		});
+
+		// ── Sticky bar ──
+		const stickyBar = document.getElementById('stickyBar');
+		const hero = document.getElementById('hero');
+		const observer = new IntersectionObserver(([e]) => {
+			stickyBar.classList.toggle('visible', !e.isIntersecting);
+		}, {
+			threshold: 0
+		});
+		observer.observe(hero);
+
+		// ── Fade-in on scroll ──
+		const fadeEls = document.querySelectorAll('.fade-in');
+		const io = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) e.target.classList.add('visible');
+			});
+		}, {
+			threshold: 0.1
+		});
+		fadeEls.forEach(el => io.observe(el));
+
+		// ── Accordion objections ──
+		function toggleObj(el) {
+			const isOpen = el.classList.contains('open');
+			document.querySelectorAll('.objection').forEach(o => o.classList.remove('open'));
+			if (!isOpen) el.classList.add('open');
+		}
+	</script>
+</body>
+
+</html>
