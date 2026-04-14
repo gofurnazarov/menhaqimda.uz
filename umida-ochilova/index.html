@@ -1023,7 +1023,7 @@
 					</div>
 					<div class="comm-feat">
 						<span>🚫</span>
-						<span>Hech kim majburlamaydi — o‘z sur’atingizda ishlaysiz</span>
+						<span>Hech qanday majburiyat yo'q — o‘z vaqtingiz va sharoitingizdan kelib chiqib ishlaysiz</span>
 					</div>
 				</div>
 			</div>
@@ -1070,22 +1070,14 @@
 	</section>
 
 	<footer>
-		<div class="container">
-			Faberlic rasmiy konsultanti · Uzbekiston<br>
-			<span style="opacity:0.5; font-size:11px;">Sahifa ma'lumotlari Faberlic marketing rejasi asosida
-				tuzilgan</span>
+		<div class="container"style="margin-bottom: 12px;">
+			Faberlic Rasmiy Konsultanti · O'zbekiston
+		</div>
+		<div class="tag" style="background:rgb(214 152 152 / 20%); color:#191616; font-size:10px; text-transform: none;">
+			Sayt <a href="https://menhaqimda.uz" style="color: var(--terracotta)">menhaqimda.uz</a> tomonidan yaratildi
 		</div>
 	</footer>
 
-	<!-- ── STICKY BAR ── -->
-	<!-- <div class="sticky-bar" id="stickyBar">
-  <a class="btn btn-primary" id="sticky-telegram" href="#" target="_blank">
-    <span class="btn-icon">💬</span> Telegram
-  </a>
-  <a class="btn btn-secondary" id="sticky-reg" href="#" target="_blank">
-    <span class="btn-icon">✍️</span> Ro'yxat (bepul)
-  </a>
-</div> -->
 
 	<script>
 		// ── Fill consultant data ──
@@ -1096,7 +1088,7 @@
 			document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
 
 			const message = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
-			['cta-telegram', 'sticky-telegram'].forEach(id => {
+			['cta-telegram'].forEach(id => {
 				document.getElementById(id).href = CONSULTANT.telegram + message;
 			});
 		});
@@ -1107,16 +1099,6 @@
 			const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
 			document.getElementById('progress').style.width = pct + '%';
 		});
-
-		// ── Sticky bar ──
-		const stickyBar = document.getElementById('stickyBar');
-		const hero = document.getElementById('hero');
-		const observer = new IntersectionObserver(([e]) => {
-			stickyBar.classList.toggle('visible', !e.isIntersecting);
-		}, {
-			threshold: 0
-		});
-		observer.observe(hero);
 
 		// ── Fade-in on scroll ──
 		const fadeEls = document.querySelectorAll('.fade-in');
@@ -1135,6 +1117,72 @@
 			document.querySelectorAll('.objection').forEach(o => o.classList.remove('open'));
 			if (!isOpen) el.classList.add('open');
 		}
+	</script>
+	<script>
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get("uid");
+      console.log("userId:", userId);
+      if (userId) {
+         fetch("https://umidasahifasibot-production.up.railway.app/track", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+               user_id: userId,
+					event: "opened_landing_page",
+            })
+         })
+            .then(response => {
+               // Status kodini tekshiramiz (masalan, 200 yoki 201)
+               console.log("Status:", response.status);
+               return response.text(); // Javobni JSON formatida o'qiymiz
+            })
+            .then(data => {
+               // Serverdan kelgan ma'lumotni konsolga chiqaramiz
+               console.log("Serverdan kelgan natija:", data);
+            })
+            .catch(error => {
+               // Agar xatolik yuz bersa (tarmoq xatosi yoki server o'chiq bo'lsa)
+               console.error("Xatolik yuz berdi:", error);
+            });
+      }
+   </script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const params = new URLSearchParams(window.location.search);
+			const userId = params.get("uid");
+
+			const message = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
+			const telegramLink = CONSULTANT.telegram + message;
+
+			const cta = document.getElementById('cta-telegram');
+
+			cta.addEventListener('click', function (e) {
+				e.preventDefault(); // STOP default navigation
+
+				if (userId) {
+					fetch("https://umidasahifasibot-production.up.railway.app/track", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							user_id: userId,
+							event: "clicked_landing_page_cta"
+						})
+					})
+					.catch(() => {}) // ignore errors
+					.finally(() => {
+						// redirect AFTER request attempt
+						window.location.href = telegramLink;
+					});
+				} else {
+					// fallback if no uid
+					window.location.href = telegramLink;
+				}
+			});
+		});
 	</script>
 </body>
 
