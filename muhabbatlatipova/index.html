@@ -26,6 +26,11 @@
 			ctaText: "Menga yozing",
 			ctaLink: "https://t.me/Muhabbat92",
 
+			/* ---------- CONTACT LINKS ---------- */
+			telegramLink: "https://t.me/Muhabbat92",
+			instagramLink: "https://www.instagram.com/latipova8699", // Leave empty "" to hide Instagram button
+			phoneLink: "tel:+998906120692",
+
 			/* ---------- TRUST STRIP (STATS) ---------- */
 			stats: {
 				stat1: {
@@ -68,11 +73,6 @@
 				author: "Israilova Gulbahor",
 				role: "Shogirtlarimdan biri"
 			},
-
-			/* ---------- CONTACT LINKS ---------- */
-			telegramLink: "https://t.me/Muhabbat92",
-			instagramLink: "https://www.instagram.com/latipova8699", // Leave empty "" to hide Instagram button
-			phoneLink: "tel:+998906120692",
 
 			/* ---------- BRANDING ---------- */
 			brandName: "menhaqimda.uz",
@@ -774,7 +774,7 @@
 					</div>
 					<span>Telegram</span>
 				</a>
-				<a class="social-link" id="cfg-instagram-link" href="#" style="display:none">
+				<a class="social-link" id="cfg-instagram-link" href="#">
 					<div class="social-link-icon">
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
 							stroke-linecap="round" stroke-linejoin="round">
@@ -879,7 +879,6 @@
 			document.getElementById('cfg-testimonial-role').textContent = C.testimonial.role;
 
 			// Footer links
-			/*
 			document.getElementById('cfg-telegram-link').href = C.telegramLink || '#';
 			const instaEl = document.getElementById('cfg-instagram-link');
 			if (C.instagramLink) {
@@ -887,7 +886,6 @@
 				instaEl.style.display = 'flex';
 			}
 			document.getElementById('cfg-phone-link').href = C.phoneLink || '#';
-			*/
 
 			// Brand
 			const brandLink = document.getElementById('cfg-brand-link');
