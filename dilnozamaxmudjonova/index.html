@@ -626,8 +626,7 @@
 					<div class="avatar-ring"></div>
 					<div class="avatar-inner">
 						<!-- Replace src with real photo path. If no photo, initials are shown -->
-						<img id="avatar-img" src="" alt=""
-							onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';" />
+						<img id="avatar-img" src="" alt=""/>
 						<div class="avatar-fallback" id="avatar-fallback"></div>
 					</div>
 					<div class="avatar-badge">
@@ -836,9 +835,9 @@
 			if (C.avatar) {
 				img.src = C.avatar;
 			} else {
-				img.style.display = 'none';
-				fallback.style.display = 'flex';
-				fallback.textContent = initials(C.name);
+				// img.style.display = 'none';
+				// fallback.style.display = 'flex';
+				// fallback.textContent = initials(C.name);
 			}
 
 			// Hero
