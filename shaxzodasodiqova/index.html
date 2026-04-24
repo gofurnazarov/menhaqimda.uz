@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Xush Kelibsiz!</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+		rel="stylesheet" />
+	<script>
+		/* ================================================================
+			★  CLIENT CONFIGURATION
+			Edit this object for each new client.
+		================================================================ */
+		
+		const CONFIG = {
+			/* ---------- PERSONAL IDENTITY ---------- */
+			name: "Dilnoza Maxmudjonova",
+			title: "Direktor",
+			// Path or URL to avatar photo. Leave empty "" to show initials.
+			avatar: "photo.jpg",
+
+			/* ---------- HERO TEXT ---------- */
+			headline: "Ayollarga Faberlic orqali qo'shimcha daromadni boshlash va rivojlantirishda amaliy, sinovdan o'tgan yo'l ko'rsataman.",
+			ctaText: "Menga yozing",
+			ctaLink: "https://t.me/ximona_dilnoza",
+
+			/* ---------- TRUST STRIP (STATS) ---------- */
+			stats: {
+				stat1: {
+					num: "150+",
+					label: "Shogirdlar"
+				},
+				stat2: {
+					num: "2+",
+					label: "Yillik tajriba"
+				},
+				stat3: {
+					num: "100%",
+					label: "Isbot qilingan usul"
+				}
+			},
+
+			/* ---------- VALUE PROPS ----------
+			   icon options: "zap" | "users" | "trending" | "heart" | "award" | "shield"
+			---------------------------------------- */
+			values: [{
+					icon: "zap",
+					title: "Barqaror daromad yo'li",
+					desc: "Aniq reja asosida ishlaysiz va natijani bosqichma-bosqich ko'rasiz."
+				},
+				{
+					icon: "users",
+					title: "Shaxsiy mentorlik",
+					desc: "Har bir qadamda yoningizda bo'laman — savollaringizga javob, amaliy maslahatlar."
+				},
+				{
+					icon: "trending",
+					title: "Tayyor tizim",
+					desc: "Sinovdan o'tgan usullar bilan vaqtingizni tejaysiz va tezroq natijaga erishasiz."
+				}
+			],
+
+			/* ---------- TESTIMONIAL ---------- */
+			testimonial: {
+				text: `Ustozim bilan ishlaganimdan keyin natijalar tezlashdi.\nHozir 15% ga chiqdim va oyiga 2 250 000 so'm daromad qilmoqdaman.\nEng muhimi — bu natija tasodif emas. To'g'ri yo'l-yo'riq va sistemali ishlash natijasi.\nRahmat ustozim, ishonch va qo'llab-quvvatlaganingiz uchun ❤️`,
+				author: "Israilova Gulbahor",
+				role: "Shogirtlarimdan biri"
+			},
+
+			/* ---------- CONTACT LINKS ---------- */
+			telegramLink: "https://t.me/ximona_dilnoza",
+			instagramLink: "", // Leave empty "" to hide Instagram button
+			phoneLink: "tel:+998933241533 ",
+
+			/* ---------- BRANDING ---------- */
+			brandName: "menhaqimda.uz",
+			brandLink: "https://menhaqimda.uz"
+		};
+	</script>
+	<style>
+		/* ============================================================
+       DESIGN TOKENS — edit colors/fonts here if needed
+    ============================================================ */
+		:root {
+			--brand-from: #FF6B6B;
+			--brand-to: #FF8E53;
+			--bg-warm: #FFECD2;
+			--bg-pale: #FFF5EB;
+			--text-main: #111827;
+			--text-muted: #6B7280;
+			--border: #F3F4F6;
+			--rose-light: #FFF1F2;
+			--rose-border: #FFE4E6;
+			--font: 'Nunito', sans-serif;
+		}
+
+		/* ============================================================
+       RESET & BASE
+    ============================================================ */
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: var(--font);
+			background: #F9FAFB;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		/* ============================================================
+       LAYOUT SHELL
+    ============================================================ */
+		.app-shell {
+			width: 100%;
+			max-width: 430px;
+			background: #fff;
+			box-shadow: 0 25px 60px rgba(0, 0, 0, .12);
+			min-height: 100vh;
+			overflow: hidden;
+			position: relative;
+		}
+
+		/* ============================================================
+       GRADIENT UTILITY
+    ============================================================ */
+		.grad-text {
+			background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.grad-btn {
+			background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+			color: #fff;
+		}
+
+		/* ============================================================
+       HERO SECTION
+    ============================================================ */
+		.hero {
+			background: linear-gradient(to bottom, var(--bg-warm) 0%, #fff 100%);
+			padding: 48px 24px 32px;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		/* Avatar */
+		.avatar-wrap {
+			position: relative;
+			display: inline-block;
+			margin-bottom: 24px;
+		}
+
+		.avatar-ring {
+			position: absolute;
+			inset: -4px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, #fb923c, #ec4899);
+			filter: blur(1px);
+		}
+
+		.avatar-inner {
+			position: relative;
+			width: 128px;
+			height: 128px;
+			border-radius: 50%;
+			padding: 4px;
+			background: #fff;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, .12);
+		}
+
+		.avatar-inner img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 1px solid #F3F4F6;
+			/* Fallback gradient when no real photo */
+			background: linear-gradient(135deg, #fde68a, #fca5a5);
+		}
+
+		/* Placeholder initials shown when img fails */
+		.avatar-inner .avatar-fallback {
+			display: none;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background: linear-gradient(135deg, #fde68a, #fca5a5);
+			align-items: center;
+			justify-content: center;
+			font-size: 2.5rem;
+			font-weight: 900;
+			color: #fff;
+		}
+
+		.avatar-badge {
+			position: absolute;
+			bottom: 4px;
+			right: 4px;
+			transform: translate(4px, 4px);
+			background: linear-gradient(135deg, #f97316, #ec4899);
+			color: #fff;
+			padding: 8px;
+			border-radius: 50%;
+			border: 3px solid #fff;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		/* Name & Title */
+		.hero h1 {
+			font-size: 1.875rem;
+			font-weight: 900;
+			color: var(--text-main);
+			margin-bottom: 8px;
+			letter-spacing: -0.5px;
+		}
+
+		.hero-title-row {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			color: var(--brand-from);
+			margin-bottom: 16px;
+		}
+
+		.hero-headline {
+			color: var(--text-muted);
+			font-size: 1rem;
+			line-height: 1.6;
+			margin-bottom: 32px;
+			font-weight: 600;
+		}
+
+		/* CTA Button */
+		.cta-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			width: 100%;
+			padding: 16px 24px;
+			border-radius: 14px;
+			font-size: 1.125rem;
+			font-weight: 800;
+			box-shadow: 0 8px 24px rgba(255, 107, 107, .35);
+			transition: transform .15s ease, box-shadow .15s ease;
+			cursor: pointer;
+		}
+
+		.cta-btn:hover {
+			transform: scale(1.03);
+			box-shadow: 0 12px 32px rgba(255, 107, 107, .4);
+		}
+
+		.cta-btn:active {
+			transform: scale(0.97);
+		}
+
+		.cta-arrow {
+			transition: transform .2s ease;
+		}
+
+		.cta-btn:hover .cta-arrow {
+			transform: translateX(4px);
+		}
+
+		/* ============================================================
+       TRUST STRIP
+    ============================================================ */
+		.trust-strip {
+			padding: 0 16px;
+			margin-top: -16px;
+			position: relative;
+			z-index: 10;
+		}
+
+		.trust-inner {
+			background: #fff;
+			border-radius: 18px;
+			padding: 20px 12px;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, .09);
+			border: 1px solid var(--border);
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+
+		.stat-col {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 6px;
+			text-align: center;
+		}
+
+		.stat-icon {
+			color: var(--brand-from);
+		}
+
+		.stat-num {
+			font-size: 1.25rem;
+			font-weight: 900;
+			line-height: 1;
+		}
+
+		.stat-label {
+			font-size: 0.6875rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: var(--text-muted);
+			line-height: 1.2;
+		}
+
+		.stat-divider {
+			width: 1px;
+			background: var(--border);
+			align-self: stretch;
+			margin: 4px 0;
+		}
+
+		/* ============================================================
+       VALUE SECTION
+    ============================================================ */
+		.values-section {
+			padding: 40px 24px;
+			background: #fff;
+		}
+
+		.section-header {
+			text-align: center;
+			margin-bottom: 32px;
+		}
+
+		.section-header h2 {
+			font-size: 1.5rem;
+			font-weight: 900;
+			color: var(--text-main);
+		}
+
+		.section-underline {
+			height: 4px;
+			width: 48px;
+			background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+			border-radius: 99px;
+			margin: 8px auto 0;
+		}
+
+		.value-card {
+			background: #fff;
+			padding: 20px;
+			border-radius: 18px;
+			border: 1px solid var(--border);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+			display: flex;
+			align-items: flex-start;
+			gap: 16px;
+			margin-bottom: 16px;
+			transition: box-shadow .2s ease, transform .2s ease;
+			opacity: 0;
+			transform: translateY(20px);
+		}
+
+		.value-card.visible {
+			animation: slideUp .5s ease forwards;
+		}
+
+		.value-icon-wrap {
+			padding: 12px;
+			background: var(--bg-pale);
+			border-radius: 14px;
+			flex-shrink: 0;
+			color: var(--brand-from);
+		}
+
+		.value-card h3 {
+			font-size: 1.0625rem;
+			font-weight: 800;
+			color: var(--text-main);
+			margin-bottom: 4px;
+		}
+
+		.value-card p {
+			font-size: 0.875rem;
+			color: var(--text-muted);
+			line-height: 1.55;
+		}
+
+		.value-card:hover {
+			box-shadow: 0 8px 24px rgba(0, 0, 0, .09);
+			transform: translateY(-2px);
+		}
+
+		/* ============================================================
+       TESTIMONIAL
+    ============================================================ */
+		.testimonial-section {
+			padding: 32px 24px;
+			background: var(--bg-pale);
+		}
+
+		.stars {
+			display: flex;
+			gap: 4px;
+			margin-bottom: 12px;
+		}
+
+		.stars svg {
+			color: var(--brand-to);
+			fill: var(--brand-to);
+		}
+
+		.testimonial-text {
+			color: var(--text-muted);
+			font-style: italic;
+			font-weight: 600;
+			line-height: 1.65;
+			margin-bottom: 16px;
+			white-space: pre-line;
+		}
+
+		.testimonial-author {
+			font-size: 0.875rem;
+			font-weight: 800;
+			color: var(--text-main);
+		}
+
+		.testimonial-role {
+			font-size: 0.75rem;
+			color: var(--text-muted);
+		}
+
+		/* ============================================================
+       FINAL CTA
+    ============================================================ */
+		.final-cta-section {
+			padding: 40px 24px 64px;
+		}
+
+		.final-cta-box {
+			background: linear-gradient(135deg, #fff 0%, var(--bg-warm) 100%);
+			border: 1px solid #fed7aa;
+			border-radius: 24px;
+			padding: 32px;
+			text-align: center;
+			box-shadow: 0 12px 32px rgba(0, 0, 0, .07);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.final-cta-deco {
+			position: absolute;
+			top: -24px;
+			right: -24px;
+			color: var(--bg-warm);
+			opacity: .8;
+			transform: rotate(12deg);
+			pointer-events: none;
+		}
+
+		.final-cta-box h3 {
+			font-size: 1.5rem;
+			font-weight: 900;
+			color: var(--text-main);
+			margin-bottom: 12px;
+			position: relative;
+		}
+
+		.final-cta-box p {
+			color: var(--text-muted);
+			font-size: 0.875rem;
+			font-weight: 600;
+			margin-bottom: 32px;
+			max-width: 280px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+		}
+
+		.final-cta-box .cta-btn {
+			position: relative;
+		}
+
+		/* ============================================================
+       FOOTER
+    ============================================================ */
+		footer {
+			text-align: center;
+			padding: 24px 24px 32px;
+			border-top: 1px solid var(--rose-border);
+		}
+
+		.social-links {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 24px;
+			margin-bottom: 24px;
+		}
+
+		.social-link {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 4px;
+			color: #9CA3AF;
+			transition: color .2s ease;
+		}
+
+		.social-link:hover {
+			color: var(--brand-from);
+		}
+
+		.social-link-icon {
+			background: #fff;
+			padding: 8px;
+			border-radius: 50%;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
+			border: 1px solid var(--rose-border);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: box-shadow .2s ease;
+		}
+
+		.social-link:hover .social-link-icon {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+		}
+
+		.social-link span {
+			font-size: 0.625rem;
+			font-weight: 700;
+		}
+
+		.brand-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			background: var(--rose-light);
+			padding: 6px 12px;
+			border-radius: 99px;
+		}
+
+		.brand-badge span {
+			font-size: 0.625rem;
+			color: var(--text-muted);
+		}
+
+		.brand-badge a {
+			font-size: 0.625rem;
+			font-weight: 800;
+			color: var(--brand-from);
+		}
+
+		/* ============================================================
+       ANIMATIONS
+    ============================================================ */
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(16px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.hero-content {
+			animation: fadeIn .5s .2s ease both;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="app-shell">
+
+		<!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+		<section class="hero">
+			<div class="hero-content">
+
+				<!-- Avatar -->
+				<div class="avatar-wrap">
+					<div class="avatar-ring"></div>
+					<div class="avatar-inner">
+						<!-- Replace src with real photo path. If no photo, initials are shown -->
+						<img id="avatar-img" src="" alt=""/>
+						<div class="avatar-fallback" id="avatar-fallback"></div>
+					</div>
+					<div class="avatar-badge">
+						<!-- Star icon -->
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+							<path
+								d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+						</svg>
+					</div>
+				</div>
+
+				<!-- Name & Title -->
+				<h1 id="cfg-name"></h1>
+				<div class="hero-title-row">
+					<!-- Award icon -->
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+						stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="8" r="6" />
+						<path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" /></svg>
+					<span id="cfg-title"></span>
+				</div>
+				<p class="hero-headline" id="cfg-headline"></p>
+
+				<!-- Primary CTA -->
+				<a class="cta-btn grad-btn" id="cfg-cta-link" href="#">
+					<span id="cfg-cta-text"></span>
+					<svg class="cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+						stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M5 12h14M12 5l7 7-7 7" /></svg>
+				</a>
+
+			</div>
+		</section>
+
+		<!-- ============================================================
+       TRUST STRIP (STATS)
+  ============================================================ -->
+		<section class="trust-strip">
+			<div class="trust-inner">
+
+				<div class="stat-col">
+					<div class="stat-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-handshake" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg>
+					</div>
+					<span class="stat-num grad-text" id="cfg-stat1-num"></span>
+					<span class="stat-label" id="cfg-stat1-label"></span>
+				</div>
+
+				<div class="stat-divider"></div>
+
+				<div class="stat-col">
+					<div class="stat-icon">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="8" r="6" />
+							<path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" /></svg>
+					</div>
+					<span class="stat-num grad-text" id="cfg-stat2-num"></span>
+					<span class="stat-label" id="cfg-stat2-label"></span>
+				</div>
+
+				<div class="stat-divider"></div>
+
+				<div class="stat-col">
+					<div class="stat-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+					</div>
+					<span class="stat-num grad-text" id="cfg-stat3-num"></span>
+					<span class="stat-label" id="cfg-stat3-label"></span>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- ============================================================
+       VALUE SECTION
+  ============================================================ -->
+		<section class="values-section">
+			<div class="section-header">
+				<h2>Nima uchun men?</h2>
+				<div class="section-underline"></div>
+			</div>
+			<div id="values-list"></div>
+		</section>
+
+		<!-- ============================================================
+       TESTIMONIAL
+  ============================================================ -->
+		<section class="testimonial-section">
+			<div class="stars">
+				<svg width="16" height="16" viewBox="0 0 24 24">
+					<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+				</svg>
+				<svg width="16" height="16" viewBox="0 0 24 24">
+					<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+				</svg>
+				<svg width="16" height="16" viewBox="0 0 24 24">
+					<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+				</svg>
+				<svg width="16" height="16" viewBox="0 0 24 24">
+					<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+				</svg>
+				<svg width="16" height="16" viewBox="0 0 24 24">
+					<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+				</svg>
+			</div>
+			<p class="testimonial-text" id="cfg-testimonial-text"></p>
+			<p class="testimonial-author" id="cfg-testimonial-author"></p>
+			<p class="testimonial-role" id="cfg-testimonial-role"></p>
+		</section>
+
+		<!-- ============================================================
+       FINAL CTA
+  ============================================================ -->
+		<section class="final-cta-section">
+			<div class="final-cta-box">
+				<!-- Deco icon -->
+				<div class="final-cta-deco">
+					<svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+						stroke-linecap="round" stroke-linejoin="round">
+						<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+				</div>
+				<h3>Boshlashni kechiktirmang</h3>
+				<p>Harakat qilgan odam natijani tezroq ko'radi. Hoziroq yozing!</p>
+				<a class="cta-btn grad-btn" id="cfg-cta-link-2" href="#">
+					<span id="cfg-cta-text-2"></span>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+						stroke-linecap="round" stroke-linejoin="round">
+						<path d="M5 12h14M12 5l7 7-7 7" /></svg>
+				</a>
+			</div>
+		</section>
+
+		<!-- ============================================================
+       FOOTER
+  ============================================================ -->
+		<footer>
+			<div class="social-links">
+				<a class="social-link" id="cfg-telegram-link" href="#">
+					<div class="social-link-icon">
+						<!-- Telegram/Send icon -->
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<line x1="22" y1="2" x2="11" y2="13" />
+							<polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
+					</div>
+					<span>Telegram</span>
+				</a>
+				<a class="social-link" id="cfg-instagram-link" href="#" style="display:none">
+					<div class="social-link-icon">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+					</div>
+					<span>Instagram</span>
+				</a>
+				<a class="social-link" id="cfg-phone-link" href="#">
+					<div class="social-link-icon">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<path
+								d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.41 2 2 0 0 1 3.56 1.2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 7.39 7.39l.86-.86a2 2 0 0 1 2.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z" />
+						</svg>
+					</div>
+					<span>Telefon</span>
+				</a>
+			</div>
+			<div class="brand-badge">
+				<span>Sayt</span>
+				<a href="https://menhaqimda.uz" id="cfg-brand-link">menhaqimda.uz</a>
+				<span>tomonidan yaratildi</span>
+			</div>
+		</footer>
+
+	</div><!-- /app-shell -->
+
+	<script>
+		/* ================================================================
+		   SVG ICON LIBRARY (inline, no dependencies)
+		================================================================ */
+		const ICONS = {
+			zap: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+			users: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+			trending: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+			heart: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+			award: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>`,
+			shield: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>`
+		};
+
+		/* ================================================================
+		   RENDER
+		================================================================ */
+		function initials(name) {
+			return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+		}
+
+		function render() {
+			const C = CONFIG;
+
+			// Avatar
+			const img = document.getElementById('avatar-img');
+			const fallback = document.getElementById('avatar-fallback');
+			img.alt = C.name;
+			if (C.avatar) {
+				img.src = C.avatar;
+			} else {
+				// img.style.display = 'none';
+				// fallback.style.display = 'flex';
+				// fallback.textContent = initials(C.name);
+			}
+
+			// Hero
+			document.getElementById('cfg-name').textContent = C.name;
+			document.getElementById('cfg-title').textContent = C.title;
+			document.getElementById('cfg-headline').textContent = C.headline;
+
+			const ctaLink = document.getElementById('cfg-cta-link');
+			const ctaLink2 = document.getElementById('cfg-cta-link-2');
+			const ctaText = document.getElementById('cfg-cta-text');
+			const ctaText2 = document.getElementById('cfg-cta-text-2');
+			ctaLink.href = C.ctaLink;
+			ctaLink2.href = C.ctaLink;
+			ctaText.textContent = C.ctaText;
+			ctaText2.textContent = C.ctaText;
+
+			// Stats
+			document.getElementById('cfg-stat1-num').textContent = C.stats.stat1.num;
+			document.getElementById('cfg-stat1-label').textContent = C.stats.stat1.label;
+			document.getElementById('cfg-stat2-num').textContent = C.stats.stat2.num;
+			document.getElementById('cfg-stat2-label').textContent = C.stats.stat2.label;
+			document.getElementById('cfg-stat3-num').textContent = C.stats.stat3.num;
+			document.getElementById('cfg-stat3-label').textContent = C.stats.stat3.label;
+
+			// Values
+			const valuesList = document.getElementById('values-list');
+			valuesList.innerHTML = C.values.map((v, i) => `
+				<div class="value-card" style="animation-delay:${i * 0.1}s">
+					<div class="value-icon-wrap">${ICONS[v.icon] || ICONS.zap}</div>
+					<div>
+					<h3>${v.title}</h3>
+					<p>${v.desc}</p>
+					</div>
+				</div>
+			`).join('');
+
+			// Testimonial
+			document.getElementById('cfg-testimonial-text').textContent = `"${C.testimonial.text}"`;
+			document.getElementById('cfg-testimonial-author').textContent = C.testimonial.author;
+			document.getElementById('cfg-testimonial-role').textContent = C.testimonial.role;
+
+			// Footer links
+			document.getElementById('cfg-telegram-link').href = C.telegramLink || '#';
+			const instaEl = document.getElementById('cfg-instagram-link');
+			if (C.instagramLink) {
+				instaEl.href = C.instagramLink;
+				instaEl.style.display = 'flex';
+			}
+			document.getElementById('cfg-phone-link').href = C.phoneLink || '#';
+
+			// Brand
+			const brandLink = document.getElementById('cfg-brand-link');
+			brandLink.textContent = C.brandName;
+			brandLink.href = C.brandLink;
+
+			// Scroll-triggered animation for value cards
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, {
+				threshold: 0.15
+			});
+
+			document.querySelectorAll('.value-card').forEach(el => observer.observe(el));
+		}
+
+		document.addEventListener('DOMContentLoaded', render);
+	</script>
+</body>
+
+</html>
