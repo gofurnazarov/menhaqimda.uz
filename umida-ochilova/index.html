@@ -14,7 +14,7 @@
 			name: "Umida Ochilova",
 			photo: "https://menhaqimda.uz/umidaochilova/me.png",
 			telegram: "https://t.me/umida_fab",
-			shortStory: "Men ham boshida shubha bilan boshlaganman. Uyda o'tirardim, qo'shimcha daromad kerak edi. Avvaliga ishonmadim, lekin baribir sinab ko'rdim. Sekin-sekin tushuna boshladim va davom ettirdim. Agar sizda ham savol bo'lsa — bemalol yozing. Shunchaki tushuntirib beraman, hech qanday majburiyat yo'q."
+			shortStory: "Men ham yosh ona, oddiy qishloq ayoliman. Men ham boshida shubha bilan boshlaganman. Uyda o'tirardim, qo'shimcha daromad kerak edi. Avvaliga ishonmadim, lekin baribir sinab ko'rdim. Sekin-sekin tushuna boshladim va davom ettirdim. Agar sizda ham savol bo'lsa — bemalol yozing. Shunchaki tushuntirib beraman, hech qanday majburiyat yo'q."
 		};
 	</script>
 	<!-- ============================================================ -->
@@ -255,9 +255,8 @@
 		}
 
 		.story-note {
-			font-size: 13px;
+			font-size: 14px;
 			color: rgba(255,255,255,0.4);
-			font-style: italic;
 			text-align: center;
 			margin-top: 28px;
 			padding-top: 24px;
@@ -271,7 +270,7 @@
 			border-left: 2px solid rgba(255,255,255,0.2);
 			border-radius: 0 8px 8px 0;
 			font-size: 13px;
-			color: rgba(255,255,255,0.5);
+			color: rgb(236 170 131);
 			line-height: 1.7;
 			font-style: italic;
 		}
@@ -564,7 +563,6 @@
 			gap: 10px;
 			width: 100%;
 			max-width: 360px;
-			margin: 24px auto 0;
 			padding: 17px 24px;
 			border-radius: 50px;
 			font-family: 'Inter', sans-serif;
@@ -577,6 +575,49 @@
 			border: none;
 			transition: transform 0.15s, box-shadow 0.15s;
 			box-shadow: 0 6px 24px rgba(180, 80, 30, 0.35);
+		}
+
+		.cta-label {
+			text-align: center;
+			font-family: 'Lora', serif;
+			font-size: 17px;
+			color: rgba(255,255,255,0.9);
+			margin-top: 28px;
+			margin-bottom: 14px;
+			line-height: 1.4;
+		}
+
+		.cta-arrow-row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+		}
+
+		.cta-arrow {
+			font-size: 32px;
+			color: var(--ember-bright);
+			line-height: 1;
+			flex-shrink: 0;
+			padding-bottom: 5px;
+		}
+
+		.cta-arrow:first-child {
+			animation: bounce-right 1.2s ease-in-out infinite;
+		}
+
+		.cta-arrow:last-child {
+			animation: bounce-left 1.2s ease-in-out infinite;
+		}
+
+		@keyframes bounce-right {
+			0%, 100% { transform: translateX(0); opacity: 0.6; }
+			50% { transform: translateX(5px); opacity: 1; }
+		}
+
+		@keyframes bounce-left {
+			0%, 100% { transform: translateX(0); opacity: 0.6; }
+			50% { transform: translateX(-5px); opacity: 1; }
 		}
 
 		.cta-btn:hover {
@@ -888,10 +929,11 @@
 		<h2>Ko'p ayollar qo'shimcha daromad qilishni xohlaydi. Lekin...</h2>
 
 		<div class="doubt-list">
-			<div class="doubt-item">Kasbim yo'q.</div>
-			<div class="doubt-item">Tajribam yo'q.</div>
+			<div class="doubt-item">Qo'limdan nima ham kelardi?</div>
+			<div class="doubt-item">Biror kasbim yo'q.</div>
+			<div class="doubt-item">Tajribam va bilim yo'q.</div>
 			<div class="doubt-item">Uyda bolalar bilanman.</div>
-			<div class="doubt-item">Pulim yo'q.</div>
+			<div class="doubt-item">Uydan tashqariga chiqa olmayman.</div>
 		</div>
 
 		<div class="reassure">
@@ -910,16 +952,17 @@
 		<h2>Sizdan ham hech shunday so'rashganmi?</h2>
 
 		<div class="ask-list">
-			<div class="ask-item">"Yaxshi atir bormi?"</div>
-			<div class="ask-item">"Qaysi krem yaxshi?"</div>
-			<div class="ask-item">"Kir yuvish kukuni tavsiya qila olasizmi?"</div>
+			<div class="ask-item">"Shu kremni ishlatganmisiz?"</div>
+			<div class="ask-item">"Qaysi biri yaxshiroq ekan?"</div>
+			<div class="ask-item">"Ishlatadigan atiringizni qayerdan olgansiz?"</div>
 		</div>
 
-		<p>Odamlar ko'pincha reklamadagi notanish odamdan emas, <strong>tanishidan</strong> tavsiya olishni afzal ko'radi.</p>
+		<p>Odamlar ko'pincha reklamadagi notanish odamdan emas, savdogorlardan emas, <strong>tanishidan</strong> tavsiya olishni afzal ko'radi.</p>
 
 		<div class="reassure" style="margin-top: 22px;">
 			Siz tavsiya qilayotgan mahsulotlarni Faberlic orqali buyurtma qilish mumkin bo'ladi.<br><br>
-			Tavsiya qilish — siz allaqachon qila olasiz.
+			Shunchaki tavsiya qilishni — hamma qila oladi. <br>
+			Shu jumladan siz ham.
 		</div>
 	</div>
 </section>
@@ -935,11 +978,11 @@
 		<div class="story-lines">
 			<div class="story-line">
 				<div class="story-day">1-kun</div>
-				<div class="text">Ro'yxatdan o'tasiz. Hujjat kerak emas, to'lov kerak emas.</div>
+				<div class="text">Ro'yxatdan o'tasiz. Hech qanday hujjat yoki to'lov kerak emas.</div>
 			</div>
 			<div class="story-line">
 				<div class="story-day">2-kun</div>
-				<div class="text">Ko'pchilik Telegram ishlatadi. Shuning uchun <strong>kichik Telegram gruppa ochasiz</strong> — oila, qarindoshlar, qo'shnilar, tanishlar.</div>
+				<div class="text">Ko'pchilik Telegram ishlatadi. Shuning uchun <strong>kichik Telegram gruppa ochasiz</strong> — oila, qarindoshlar, qo'shnilar, tanishlarni qo'shasiz.</div>
 			</div>
 			<div class="story-line">
 				<div class="story-day">3-kun</div>
@@ -1022,11 +1065,11 @@
 			</div>
 			<div class="quit-item">
 				<span class="q-bullet">—</span>
-				<span>nima post qilishni bilmaydi.</span>
+				<span>to'g'ri tavfsiya qilishni bilmaydi.</span>
 			</div>
 			<div class="quit-item">
 				<span class="q-bullet">—</span>
-				<span>kimga yozishni bilmaydi.</span>
+				<span>kimlarga tavfsiya qilishni bilmaydi.</span>
 			</div>
 			<div class="quit-item">
 				<span class="q-bullet">—</span>
@@ -1059,7 +1102,7 @@
 			<div class="diff-item">
 				<div class="diff-check">✓</div>
 				<div class="diff-text">
-					<strong>Har kuni nima post qilishni o'ylamaysiz.</strong>
+					<strong>Har kuni qaysi mahsulotni tavfsiya qilishni o'ylamaysiz.</strong>
 					Tayyor materiallar bor. Siz faqat joylaysiz.
 				</div>
 			</div>
@@ -1074,7 +1117,7 @@
 				<div class="diff-check">✓</div>
 				<div class="diff-text">
 					<strong>Savol bo'lsa — yolg'iz qolmaysiz.</strong>
-					Umida mahsulot va mijozlar bo'yicha yonida.
+					Umida mahsulot va mijozlar bo'yicha doim yoningizda.
 				</div>
 			</div>
 		</div>
@@ -1096,16 +1139,16 @@
 
 		<div class="philosophy-lines">
 			<div class="philosophy-line">
-				<div class="ph-if">Texnologiya yordamchi bo'lsa —</div>
-				<div class="ph-then">texnologiyadan foydalanamiz.</div>
+				<div class="ph-if">Texnologiya yordami kerak bo'lsa —</div>
+				<div class="ph-then">texnologiya yaratib beramiz.</div>
 			</div>
 			<div class="philosophy-line">
-				<div class="ph-if">Tayyor narsa bo'lsa —</div>
+				<div class="ph-if">Tayyor narsa kerak bo'lsa —</div>
 				<div class="ph-then">tayyorini beramiz.</div>
 			</div>
 			<div class="philosophy-line">
 				<div class="ph-if">O'rgatish kerak bo'lsa —</div>
-				<div class="ph-then">birga o'rganamiz.</div>
+				<div class="ph-then">hammasini oddiy qilib qadamma-qadam o'rgatamiz.</div>
 			</div>
 		</div>
 	</div>
@@ -1209,10 +1252,16 @@
 		</div>
 		<p class="consultant-story" id="consultant-story" style="color:rgba(255,255,255,0.55);font-size:13px;font-style:italic;margin-bottom:4px;"></p>
 
-		<a class="cta-btn" id="cta-telegram" href="#" target="_blank">
-			<span>💬</span>
-			Bu menga mosmi? — Birga aniqlaylik
-		</a>
+		<div class="cta-label">Bu sizga mosmi? — Birga aniqlaylik</div>
+
+		<div class="cta-arrow-row">
+			<span class="cta-arrow">→</span>
+			<a class="cta-btn" id="cta-telegram" href="#" target="_blank">
+				<span>💬</span>
+				Umidaga yozish
+			</a>
+			<span class="cta-arrow">←</span>
+		</div>
 
 		<div class="cta-note">Majburiyat yo'q. Shunchaki savol berasiz.</div>
 	</div>
