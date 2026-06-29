@@ -5,10 +5,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bu imkoniyat sizga mosmi?</title>
-
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '2082798438970493');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=2082798438970493&ev=PageView&noscript=1"
+	/></noscript>
 	<!-- ============================================================
      KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
      ============================================================ -->
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '2082798438970493');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=2082798438970493&ev=PageView&noscript=1"
+	/></noscript>
 	<script>
 		const CONSULTANT = {
 			name: "Umida Ochilova",
@@ -1047,7 +1076,6 @@
 		</p>
 	</div>
 </section>
-
 <!-- ══════════════════════════════════════
      Q5 — "Unda nega hamma ham natija qilmaydi?"
 ══════════════════════════════════════ -->
@@ -1279,7 +1307,43 @@
 		Sayt <a href="https://menhaqimda.uz">menhaqimda.uz</a> tomonidan yaratildi
 	</div>
 </footer>
+<script>
+	let scroll50Tracked = false;
 
+	window.addEventListener("scroll", () => {
+		if (scroll50Tracked) return;
+
+		const scrollPosition = window.scrollY + window.innerHeight;
+		const pageHeight = document.documentElement.scrollHeight;
+
+		if (scrollPosition / pageHeight >= 0.5) {
+			scroll50Tracked = true;
+			fbq('trackCustom', 'Scrolled50');
+			console.log("Tracked: Scrolled50");
+		}
+	});
+
+	let scroll75Tracked=false;
+
+	window.addEventListener("scroll",()=>{
+		if(scroll75Tracked) return;
+		const progress = (window.scrollY+window.innerHeight) / document.documentElement.scrollHeight;
+
+		if(progress>=0.75) {
+			scroll75Tracked=true;
+			fbq('trackCustom','Scrolled75');
+		}
+	});
+
+	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
+		button.addEventListener("click", () => {
+			fbq('track','Lead',{
+				button:"telegram"
+			});
+			console.log("Tracked: Lead");
+		});
+	});
+</script>
 <script>
 	const telegramMsg = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
 
