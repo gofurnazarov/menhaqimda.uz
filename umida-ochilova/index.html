@@ -1337,9 +1337,7 @@
 
 	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
 		button.addEventListener("click", () => {
-			fbq('track','Lead',{
-				button:"telegram"
-			});
+			fbq('track','Lead');
 			console.log("Tracked: Lead");
 		});
 	});
@@ -1378,35 +1376,6 @@
 	}, { threshold: 0.08 });
 
 	document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-
-	// Tracking
-	const params = new URLSearchParams(window.location.search);
-	const userId = params.get("uid");
-
-	if (userId) {
-		fetch("https://umidasahifasibot-production.up.railway.app/track", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ user_id: parseInt(userId), event: "opened_landing_page" })
-		}).catch(() => {});
-	}
-
-	['cta-telegram', 'sticky-btn'].forEach(id => {
-		document.getElementById(id)?.addEventListener('click', function(e) {
-			e.preventDefault();
-			const link = CONSULTANT.telegram + telegramMsg;
-
-			if (userId) {
-				fetch("https://umidasahifasibot-production.up.railway.app/track", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ user_id: parseInt(userId), event: "clicked_landing_page_cta" })
-				}).catch(() => {}).finally(() => { window.location.href = link; });
-			} else {
-				window.location.href = link;
-			}
-		});
-	});
 </script>
 
 </body>
