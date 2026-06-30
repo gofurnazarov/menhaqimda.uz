@@ -1309,36 +1309,43 @@
 </footer>
 <script>
 	let scroll50Tracked = false;
-
-	window.addEventListener("scroll", () => {
-		if (scroll50Tracked) return;
-
-		const scrollPosition = window.scrollY + window.innerHeight;
-		const pageHeight = document.documentElement.scrollHeight;
-
-		if (scrollPosition / pageHeight >= 0.5) {
-			scroll50Tracked = true;
-			fbq('trackCustom', 'Scrolled50');
-			console.log("Tracked: Scrolled50");
-		}
-	});
-
 	let scroll75Tracked=false;
 
-	window.addEventListener("scroll",()=>{
-		if(scroll75Tracked) return;
-		const progress = (window.scrollY+window.innerHeight) / document.documentElement.scrollHeight;
+	window.addEventListener("scroll", () => {
+		const scrollPosition = window.scrollY + window.innerHeight;
+		const pageHeight = document.documentElement.scrollHeight;
+		const progress = scrollPosition / pageHeight;
 
-		if(progress>=0.75) {
-			scroll75Tracked=true;
-			fbq('trackCustom','Scrolled75');
+		if (progress >= 0.5) {
+			if(scroll50Tracked == false) {
+				fbq('trackCustom', 'Scrolled50');
+				console.log("Tracked: Scrolled50");
+			}
+			scroll50Tracked = true;
+		}
+
+		if (progress >= 0.75) {
+			if(scroll75Tracked == false) {
+				fbq('trackCustom', 'Scrolled75');
+				console.log("Tracked: Scrolled75");
+			}
+			scroll75Tracked = true;
 		}
 	});
 
+
+	['cta-telegram', 'sticky-btn'].forEach(id => {
+		document.getElementById(id)?.addEventListener('click', function(e) {
+			e.preventDefault();
+			const link = CONSULTANT.telegram + telegramMsg;
+
+			fbq('track','Lead').catch(() => {}).finally(() => { window.location.href = link; });
+			
+		});
+	});
 	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
 		button.addEventListener("click", () => {
-			fbq('track','Lead');
-			console.log("Tracked: Lead");
+			
 		});
 	});
 </script>
