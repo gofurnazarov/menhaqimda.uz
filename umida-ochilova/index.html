@@ -1339,19 +1339,16 @@
 	
 	const link = CONSULTANT.telegram + telegramMsg;
 
-	function redirect() {
-		if (redirected) return;
-		redirected = true;
-		window.location.href = link;
-	}
 
 	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
 		button.addEventListener("click", (e) => {
 			e.preventDefault();
-
-			fbq('track', 'Lead', {}, {
-				event_callback: redirect
-			});
+			fbq('track', 'Lead');
+			console.log("Tracked: Lead");
+			
+			setTimeout(function() {
+				window.location.href = link;
+			}, 1000); 
 		});
 	});
 </script>
