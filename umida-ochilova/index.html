@@ -1333,25 +1333,29 @@
 		}
 	});
 
+	let redirected = false;
 
-	['cta-telegram', 'sticky-btn'].forEach(id => {
-		document.getElementById(id)?.addEventListener('click', function(e) {
-			e.preventDefault();
-			const link = CONSULTANT.telegram + telegramMsg;
+	const telegramMsg = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
+	
+	const link = CONSULTANT.telegram + telegramMsg;
 
-			fbq('track','Lead').catch(() => {}).finally(() => { window.location.href = link; });
-			
-		});
-	});
+	function redirect() {
+		if (redirected) return;
+		redirected = true;
+		window.location.href = link;
+	}
+
 	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
-		button.addEventListener("click", () => {
-			
+		button.addEventListener("click", (e) => {
+			e.preventDefault();
+
+			fbq('track', 'Lead', {}, {
+				event_callback: redirect
+			});
 		});
 	});
 </script>
 <script>
-	const telegramMsg = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
-
 	document.addEventListener('DOMContentLoaded', () => {
 		// Fill consultant
 		document.getElementById('consultant-photo').src = CONSULTANT.photo;
