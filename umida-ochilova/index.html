@@ -4,585 +4,710 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bu imkoniyat sizga mosmi?</title>
+	<title>Siz ham qo'shimcha daromad qilishni xohlaysizmi?</title>
 	<script>
-	!function(f,b,e,v,n,t,s)
-	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-	n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];
-	s.parentNode.insertBefore(t,s)}(window, document,'script',
-	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '2082798438970493');
-	fbq('track', 'PageView');
+		! function (f, b, e, v, n, t, s) {
+			if (f.fbq) return;
+			n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n;
+			n.push = n;
+			n.loaded = !0;
+			n.version = '2.0';
+			n.queue = [];
+			t = b.createElement(e);
+			t.async = !0;
+			t.src = v;
+			s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '2082798438970493');
+		fbq('track', 'PageView');
 	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=2082798438970493&ev=PageView&noscript=1"
-	/></noscript>
 	<!-- ============================================================
-     KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
-     ============================================================ -->
-	<script>
-	!function(f,b,e,v,n,t,s)
-	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-	n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];
-	s.parentNode.insertBefore(t,s)}(window, document,'script',
-	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '2082798438970493');
-	fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=2082798438970493&ev=PageView&noscript=1"
-	/></noscript>
+       KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
+  ============================================================ -->
 	<script>
 		const CONSULTANT = {
 			name: "Umida Ochilova",
-			photo: "https://menhaqimda.uz/umidaochilova/me.png",
+			firstName: "Umida",
+			photo: "photo.png",
 			telegram: "https://t.me/umida_fab",
-			shortStory: "Men ham yosh ona, oddiy qishloq ayoliman. Men ham boshida shubha bilan boshlaganman. Uyda o'tirardim, qo'shimcha daromad kerak edi. Avvaliga ishonmadim, lekin baribir sinab ko'rdim. Sekin-sekin tushuna boshladim va davom ettirdim. Agar sizda ham savol bo'lsa — bemalol yozing. Shunchaki tushuntirib beraman, hech qanday majburiyat yo'q."
+			videoUrl: "video_compressed.mp4", // mp4 yoki YouTube/Vimeo embed URL
 		};
 	</script>
 	<!-- ============================================================ -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700&display=swap"
+		rel="stylesheet">
 
 	<style>
 		:root {
-			--ink: #1a1209;
-			--ink-mid: #4a3728;
-			--ink-soft: #7a6357;
-			--paper: #faf7f2;
-			--paper-warm: #f3ece0;
-			--paper-card: #fff;
-			--line: #e5ddd0;
-			--ember: #b85c2c;
-			--ember-bright: #d4703c;
-			--ember-dim: #e8b89a;
-			--ember-pale: #fdf0e8;
-			--green: #3d6b4a;
-			--green-pale: #edf5ef;
+			--cream: #fdf8f2;
+			--warm: #f7ece0;
+			--warm2: #f0dbc8;
+			--terra: #c0623a;
+			--terra-l: #e8835f;
+			--terra-d: #8b3a1e;
+			--terra-dd: #5c2210;
+			--text: #1e140e;
+			--muted: #6b5548;
+			--green: #3a6b48;
+			--green-l: #e4f3eb;
+			--green-d: #1f4a2d;
+			--red-l: #fff0ee;
+			--red-text: #8b2a1e;
+			--border: #e0ccb8;
+			--tg: #ce6e47;
+			/* #2481cc */
+			--shadow-sm: 0 2px 12px rgba(90, 40, 15, 0.10);
+			--shadow-md: 0 6px 28px rgba(90, 40, 15, 0.15);
+			--shadow-lg: 0 12px 48px rgba(90, 40, 15, 0.20);
 		}
 
-		*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-		html { scroll-behavior: smooth; }
+		html {
+			scroll-behavior: smooth;
+			-webkit-text-size-adjust: 100%;
+		}
 
 		body {
-			font-family: 'Inter', sans-serif;
-			background: var(--paper);
-			color: var(--ink);
+			font-family: 'Nunito', sans-serif;
+			background: var(--cream);
+			color: var(--text);
 			font-size: 16px;
-			line-height: 1.75;
+			line-height: 1.7;
 			overflow-x: hidden;
+			padding-bottom: 110px;
 		}
 
-		/* ── READING COLUMN ── */
-		.col {
-			max-width: 480px;
+		.wrap {
+			max-width: 500px;
 			margin: 0 auto;
-			padding: 0 22px;
+			padding: 0 18px;
 		}
 
-		/* ── PROGRESS ── */
+		/* PROGRESS BAR */
 		#progress {
 			position: fixed;
-			top: 0; left: 0;
-			height: 2px;
-			background: var(--ember);
-			z-index: 300;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, var(--terra) 0%, var(--terra-l) 100%);
+			z-index: 400;
 			width: 0%;
-			transition: width 0.1s linear;
+			transition: width .12s linear;
+			border-radius: 0 2px 2px 0;
 		}
 
-		/* ══════════════════════════
-		   OPENING
-		══════════════════════════ */
-		#opening {
-			padding: 64px 0 52px;
-			border-bottom: 1px solid var(--line);
-		}
-
-		.eyebrow {
-			font-size: 11px;
-			font-weight: 600;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			color: var(--ember);
-			margin-bottom: 20px;
-		}
-
-		#opening h1 {
-			font-family: 'Lora', serif;
-			font-size: clamp(26px, 7vw, 36px);
-			line-height: 1.3;
-			color: var(--ink);
-			margin-bottom: 22px;
-			font-weight: 600;
-		}
-
-		#opening h1 em {
-			font-style: italic;
-			color: var(--ember);
-		}
-
-		.opening-body {
+		/* FLOATING BUTTON */
+		#float-btn {
+			position: fixed;
+			bottom: 20px;
+			left: 50%;
+			transform: translateX(-50%) translateY(80px);
+			z-index: 300;
+			background: var(--tg);
+			color: #fff;
+			border: none;
+			border-radius: 50px;
+			padding: 15px 28px;
 			font-size: 15px;
-			color: var(--ink-mid);
-			margin-bottom: 28px;
-			line-height: 1.8;
-		}
-
-		.opening-body p + p {
-			margin-top: 14px;
-		}
-
-		.question-hint {
-			display: inline-flex;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			display: flex;
 			align-items: center;
-			gap: 8px;
-			background: var(--paper-warm);
-			border: 1px solid var(--line);
-			border-radius: 8px;
-			padding: 10px 16px;
-			font-size: 13px;
-			color: var(--ink-soft);
+			gap: 9px;
+			box-shadow: 0 8px 28px rgba(36, 129, 204, .45);
+			text-decoration: none;
+			white-space: nowrap;
+			opacity: 0;
+			transition: opacity .35s, transform .35s, box-shadow .2s;
+			pointer-events: none;
 		}
 
-		/* ══════════════════════════
-		   SECTIONS — shared
-		══════════════════════════ */
-		.block {
-			padding: 52px 0;
-			border-bottom: 1px solid var(--line);
+		#float-btn.on {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+			pointer-events: auto;
 		}
 
-		.block-label {
-			font-size: 11px;
-			font-weight: 600;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			color: var(--ink-soft);
-			margin-bottom: 18px;
+		#float-btn:active {
+			box-shadow: 0 4px 14px rgba(36, 129, 204, .3);
 		}
 
-		.block h2 {
-			font-family: 'Lora', serif;
-			font-size: clamp(20px, 5vw, 26px);
-			line-height: 1.35;
-			color: var(--ink);
+		/* HERO */
+		#hero {
+			background: linear-gradient(168deg, var(--terra-dd) 0%, #7a3515 55%, var(--terra) 100%);
+			color: #fff;
+			padding: 52px 0 48px;
+			position: relative;
+			overflow: hidden;
+			/* text-align: center; */
+		}
+
+		#hero::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-image: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, .04) 0%, transparent 50%),
+				radial-gradient(circle at 80% 20%, rgba(255, 255, 255, .05) 0%, transparent 40%);
+			pointer-events: none;
+		}
+
+		#hero .wrap {
+			position: relative;
+		}
+
+		.hero-tag {
+			display: inline-block;
+			background: rgba(255, 255, 255, .15);
+			border: 1px solid rgba(255, 255, 255, .25);
+			border-radius: 50px;
+			padding: 5px 16px;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: .5px;
 			margin-bottom: 20px;
-			font-weight: 600;
 		}
 
-		.block p {
+		#hero h1 {
+			/* font-family: 'Playfair Display', serif; */
+			font-size: clamp(24px, 6.5vw, 34px);
+			line-height: 1.22;
+			margin-bottom: 14px;
+			font-weight: 700;
+		}
+
+		#hero h1 em {
+			color: #f9c78a;
+			font-style: italic;
+		}
+
+		#hero h3 {
+			/* font-family: 'Playfair Display', serif; */
+			font-size: clamp(24px, 6.5vw, 22px);
+			line-height: 1.22;
+			margin-bottom: 14px;
+			font-weight: 700;
+		}
+
+		#hero .hero-sub {
 			font-size: 15px;
-			color: var(--ink-mid);
-			line-height: 1.8;
+			opacity: .82;
+			line-height: 1.6;
 		}
 
-		.block p + p {
-			margin-top: 14px;
+		/* VIDEO SECTION */
+		#video-section {
+			background: #fff;
+			padding: 32px 0 28px;
 		}
 
-		/* ══════════════════════════
-		   Q2 — "Bu menga o'xshagan..."
-		══════════════════════════ */
-		.doubt-list {
-			margin: 22px 0;
+		.video-wrapper {
+			position: relative;
+			border-radius: 20px;
+			overflow: hidden;
+			box-shadow: var(--shadow-lg);
+			margin-bottom: 16px;
+			background: #111;
+			aspect-ratio: 9/16;
+			/* max-height: 72vh; */
+		}
+
+		.video-wrapper video,
+		.video-wrapper iframe {
+			width: 100%;
+			height: 100%;
+			display: block;
+			border: none;
+		}
+
+		.video-wrapper .play-overlay {
+			position: absolute;
+			inset: 0;
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .6) 100%);
+			cursor: pointer;
+			transition: opacity .3s;
 		}
 
-		.doubt-item {
+		.video-wrapper .play-overlay.hidden {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		.play-btn-circle {
+			width: 72px;
+			height: 72px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, .95);
 			display: flex;
-			align-items: flex-start;
-			gap: 12px;
-			font-size: 15px;
-			color: var(--ink-mid);
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 14px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
 		}
 
-		.doubt-item::before {
-			content: '·';
-			color: var(--ember);
-			font-size: 22px;
-			line-height: 1.3;
+		.play-btn-circle svg {
+			width: 28px;
+			height: 28px;
+			fill: var(--terra);
+			margin-left: 4px;
+		}
+
+		.play-label {
+			color: #fff;
+			font-size: 14px;
+			font-weight: 700;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+		}
+
+		.video-author {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			background: var(--warm);
+			border-radius: 14px;
+			padding: 12px 16px;
+			margin-bottom: 20px;
+		}
+
+		.va-photo {
+			width: 46px;
+			height: 46px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2.5px solid var(--terra-l);
 			flex-shrink: 0;
 		}
 
-		.reassure {
-			background: var(--paper-warm);
-			border-left: 3px solid var(--ember-dim);
-			border-radius: 0 10px 10px 0;
-			padding: 16px 18px;
-			font-size: 15px;
-			color: var(--ink-mid);
+		.va-text strong {
+			display: block;
+			font-size: 14px;
+			color: var(--terra-d);
+		}
+
+		.va-text span {
+			font-size: 12px;
+			color: var(--muted);
+		}
+
+		.post-video-text {
+			font-size: 14px;
+			color: var(--muted);
+			text-align: center;
+			line-height: 1.6;
+			margin-bottom: 20px;
 			font-style: italic;
-			margin-top: 24px;
 		}
 
-		/* ══════════════════════════
-		   Q3 — Story
-		══════════════════════════ */
-		#story-section {
-			background: var(--ink);
-			color: var(--paper);
-			border-bottom: none;
+		.post-video-text strong {
+			color: var(--text);
+			font-style: normal;
 		}
 
-		#story-section .block-label {
-			color: rgba(255,255,255,0.4);
+		/* PRIMARY CTA BUTTON */
+		.btn-primary {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			background: var(--tg);
+			color: #fff;
+			text-decoration: none;
+			border: none;
+			border-radius: 16px;
+			padding: 18px 24px;
+			font-size: 16px;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			box-shadow: 0 6px 24px rgba(36, 129, 204, .38);
+			transition: transform .18s, box-shadow .18s;
+			letter-spacing: .2px;
 		}
 
-		#story-section h2 {
-			color: var(--paper);
+		.btn-primary:active {
+			transform: scale(.97);
+			box-shadow: 0 3px 12px rgba(36, 129, 204, .28);
 		}
 
-		.story-lines {
-			margin: 28px 0;
+		.btn-primary .btn-icon {
+			font-size: 20px;
+		}
+
+		.btn-sub {
+			text-align: center;
+			font-size: 12px;
+			color: var(--muted);
+			margin-top: 10px;
+		}
+
+		/* SECTION SHARED */
+		.sec {
+			padding: 36px 0 32px;
+		}
+
+		.sec-divider {
+			border: none;
+			border-top: 2px solid var(--warm2);
+		}
+
+		.sec-heading {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 22px;
+		}
+
+		.sec-heading-bar {
+			width: 4px;
+			height: 28px;
+			border-radius: 2px;
+			background: linear-gradient(to bottom, var(--terra), var(--terra-l));
+			flex-shrink: 0;
+		}
+
+		.sec-heading h2 {
+			/* font-family: 'Playfair Display', serif; */
+			font-size: clamp(19px, 5vw, 24px);
+			line-height: 1.28;
+			color: var(--text);
+		}
+
+		/* HOW IT WORKS */
+		#how-it-works {
+			background: var(--cream);
+		}
+
+		.steps-list {
 			display: flex;
 			flex-direction: column;
 			gap: 0;
+			margin-bottom: 28px;
 		}
 
-		.story-line {
+		.step-row {
 			display: flex;
-			align-items: flex-start;
-			gap: 16px;
-			padding: 14px 0;
-			border-bottom: 1px solid rgba(255,255,255,0.08);
+			gap: 0;
+			align-items: stretch;
 		}
 
-		.story-line:last-child {
-			border-bottom: none;
-		}
-
-		.story-line .dot {
-			width: 8px;
-			height: 8px;
-			border-radius: 50%;
-			background: var(--ember-bright);
+		.step-left {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 48px;
 			flex-shrink: 0;
-			margin-top: 8px;
 		}
 
-		.story-line .text {
-			font-size: 15px;
-			color: rgba(255,255,255,0.75);
-			line-height: 1.7;
-		}
-
-		.story-line .text strong {
+		.step-dot {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--terra), var(--terra-l));
 			color: #fff;
-			font-weight: 500;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 17px;
+			font-weight: 700;
+			font-family: 'Playfair Display', serif;
+			flex-shrink: 0;
+			box-shadow: 0 4px 14px rgba(192, 98, 58, .35);
 		}
 
-		.story-note {
-			font-size: 14px;
-			color: rgba(255,255,255,0.4);
-			text-align: center;
-			margin-top: 28px;
-			padding-top: 24px;
-			border-top: 1px solid rgba(255,255,255,0.1);
+		.step-connector {
+			width: 2px;
+			flex: 1;
+			min-height: 20px;
+			background: linear-gradient(to bottom, var(--terra-l), var(--warm2));
+			margin: 2px auto;
 		}
 
-		.growth-note {
-			margin-top: 20px;
-			padding: 14px 18px;
-			background: rgba(255,255,255,0.05);
-			border-left: 2px solid rgba(255,255,255,0.2);
-			border-radius: 0 8px 8px 0;
-			font-size: 13px;
-			color: rgb(236 170 131);
-			line-height: 1.7;
-			font-style: italic;
-		}
-
-		/* ══════════════════════════
-		   Q4 — Faberlic
-		══════════════════════════ */
-		.faberlic-card {
-			margin-top: 24px;
-			background: var(--paper-card);
-			border: 1px solid var(--line);
+		.step-body {
+			flex: 1;
+			background: #fff;
 			border-radius: 16px;
-			padding: 22px 20px;
+			padding: 14px 16px;
+			margin: 0 0 10px 12px;
+			box-shadow: var(--shadow-sm);
+			border: 1px solid var(--border);
 		}
 
-		.faberlic-card .fc-name {
-			font-family: 'Lora', serif;
-			font-size: 18px;
-			color: var(--ink);
-			font-weight: 600;
-			margin-bottom: 6px;
+		.step-body strong {
+			display: block;
+			font-size: 15px;
+			color: var(--text);
+			margin-bottom: 3px;
 		}
 
-		.faberlic-card .fc-note {
+		.step-body p {
 			font-size: 13px;
-			color: var(--ink-soft);
-			margin-bottom: 20px;
+			color: var(--muted);
+			line-height: 1.55;
+		}
+
+		/* WHY US */
+		#why-us {
+			background: var(--warm);
+		}
+
+		.why-cards {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			margin-bottom: 8px;
+		}
+
+		.why-card {
+			background: #fff;
+			border-radius: 18px;
+			padding: 18px 18px 16px;
+			box-shadow: var(--shadow-sm);
+			border: 1px solid var(--border);
+			display: flex;
+			gap: 14px;
+			align-items: flex-start;
+		}
+
+		.why-icon {
+			width: 48px;
+			height: 48px;
+			border-radius: 14px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+			flex-shrink: 0;
+		}
+
+		.why-icon.teal {
+			background: #e0f5ef;
+		}
+
+		.why-icon.amber {
+			background: #fff4e0;
+		}
+
+		.why-icon.violet {
+			background: #f0eeff;
+		}
+
+		.why-card-text strong {
+			display: block;
+			font-size: 15px;
+			color: var(--text);
+			margin-bottom: 5px;
+		}
+
+		.why-card-text p {
+			font-size: 13px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		/* NOT FOR EVERYONE */
+		#not-for-all {
+			background: var(--cream);
+		}
+
+		.not-card {
+			background: var(--red-l);
+			border: 1.5px solid #f5c4bc;
+			border-radius: 18px;
+			padding: 20px 18px;
+		}
+
+		.not-card h3 {
+			font-size: 15px;
+			font-weight: 700;
+			color: var(--red-text);
+			margin-bottom: 14px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
 		}
 
 		.not-list {
+			list-style: none;
 			display: flex;
 			flex-direction: column;
 			gap: 10px;
 		}
 
-		.not-item {
+		.not-list li {
 			display: flex;
-			align-items: center;
-			gap: 12px;
-			font-size: 14px;
-			color: var(--ink-mid);
-		}
-
-		.not-icon {
-			width: 28px;
-			height: 28px;
-			border-radius: 50%;
-			background: var(--green-pale);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 13px;
-			flex-shrink: 0;
-		}
-
-		/* ══════════════════════════
-		   Q5 — Why people quit
-		══════════════════════════ */
-		#why-quit {
-			background: var(--ember-pale);
-			border-bottom: 1px solid var(--ember-dim);
-		}
-
-		.quit-list {
-			margin: 22px 0;
-			display: flex;
-			flex-direction: column;
 			gap: 10px;
-		}
-
-		.quit-item {
-			display: flex;
 			align-items: flex-start;
-			gap: 12px;
+			font-size: 14px;
+			color: var(--red-text);
+			line-height: 1.5;
+		}
+
+		.not-list li::before {
+			content: "✗";
+			font-weight: 700;
+			flex-shrink: 0;
+			margin-top: 1px;
 			font-size: 15px;
-			color: var(--ink-mid);
 		}
 
-		.quit-item .q-bullet {
-			font-size: 16px;
-			flex-shrink: 0;
-			margin-top: 1px;
-		}
-
-		/* ══════════════════════════
-		   Q6 — What we do different
-		══════════════════════════ */
-		.diff-list {
-			margin-top: 24px;
-			display: flex;
-			flex-direction: column;
-			gap: 14px;
-		}
-
-		.diff-item {
-			display: flex;
-			align-items: flex-start;
-			gap: 14px;
-			padding: 16px 18px;
-			background: var(--paper-card);
-			border: 1px solid var(--line);
-			border-radius: 12px;
-		}
-
-		.diff-check {
-			width: 24px;
-			height: 24px;
-			border-radius: 50%;
-			background: var(--green);
+		/* FINAL CTA */
+		#final-cta {
+			background: linear-gradient(168deg, var(--terra-dd) 0%, var(--terra) 100%);
+			padding: 44px 0 48px;
+			text-align: center;
 			color: #fff;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 12px;
-			flex-shrink: 0;
-			margin-top: 1px;
 		}
 
-		.diff-text {
-			font-size: 14px;
-			color: var(--ink-mid);
+		#final-cta .pre-cta {
+			font-size: 15px;
+			opacity: .88;
 			line-height: 1.65;
+			margin-bottom: 24px;
 		}
 
-		.diff-text strong {
-			display: block;
-			color: var(--ink);
-			font-size: 15px;
-			margin-bottom: 2px;
+		#final-cta .pre-cta strong {
+			color: #f9c78a;
+			font-style: normal;
 		}
 
-		.no-miracle {
-			margin-top: 24px;
-			font-size: 14px;
-			color: var(--ink-soft);
-			font-style: italic;
-			text-align: center;
+		.cta-box {
+			background: rgba(255, 255, 255, .1);
+			border: 1px solid rgba(255, 255, 255, .2);
+			border-radius: 20px;
+			padding: 24px 20px;
+			margin-bottom: 20px;
 		}
 
-		/* ══════════════════════════
-		   Q2b — Why people write
-		══════════════════════════ */
-		.ask-list {
-			margin: 22px 0;
+		.cta-box .cta-question {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(18px, 5vw, 24px);
+			line-height: 1.3;
+			margin-bottom: 18px;
+		}
+
+		.cta-box .cta-checks {
 			display: flex;
 			flex-direction: column;
-			gap: 10px;
+			gap: 8px;
+			margin-bottom: 22px;
+			text-align: left;
 		}
 
-		.ask-item {
-			font-family: 'Lora', serif;
-			font-style: italic;
-			font-size: 16px;
-			color: var(--ink);
-			padding: 12px 16px;
-			background: var(--paper-card);
-			border: 1px solid var(--line);
-			border-radius: 10px;
-		}
-
-		/* ══════════════════════════
-		   Core promise
-		══════════════════════════ */
-		.core-promise {
-			margin-top: 28px;
-			padding: 20px 20px;
-			background: var(--ink);
-			color: rgba(255,255,255,0.85);
-			border-radius: 14px;
-			font-size: 15px;
-			line-height: 1.75;
-			text-align: center;
-		}
-
-		.core-promise em {
-			color: var(--ember-dim);
-			font-style: italic;
-		}
-
-		/* ══════════════════════════
-		   Future vision
-		══════════════════════════ */
-		#future-section {
-			background: var(--paper-warm);
-		}
-
-		.future-lines {
-			margin-top: 24px;
-			display: flex;
-			flex-direction: column;
-			gap: 6px;
-		}
-
-		.future-line {
-			font-size: 15px;
-			color: var(--ink-mid);
-			line-height: 1.7;
-		}
-
-		.future-highlight {
-			font-weight: 500;
-			color: var(--ink);
-		}
-
-		.future-quote {
-			font-family: 'Lora', serif;
-			font-style: italic;
-			font-size: 18px;
-			color: var(--ember);
-			padding: 14px 0 10px;
-		}
-
-		.future-end {
-			margin-top: 8px;
-			font-size: 15px;
-			color: var(--ink);
-			font-weight: 500;
-			line-height: 1.75;
-		}
-
-		/* ══════════════════════════
-		   Q7 — CTA
-		══════════════════════════ */
-		#cta-section {
-			background: linear-gradient(160deg, var(--ink) 0%, #3a1a08 100%);
-			color: #fff;
-			border-bottom: none;
-		}
-
-		#cta-section .block-label {
-			color: rgba(255,255,255,0.4);
-		}
-
-		#cta-section h2 {
-			color: #fff;
-			font-size: clamp(22px, 6vw, 30px);
-		}
-
-		#cta-section p {
-			color: rgba(255,255,255,0.7);
-			font-size: 15px;
-			margin-top: 16px;
-		}
-
-		.consultant-row {
+		.cta-box .cta-checks span {
 			display: flex;
 			align-items: center;
-			gap: 14px;
-			margin: 28px 0;
-			padding: 16px 18px;
-			background: rgba(255,255,255,0.07);
-			border: 1px solid rgba(255,255,255,0.12);
-			border-radius: 14px;
+			gap: 9px;
+			font-size: 14px;
+			opacity: .88;
 		}
 
-		.consultant-photo {
-			width: 56px;
-			height: 56px;
+		.cta-box .cta-checks span::before {
+			content: "✓";
+			width: 20px;
+			height: 20px;
 			border-radius: 50%;
-			object-fit: cover;
-			border: 2px solid var(--ember-bright);
+			background: rgba(255, 255, 255, .2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 11px;
+			font-weight: 700;
 			flex-shrink: 0;
 		}
 
-		.consultant-info .c-name {
-			font-family: 'Lora', serif;
+		.btn-white {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			background: #fff;
+			color: var(--terra-d);
+			text-decoration: none;
+			border-radius: 16px;
+			padding: 18px 24px;
 			font-size: 16px;
-			color: #fff;
-			font-weight: 600;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			box-shadow: 0 6px 28px rgba(0, 0, 0, .2);
+			transition: transform .18s, box-shadow .18s;
+			letter-spacing: .2px;
 		}
 
-		.consultant-info .c-role {
+		.btn-white:active {
+			transform: scale(.97);
+			box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
+		}
+
+		.btn-white .btn-icon {
+			font-size: 20px;
+		}
+
+		.final-fine {
 			font-size: 12px;
-			color: rgba(255,255,255,0.5);
-			margin-top: 2px;
+			opacity: .65;
+			margin-top: 14px;
+			line-height: 1.5;
 		}
 
-		.consultant-story {
-			font-size: 13px;
-			color: rgba(255,255,255,0.6);
-			font-style: italic;
-			margin-top: 10px;
-			line-height: 1.7;
+		/* FOOTER */
+		footer {
+			text-align: center;
+			padding: 24px 18px;
+			font-size: 12px;
+			color: var(--muted);
+			border-top: 1px solid var(--border);
+		}
+
+		footer .credit {
+			display: inline-block;
+			margin-top: 8px;
+			background: rgba(192, 98, 58, .1);
+			border-radius: 20px;
+			padding: 3px 14px;
+			font-size: 11px;
+			color: var(--terra-d);
+		}
+
+		footer .credit a {
+			color: var(--terra);
+			text-decoration: none;
+		}
+
+		/* FADE IN */
+		.fade {
+			opacity: 0;
+			transform: translateY(22px);
+			transition: opacity .55s ease, transform .55s ease;
+		}
+
+		.fade.in {
+			opacity: 1;
+			transform: none;
 		}
 
 		.cta-btn {
@@ -610,7 +735,7 @@
 			text-align: center;
 			font-family: 'Lora', serif;
 			font-size: 17px;
-			color: rgba(255,255,255,0.9);
+			color: rgba(255, 255, 255, 0.9);
 			margin-top: 28px;
 			margin-bottom: 14px;
 			line-height: 1.4;
@@ -625,7 +750,7 @@
 
 		.cta-arrow {
 			font-size: 32px;
-			color: var(--ember-bright);
+			color: var(--tg);
 			line-height: 1;
 			flex-shrink: 0;
 			padding-bottom: 5px;
@@ -640,751 +765,363 @@
 		}
 
 		@keyframes bounce-right {
-			0%, 100% { transform: translateX(0); opacity: 0.6; }
-			50% { transform: translateX(5px); opacity: 1; }
+
+			0%,
+			100% {
+				transform: translateX(0);
+				opacity: 0.6;
+			}
+
+			50% {
+				transform: translateX(5px);
+				opacity: 1;
+			}
 		}
 
 		@keyframes bounce-left {
-			0%, 100% { transform: translateX(0); opacity: 0.6; }
-			50% { transform: translateX(-5px); opacity: 1; }
-		}
 
-		.cta-btn:hover {
-			transform: translateY(-1px);
-			box-shadow: 0 10px 32px rgba(180, 80, 30, 0.45);
-		}
+			0%,
+			100% {
+				transform: translateX(0);
+				opacity: 0.6;
+			}
 
-		.cta-btn:active {
-			transform: scale(0.98);
-		}
-
-		.cta-note {
-			text-align: center;
-			font-size: 12px;
-			color: rgba(255,255,255,0.35);
-			margin-top: 14px;
-		}
-
-		/* ══════════════════════════
-		   STICKY BAR
-		══════════════════════════ */
-		.sticky-bar {
-			position: fixed;
-			bottom: 0; left: 0; right: 0;
-			background: var(--ink);
-			border-top: 1px solid rgba(255,255,255,0.1);
-			padding: 12px 22px 16px;
-			z-index: 200;
-			transform: translateY(100%);
-			transition: transform 0.35s ease;
-		}
-
-		.sticky-bar.show {
-			transform: translateY(0);
-		}
-
-		.sticky-btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 8px;
-			width: 100%;
-			padding: 14px;
-			border-radius: 50px;
-			background: var(--ember-bright);
-			color: #fff;
-			font-family: 'Inter', sans-serif;
-			font-size: 14px;
-			font-weight: 600;
-			text-decoration: none;
-			transition: opacity 0.15s;
-		}
-
-		/* ══════════════════════════
-		   FOOTER
-		══════════════════════════ */
-		footer {
-			text-align: center;
-			padding: 28px 20px;
-			font-size: 12px;
-			color: var(--ink-soft);
-			border-top: 1px solid var(--line);
-			line-height: 1.9;
-		}
-
-		footer a { color: var(--ember); text-decoration: none; }
-
-		/* ══════════════════════════
-		   FADE IN
-		══════════════════════════ */
-		.fade-in {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.55s ease, transform 0.55s ease;
-		}
-
-		.fade-in.visible {
-			opacity: 1;
-			transform: none;
-		}
-
-		@media (prefers-reduced-motion: reduce) {
-			.fade-in { opacity: 1; transform: none; }
-		}
-
-		/* ── HERO CHECKLIST ── */
-		.hero-checklist {
-			margin: 18px 0 0;
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-		}
-
-		.hero-check {
-			display: flex;
-			align-items: flex-start;
-			gap: 10px;
-			font-size: 16px;
-			color: var(--ink-mid);
-		}
-
-		.hero-check::before {
-			content: '•';
-			color: var(--ember);
-			flex-shrink: 0;
-			font-size: 18px;
-			line-height: 1.4;
-		}
-
-		.hero-cta-hint {
-			margin-top: 22px;
-			font-family: 'Lora', serif;
-			font-style: italic;
-			font-size: 18px;
-			color: var(--ember);
-		}
-
-		/* ── PHILOSOPHY ── */
-		#philosophy {
-			background: var(--ink);
-			color: var(--paper);
-		}
-
-		#philosophy .block-label {
-			color: rgba(255,255,255,0.4);
-		}
-
-		#philosophy h2 {
-			color: #fff;
-		}
-
-		.philosophy-lines {
-			margin-top: 28px;
-			display: flex;
-			flex-direction: column;
-			gap: 0;
-		}
-
-		.philosophy-line {
-			display: flex;
-			flex-direction: column;
-			padding: 16px 0;
-			border-bottom: 1px solid rgba(255,255,255,0.08);
-		}
-
-		.philosophy-line:last-child { border-bottom: none; }
-
-		.ph-if {
-			font-size: 13px;
-			color: rgba(255,255,255,0.4);
-			margin-bottom: 3px;
-		}
-
-		.ph-then {
-			font-size: 16px;
-			color: #fff;
-			font-weight: 500;
-		}
-
-		/* ── WHAT HAPPENS NEXT ── */
-		.what-happens {
-			margin: 28px 0;
-			background: rgba(255,255,255,0.06);
-			border: 1px solid rgba(255,255,255,0.12);
-			border-radius: 16px;
-			padding: 20px 18px;
-		}
-
-		.wh-title {
-			font-size: 11px;
-			font-weight: 600;
-			letter-spacing: 1.5px;
-			text-transform: uppercase;
-			color: rgba(255,255,255,0.35);
-			margin-bottom: 18px;
-		}
-
-		.wh-step {
-			display: flex;
-			align-items: flex-start;
-			gap: 12px;
-		}
-
-		.wh-num {
-			width: 24px;
-			height: 24px;
-			border-radius: 50%;
-			background: var(--ember-bright);
-			color: #fff;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 12px;
-			font-weight: 700;
-			flex-shrink: 0;
-		}
-
-		.wh-text {
-			font-size: 14px;
-			color: rgba(255,255,255,0.8);
-			line-height: 1.65;
-			padding-top: 2px;
-		}
-
-		.wh-arrow {
-			text-align: center;
-			color: rgba(255,255,255,0.2);
-			font-size: 16px;
-			padding: 6px 0 6px 36px;
-		}
-
-		/* ── SCROLL REASONS (keep for fallback) ── */
-		.scroll-reasons {
-			display: none;
-		}
-
-		/* ── STORY DAY LABELS ── */
-		.story-day {
-			flex-shrink: 0;
-			font-size: 10px;
-			font-weight: 600;
-			letter-spacing: 1px;
-			text-transform: uppercase;
-			color: var(--ember-bright);
-			background: rgba(212, 112, 60, 0.15);
-			border-radius: 20px;
-			padding: 3px 10px;
-			margin-top: 6px;
-			white-space: nowrap;
-		}
-
-		/* ── NOT FOR ALL ── */
-		#not-for-all {
-			background: var(--paper-warm);
-		}
-
-		.nfa-list {
-			margin: 20px 0;
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		.nfa-item {
-			display: flex;
-			align-items: flex-start;
-			gap: 12px;
-			font-size: 15px;
-			color: var(--ink-mid);
-		}
-
-		.nfa-x {
-			color: #c0392b;
-			font-weight: 700;
-			font-size: 14px;
-			flex-shrink: 0;
-			margin-top: 2px;
-		}
-
-		.nfa-but {
-			margin-top: 6px;
-			padding: 16px 18px;
-			background: var(--green-pale);
-			border-left: 3px solid var(--green);
-			border-radius: 0 10px 10px 0;
-			font-size: 15px;
-			color: var(--green);
-			line-height: 1.75;
+			50% {
+				transform: translateX(-5px);
+				opacity: 1;
+			}
 		}
 	</style>
 </head>
 
 <body>
 
-<div id="progress"></div>
+	<div id="progress"></div>
 
-<!-- ══════════════════════════════════════
-     Q1 — "Bu nima o'zi?"
-══════════════════════════════════════ -->
-<section id="opening">
-	<div class="col">
-		<div class="eyebrow">Savol birdan boshlaymiz</div>
-		<h1>
-			Har kuni Instagramga ketadigan 1 soatingiz...<br>
-			<em>qo'shimcha daromadning boshlanishi bo'lishi mumkin.</em>
-		</h1>
-
-		<div class="opening-body">
-			<p>Agar siz hozir:</p>
-		</div>
-
-		<div class="hero-checklist">
-			<div class="hero-check">qo'shimcha daromad qilishni xohlasangiz,</div>
-			<div class="hero-check">lekin qayerdan boshlashni bilmayotgan bo'lsangiz —</div>
-		</div>
-
-		<div class="hero-cta-hint">
-			keyingi 3 daqiqani ajrating.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q2 — "Bu menga o'xshagan odamlar uchunmi?"
-══════════════════════════════════════ -->
-<section class="block fade-in">
-	<div class="col">
-		<div class="block-label">Kimlar uchun</div>
-		<h2>Ko'p ayollar qo'shimcha daromad qilishni xohlaydi. Lekin...</h2>
-
-		<div class="doubt-list">
-			<div class="doubt-item">Qo'limdan nima ham kelardi?</div>
-			<div class="doubt-item">Biror kasbim yo'q.</div>
-			<div class="doubt-item">Tajribam va bilim yo'q.</div>
-			<div class="doubt-item">Uyda bolalar bilanman.</div>
-			<div class="doubt-item">Uydan tashqariga chiqa olmayman.</div>
-		</div>
-
-		<div class="reassure">
-			Agar siz ham shunday o'ylayotgan bo'lsangiz —<br>
-			siz yolg'iz emassiz.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q2b — "Nega odam menga yozadi?"
-══════════════════════════════════════ -->
-<section class="block fade-in" id="why-buy">
-	<div class="col">
-		<div class="block-label">Eng oddiy savol</div>
-		<h2>Sizdan ham hech shunday so'rashganmi?</h2>
-
-		<div class="ask-list">
-			<div class="ask-item">"Shu kremni ishlatganmisiz?"</div>
-			<div class="ask-item">"Qaysi biri yaxshiroq ekan?"</div>
-			<div class="ask-item">"Ishlatadigan atiringizni qayerdan olgansiz?"</div>
-		</div>
-
-		<p>Odamlar ko'pincha reklamadagi notanish odamdan emas, savdogorlardan emas, <strong>tanishidan</strong> tavsiya olishni afzal ko'radi.</p>
-
-		<div class="reassure" style="margin-top: 22px;">
-			Siz tavsiya qilayotgan mahsulotlarni Faberlic orqali buyurtma qilish mumkin bo'ladi.<br><br>
-			Shunchaki tavsiya qilishni — hamma qila oladi. <br>
-			Shu jumladan siz ham.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q3 — "Xo'sh, bu qanday ishlaydi?"
-══════════════════════════════════════ -->
-<section class="block fade-in" id="story-section">
-	<div class="col">
-		<div class="block-label">Amalda qanday ko'rinadi</div>
-		<h2>Ko'pchilik aynan shunday boshlaydi.</h2>
-
-		<div class="story-lines">
-			<div class="story-line">
-				<div class="story-day">1-kun</div>
-				<div class="text">Ro'yxatdan o'tasiz. Hech qanday hujjat yoki to'lov kerak emas.</div>
-			</div>
-			<div class="story-line">
-				<div class="story-day">2-kun</div>
-				<div class="text">Ko'pchilik Telegram ishlatadi. Shuning uchun <strong>kichik Telegram gruppa ochasiz</strong> — oila, qarindoshlar, qo'shnilar, tanishlarni qo'shasiz.</div>
-			</div>
-			<div class="story-line">
-				<div class="story-day">3-kun</div>
-				<div class="text">Biz sizga <strong>nima qilishni ko'rsatamiz.</strong> Taxmin emas — aniq ketma-ketlik.</div>
-			</div>
-			<div class="story-line">
-				<div class="story-day">Bir necha kundan keyin...</div>
-				<div class="text">Gruppangizdagi tanishingiz yozadi:<br>
-					<span style="font-style:italic; opacity:0.7;">"Narxi qancha?"</span>
-				</div>
-			</div>
-			<div class="story-line">
-				<div class="dot"></div>
-				<div class="text">Siz buyurtma berasiz. Mahsulot yetib keladi.</div>
-			</div>
-			<div class="story-line last">
-				<div class="dot" style="background: var(--ember-bright);"></div>
-				<div class="text" style="color: #fff; font-weight: 500;">
-					Mana shu sizning <strong style="color: var(--ember-bright);">birinchi savdongiz</strong> bo'ladi.
-				</div>
-			</div>
-		</div>
-
-		<div class="story-note">Ko'pchilik aynan shunday boshlaydi.</div>
-
-		<div class="growth-note">
-			Aslida bu Faberlicdagi imkoniyatlarning faqat boshlanishi.<br>
-			Lekin avval eng oddiy usulni o'zlashtirib olamiz.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q4 — "Bu qaysi kompaniya orqali ishlaydi?"
-══════════════════════════════════════ -->
-<section class="block fade-in">
-	<div class="col">
-		<div class="block-label">Vosita</div>
-		<h2>Bu ishni amalga oshirish uchun biz Faberlic kompaniyasidan foydalanamiz.</h2>
-
-		<div class="faberlic-card">
-			<div class="fc-name">Faberlic</div>
-			<div class="fc-note">18 yildan beri O'zbekistonda ishlayotgan xalqaro kompaniya.</div>
-			<div class="not-list">
-				<div class="not-item">
-					<div class="not-icon">✓</div>
-					Siz mahsulot ishlab chiqarmaysiz.
-				</div>
-				<div class="not-item">
-					<div class="not-icon">✓</div>
-					Siz ombor ochmaysiz.
-				</div>
-				<div class="not-item">
-					<div class="not-icon">✓</div>
-					Siz yetkazib bermaysiz.
-				</div>
-			</div>
-		</div>
-
-		<p style="margin-top: 18px; font-size: 14px; color: var(--ink-soft); font-style: italic;">
-			Sizning vazifangiz mahsulot ishlab chiqarish yoki yetkazib berish emas.
-		</p>
-	</div>
-</section>
-<!-- ══════════════════════════════════════
-     Q5 — "Unda nega hamma ham natija qilmaydi?"
-══════════════════════════════════════ -->
-<section class="block fade-in" id="why-quit">
-	<div class="col">
-		<div class="block-label">Eng muhim savol</div>
-		<h2>Ko'pchilik Faberlicga kiradi. Lekin bir necha haftadan keyin tashlab qo'yadi.</h2>
-
-		<p>Mahsulot yomonligi uchun emas.</p>
-
-		<div class="quit-list">
-			<div class="quit-item">
-				<span class="q-bullet">—</span>
-				<span>nimadan boshlashni bilmaydi.</span>
-			</div>
-			<div class="quit-item">
-				<span class="q-bullet">—</span>
-				<span>to'g'ri tavfsiya qilishni bilmaydi.</span>
-			</div>
-			<div class="quit-item">
-				<span class="q-bullet">—</span>
-				<span>kimlarga tavfsiya qilishni bilmaydi.</span>
-			</div>
-			<div class="quit-item">
-				<span class="q-bullet">—</span>
-				<span>yolg'iz qoladi.</span>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q6 — "Biz nimani boshqacha qildik?"
-══════════════════════════════════════ -->
-<section class="block fade-in">
-	<div class="col">
-		<div class="block-label">Bizning farqimiz</div>
-		<h2>Biz aynan boshlashdagi qiyinchiliklarni kamaytirishga harakat qildik.</h2>
-
-		<p style="font-size:14px; color:var(--ink-soft); margin-bottom: 24px;">
-			Biz ham shu muammolarni ko'p marta ko'rdik. Shuning uchun boshlashdagi chalkashliklarni kamaytiradigan tizim yaratishga harakat qildik.
-		</p>
-
-		<div class="diff-list">
-			<div class="diff-item">
-				<div class="diff-check">✓</div>
-				<div class="diff-text">
-					<strong>Ertaga nimadan boshlashni bilasiz.</strong>
-					Birinchi kuni nima qilish kerakligini bilasiz — taxmin emas, aniq ketma-ketlik.
-				</div>
-			</div>
-			<div class="diff-item">
-				<div class="diff-check">✓</div>
-				<div class="diff-text">
-					<strong>Har kuni qaysi mahsulotni tavfsiya qilishni o'ylamaysiz.</strong>
-					Tayyor materiallar bor. Siz faqat joylaysiz.
-				</div>
-			</div>
-			<div class="diff-item">
-				<div class="diff-check">✓</div>
-				<div class="diff-text">
-					<strong>Ba'zi takrorlanadigan ishlarni tizim bajaradi.</strong>
-					Vaqtingiz tejaydi.
-				</div>
-			</div>
-			<div class="diff-item">
-				<div class="diff-check">✓</div>
-				<div class="diff-text">
-					<strong>Savol bo'lsa — yolg'iz qolmaysiz.</strong>
-					Umida mahsulot va mijozlar bo'yicha doim yoningizda.
-				</div>
-			</div>
-		</div>
-
-		<div class="core-promise">
-			Biz sizga pul ishlab bermaymiz.<br>
-			Biz ishni boshlashni <em>tushunarli va osonroq</em> qilamiz.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Philosophy — why choose us
-══════════════════════════════════════ -->
-<section class="block fade-in" id="philosophy">
-	<div class="col">
-		<div class="block-label">Bizning maqsadimiz</div>
-		<h2>Sizni iloji boricha tezroq birinchi savdongizgacha olib borish.</h2>
-
-		<div class="philosophy-lines">
-			<div class="philosophy-line">
-				<div class="ph-if">Texnologiya yordami kerak bo'lsa —</div>
-				<div class="ph-then">texnologiya yaratib beramiz.</div>
-			</div>
-			<div class="philosophy-line">
-				<div class="ph-if">Tayyor narsa kerak bo'lsa —</div>
-				<div class="ph-then">tayyorini beramiz.</div>
-			</div>
-			<div class="philosophy-line">
-				<div class="ph-if">O'rgatish kerak bo'lsa —</div>
-				<div class="ph-then">hammasini oddiy qilib qadamma-qadam o'rgatamiz.</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Emotional bridge — realistic future
-══════════════════════════════════════ -->
-<section class="block fade-in" id="future-section">
-	<div class="col">
-		<div class="block-label">Bir necha oydan keyin</div>
-		<h2>Tasavvur qiling.</h2>
-
-		<div class="future-lines">
-			<div class="future-line">Bir necha oy o'tdi.</div>
-			<div class="future-line future-highlight">Telefoningizga xabar keldi.</div>
-			<div class="future-line future-quote">"Opa, yana o'sha kremdan bormi?"</div>
-			<div class="future-line">Shu paytda tushunasiz...</div>
-			<div class="future-line future-end">
-				Sizning kichik mijozlaringiz<br>asta-sekin shakllanmoqda.
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Not for everyone — expectation setting
-══════════════════════════════════════ -->
-<section class="block fade-in" id="not-for-all">
-	<div class="col">
-		<div class="block-label">Ochiq aytaylik</div>
-		<h2>Bu ish sizga mos kelmasligi ham mumkin.</h2>
-
-		<div class="nfa-list">
-			<div class="nfa-item">
-				<span class="nfa-x">✕</span>
-				<span>Bir haftada katta daromad kutayotgan bo'lsangiz.</span>
-			</div>
-			<div class="nfa-item">
-				<span class="nfa-x">✕</span>
-				<span>Hech qanday harakat qilmasdan natija kutayotgan bo'lsangiz.</span>
-			</div>
-		</div>
-
-		<div class="nfa-but">
-			Lekin oz-ozdan o'rganib,
-			asta-sekin qo'shimcha daromad qilishni xohlasangiz —
-			bemalol yozing.
-		</div>
-	</div>
-</section>
-
-<!-- ══════════════════════════════════════
-     Q7 — "Endi nima qilaman?"
-══════════════════════════════════════ -->
-<section class="block fade-in" id="cta-section">
-	<div class="col">
-		<div class="block-label">Keyingi qadam</div>
-		<h2>Agar hali ham "Bu menga mosmi?" deb o'ylayotgan bo'lsangiz —</h2>
-
-		<p>
-			menga yozing.<br><br>
-			Men sizni ro'yxatdan o'tishga majburlamayman.<br>
-			Avval savollaringizga javob beraman.<br>
-			Keyin birgalikda bu imkoniyat sizga mos yoki mos emasligini aniqlaymiz.
-		</p>
-
-		<p style="margin-top:14px; color:rgba(255,255,255,0.5); font-size:14px; font-style:italic;">
-			Hatto oxirida boshlamaslikka qaror qilsangiz ham mayli. Avval tushunib olaylik.
-		</p>
-
-		<div class="what-happens">
-			<div class="wh-title">Yozganingizdan keyin nima bo'ladi?</div>
-			<div class="wh-step">
-				<div class="wh-num">1</div>
-				<div class="wh-text">Siz yozasiz.</div>
-			</div>
-			<div class="wh-arrow">↓</div>
-			<div class="wh-step">
-				<div class="wh-num">2</div>
-				<div class="wh-text">Umida bir nechta savol beradi.</div>
-			</div>
-			<div class="wh-arrow">↓</div>
-			<div class="wh-step">
-				<div class="wh-num">3</div>
-				<div class="wh-text">Bu imkoniyat sizga mos yoki mos emasligini birga aniqlaysiz.</div>
-			</div>
-			<div class="wh-arrow">↓</div>
-			<div class="wh-step">
-				<div class="wh-num">4</div>
-				<div class="wh-text">Mos bo'lsa — boshlaysiz. Mos bo'lmasa — hech qanday majburiyat yo'q.</div>
-			</div>
-		</div>
-
-		<div class="consultant-row">
-			<img class="consultant-photo" id="consultant-photo" src="" alt="">
-			<div class="consultant-info">
-				<div class="c-name" id="consultant-name"></div>
-				<div class="c-role">Faberlic konsultanti · O'zbekiston</div>
-			</div>
-		</div>
-		<p class="consultant-story" id="consultant-story" style="color:rgba(255,255,255,0.55);font-size:13px;font-style:italic;margin-bottom:4px;"></p>
-
-		<div class="cta-label">Bu sizga mosmi? — Birga aniqlaylik</div>
-
-		<div class="cta-arrow-row">
-			<span class="cta-arrow">→</span>
-			<a class="cta-btn" id="cta-telegram" href="#" target="_blank">
-				<span>💬</span>
-				Umidaga yozish
-			</a>
-			<span class="cta-arrow">←</span>
-		</div>
-
-		<div class="cta-note">Majburiyat yo'q. Shunchaki savol berasiz.</div>
-	</div>
-</section>
-
-<div class="sticky-bar" id="sticky-bar">
-	<a class="sticky-btn" id="sticky-btn" href="#" target="_blank">
-		💬 Umidaga yozish
+	<a id="float-btn" class="tg-link" href="#" target="_blank">
+		✈️ &nbsp;Umidaga yozish
 	</a>
-</div>
 
-<footer>
-	<div>Faberlic Rasmiy Konsultanti · O'zbekiston</div>
-	<div style="margin-top:6px;">
-		Sayt <a href="https://menhaqimda.uz">menhaqimda.uz</a> tomonidan yaratildi
-	</div>
-</footer>
-<script>
-	let scroll50Tracked = false;
-	let scroll75Tracked=false;
+	<!-- HERO -->
+	<section id="hero">
+		<div class="wrap">
+			<div class="hero-tag">📱 Instagram'dagi e'lonni ko'rdingizmi?</div>
+			<h1>Har kuni Instagramga ketadigan 1 soatingiz...</h1>
+			<h3>qo'shimcha daromadning boshlanishi bo'lishi mumkin.</h3>
+			<p class="hero-sub">Avval videoni ko'ring 👇<br>Keyin qarorni o'zingiz qabul qilasiz.</p>
+		</div>
+	</section>
 
-	window.addEventListener("scroll", () => {
-		const scrollPosition = window.scrollY + window.innerHeight;
-		const pageHeight = document.documentElement.scrollHeight;
-		const progress = scrollPosition / pageHeight;
+	<!-- VIDEO -->
+	<section id="video-section">
+		<div class="wrap">
 
-		if (progress >= 0.5) {
-			if(scroll50Tracked == false) {
-				fbq('trackCustom', 'Scrolled50');
-				console.log("Tracked: Scrolled50");
+			<div class="video-wrapper" id="video-wrapper">
+				<video id="main-video" controls playsinline preload="metadata" src="video_compressed.mp4"></video>
+
+				<div class="play-overlay" id="play-overlay" onclick="startVideo()">
+					<div class="play-btn-circle">
+						<svg viewBox="0 0 24 24">
+							<path d="M8 5v14l11-7z" /></svg>
+					</div>
+					<span class="play-label">Videoni ko'ring — 3:46</span>
+				</div>
+			</div>
+
+			<div class="video-author">
+				<img class="va-photo" id="u-photo" src="" alt="Umida">
+				<div class="va-text">
+					<strong id="u-name">Umida Ochilova</strong>
+					<span>Bu videodagi ayol — Umidaning o'zi.<br>Videoda aytilganlarning barchasi uning shaxsiy
+						tajribasi.</span>
+				</div>
+			</div>
+
+			<p class="post-video-text">
+				Savolingiz bo'lsa, bemalol yozing.<br>
+				<strong>Avval gaplashamiz. Keyin bu ish sizga mosmi yoki yo'qmi, birga aniqlaymiz.</strong>
+			</p>
+
+			<div class="cta-arrow-row">
+				<span class="cta-arrow">→</span>
+				<a class="btn-primary tg-link" href="#" target="_blank">
+					<span class="btn-icon">💬</span>
+					Umidaga Telegramdan yozish
+				</a>
+				<span class="cta-arrow">←</span>
+			</div>
+			<p class="btn-sub">Men odatda bir necha daqiqada javob beraman 🙂</p>
+
+		</div>
+	</section>
+
+	<hr class="sec-divider">
+
+	<!-- HOW IT WORKS -->
+	<section id="how-it-works" class="sec fade">
+		<div class="wrap">
+			<div class="sec-heading">
+				<div class="sec-heading-bar"></div>
+				<h2>Agar menga yozsangiz, keyin nima bo'ladi?</h2>
+			</div>
+
+			<div class="steps-list">
+
+				<div class="step-row">
+					<div class="step-left">
+						<div class="step-dot">1</div>
+						<div class="step-connector"></div>
+					</div>
+					<div class="step-body">
+						<strong>Menga yozasiz</strong>
+						<p>Telegramda oddiy savol bilan. Hech qanday majburiyat yo'q.</p>
+					</div>
+				</div>
+
+				<div class="step-row">
+					<div class="step-left">
+						<div class="step-dot">2</div>
+						<div class="step-connector"></div>
+					</div>
+					<div class="step-body">
+						<strong>Avval gaplashamiz</strong>
+						<p>Savollaringizga javob beraman. Shoshilmay hammasini tushuntiraman.</p>
+					</div>
+				</div>
+
+				<div class="step-row">
+					<div class="step-left">
+						<div class="step-dot">3</div>
+						<div class="step-connector"></div>
+					</div>
+					<div class="step-body">
+						<strong>Agar sizga mos kelsa — bepul ro'yxatdan o'tasiz</strong>
+						<p>Ro'yxatdan o'tish bepul. Hech qanday majburiy to'lov yo'q.</p>
+					</div>
+				</div>
+
+				<div class="step-row">
+					<div class="step-left">
+						<div class="step-dot">4</div>
+						<div class="step-connector"></div>
+					</div>
+					<div class="step-body">
+						<strong>Nimadan boshlashni birga ko'rib chiqamiz</strong>
+						<p>Hech narsani oldindan bilishingiz shart emas.</p>
+					</div>
+				</div>
+
+				<div class="step-row">
+					<div class="step-left">
+						<div class="step-dot">5</div>
+					</div>
+					<div class="step-body">
+						<strong>O'z daromad manbaingizni qurishni boshlaysiz</strong>
+						<p>Oz-ozdan. Bo'sh vaqtingizga qarab. Uydan turib.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<hr class="sec-divider">
+
+	<!-- WHY US -->
+	<section id="why-us" class="sec fade">
+		<div class="wrap">
+			<div class="sec-heading">
+				<div class="sec-heading-bar"></div>
+				<h2>Biz bilan ish boshlasangiz...</h2>
+			</div>
+
+			<div class="why-cards">
+				<div class="why-card">
+					<div class="why-icon teal">🤝</div>
+					<div class="why-card-text">
+						<strong>Yolg'iz qolmaysiz</strong>
+						<p>Ishni bir o'zingiz boshlamaysiz. Savollaringiz bo'lsa — doim yordam beramiz.</p>
+					</div>
+				</div>
+				<div class="why-card">
+					<div class="why-icon amber">📱</div>
+					<div class="why-card-text">
+						<strong>Tayyor yordamchilar</strong>
+						<p>Bizda tayyor botlar, reklama materiallari, ko'rsatmalar bor. Bular ishlarni ancha yengillashtiradi.
+						</p>
+					</div>
+				</div>
+				<div class="why-card">
+					<div class="why-icon violet">🌱</div>
+					<div class="why-card-text">
+						<strong>Oddiy bosqichlar</strong>
+						<p>Hamma narsani birdan bilishingiz shart emas. Har kuni oz-ozdan o'rganasiz. O'zingizga qulay vaqtda.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<hr class="sec-divider">
+
+	<!-- NOT FOR EVERYONE -->
+	<section id="not-for-all" class="sec fade">
+		<div class="wrap">
+			<div class="not-card">
+				<h3>⚠️ Bu ish hammaga ham mos kelavermaydi</h3>
+				<p style="margin-bottom: 10px;">Agar siz...</p>
+				<ul class="not-list">
+					<li>Tez va oson boyishni kutayotgan bo'lsangiz.</li>
+					<li>Hech qanday harakat qilmasdan natija kutayotgan bo'lsangiz.</li>
+					<li>Hamma ishni boshqalar qilib berishini istasangiz.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- FINAL CTA -->
+	<section id="final-cta" class="fade">
+		<div class="wrap">
+			<p class="pre-cta">
+				Odatda tez javob beraman.<br>
+				<strong>Bemalol yozing 🙂</strong>
+			</p>
+
+			<div class="cta-box">
+				<div class="cta-question">
+					Balki bu ish sizga mos kelar.<br>Balki mos kelmas.
+				</div>
+				<p>Shuni birga aniqlab olamiz.</p>
+				<div class="cta-checks">
+					<span>Hech qanday to'lov yo'q</span>
+					<span>Hech qanday majburiyat yo'q</span>
+					<span>Qarorni faqat o'zingiz qabul qilasiz</span>
+				</div>
+				<a class="btn-white tg-link" href="#" target="_blank">
+					<span class="btn-icon">✈️</span>
+					Umidaga yozish
+				</a>
+			</div>
+
+			<p class="final-fine">
+				Shunchaki gaplashamiz. Qaror sizniki.
+			</p>
+		</div>
+	</section>
+	<script>
+		const TG_MSG =
+			'?text=Assalomu%20alaykum.%20Videoni%20ko%27rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F';
+		const TG_LINK = CONSULTANT.telegram + TG_MSG;
+
+		let scroll50Tracked = false;
+		let scroll75Tracked = false;
+
+		window.addEventListener("scroll", () => {
+			const scrollPosition = window.scrollY + window.innerHeight;
+			const pageHeight = document.documentElement.scrollHeight;
+			const progress = scrollPosition / pageHeight;
+
+			if (progress >= 0.5) {
+				if (scroll50Tracked == false) {
+					fbq('trackCustom', 'Scrolled50');
+					console.log("Tracked: Scrolled50");
+				}
+				scroll50Tracked = true;
 			}
-			scroll50Tracked = true;
-		}
 
-		if (progress >= 0.75) {
-			if(scroll75Tracked == false) {
-				fbq('trackCustom', 'Scrolled75');
-				console.log("Tracked: Scrolled75");
+			if (progress >= 0.75) {
+				if (scroll75Tracked == false) {
+					fbq('trackCustom', 'Scrolled75');
+					console.log("Tracked: Scrolled75");
+				}
+				scroll75Tracked = true;
 			}
-			scroll75Tracked = true;
-		}
-	});
-
-	let redirected = false;
-
-	const telegramMsg = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
-	
-	const link = CONSULTANT.telegram + telegramMsg;
-
-
-	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
-		button.addEventListener("click", (e) => {
-			e.preventDefault();
-			fbq('track', 'Lead');
-			console.log("Tracked: Lead");
-			
-			setTimeout(function() {
-				window.location.href = link;
-			}, 1000); 
 		});
-	});
-</script>
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		// Fill consultant
-		document.getElementById('consultant-photo').src = CONSULTANT.photo;
-		document.getElementById('consultant-name').textContent = CONSULTANT.name;
-		document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
+
+		let redirected = false;
+
+		const telegramMsg =
+			`?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
 
 		const link = CONSULTANT.telegram + telegramMsg;
-		document.getElementById('cta-telegram').href = link;
-		document.getElementById('sticky-btn').href = link;
-	});
 
-	// Progress bar
-	window.addEventListener('scroll', () => {
-		const s = document.documentElement;
-		const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
-		document.getElementById('progress').style.width = pct + '%';
 
-		// Sticky bar — show after 30% scroll
-		const bar = document.getElementById('sticky-bar');
-		if (pct > 30) bar.classList.add('show');
-		else bar.classList.remove('show');
-	});
+		document.querySelectorAll(".tg-link").forEach(button => {
+			button.addEventListener("click", (e) => {
+				e.preventDefault();
+				fbq('track', 'Lead');
+				console.log("Tracked: Lead");
 
-	// Fade-in on scroll
-	const io = new IntersectionObserver((entries) => {
-		entries.forEach(e => {
-			if (e.isIntersecting) e.target.classList.add('visible');
+				setTimeout(function () {
+					window.location.href = link;
+				}, 1000);
+			});
 		});
-	}, { threshold: 0.08 });
+	</script>
+	<script>
+		// Populate
+		document.addEventListener('DOMContentLoaded', () => {
+			document.getElementById('u-photo').src = CONSULTANT.photo;
+			document.getElementById('u-name').textContent = CONSULTANT.name;
 
-	document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
-</script>
+			// Set video src
+			const vid = document.getElementById('main-video');
+			if (CONSULTANT.videoUrl && CONSULTANT.videoUrl !== 'YOUR_VIDEO_URL_HERE') {
+				vid.src = CONSULTANT.videoUrl;
+			} else {
+				vid.style.display = 'none';
+				document.getElementById('play-overlay').innerHTML =
+					'<div style="color:rgba(255,255,255,.5);font-size:13px;padding:20px;text-align:center;">Video URL qo\'shilmagan</div>';
+			}
+
+			// All TG links
+			document.querySelectorAll('.tg-link').forEach(el => el.href = TG_LINK);
+			document.getElementById('float-btn').href = TG_LINK;
+		});
+
+		// Video play
+		function startVideo() {
+			const vid = document.getElementById('main-video');
+			const overlay = document.getElementById('play-overlay');
+			vid.play();
+			overlay.classList.add('hidden');
+			track('played_video');
+		}
+
+		document.getElementById('main-video')?.addEventListener('play', () => {
+			document.getElementById('play-overlay').classList.add('hidden');
+		});
+
+		// Progress bar + floating button
+		window.addEventListener('scroll', () => {
+			const s = document.documentElement;
+			const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+			document.getElementById('progress').style.width = pct + '%';
+			document.getElementById('float-btn')
+				.classList.toggle('on', s.scrollTop > 400);
+		}, {
+			passive: true
+		});
+
+		// Fade in
+		document.querySelectorAll('.fade').forEach(el =>
+			new IntersectionObserver(
+				([e]) => {
+					if (e.isIntersecting) el.classList.add('in');
+				}, {
+					threshold: 0.07
+				}
+			).observe(el)
+		);
+
+		function toggleFaq(el) {
+			const was = el.classList.contains('open');
+			document.querySelectorAll('.faq').forEach(f => f.classList.remove('open'));
+			if (!was) el.classList.add('open');
+		}
+	</script>
 
 </body>
+
 </html>
