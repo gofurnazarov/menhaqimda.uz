@@ -4,39 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Siz ham qo'shimcha daromad qilishni xohlaysizmi?</title>
-	<script>
-		! function (f, b, e, v, n, t, s) {
-			if (f.fbq) return;
-			n = f.fbq = function () {
-				n.callMethod ?
-					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-			};
-			if (!f._fbq) f._fbq = n;
-			n.push = n;
-			n.loaded = !0;
-			n.version = '2.0';
-			n.queue = [];
-			t = b.createElement(e);
-			t.async = !0;
-			t.src = v;
-			s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window, document, 'script',
-			'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '2082798438970493');
-		fbq('track', 'PageView');
-	</script>
+	<title>Faberlic — Sizga mos imkoniyat</title>
+
 	<!-- ============================================================
-       KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
-  ============================================================ -->
+     KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
+     ============================================================ -->
 	<script>
 		const CONSULTANT = {
-			name: "Umida Ochilova",
-			firstName: "Umida",
-			photo: "photo.png",
-			telegram: "https://t.me/umida_fab",
-			videoUrl: "video_compressed.mp4", // mp4 yoki YouTube/Vimeo embed URL
+			name: "Umida Ochilova", // Konsultant ismi
+			photo: "photo.png", // Rasm URL
+			telegram: "https://t.me/umida_fab", // Telegram link
+			shortStory: "Men ham boshida bu ish menga to'g'ri kelarmikan deb o'ylaganman. Lekin sinab ko'rdim va asta-sekin o'rganib ketdim. Shuning uchun bu sahifada Faberlic qanday ishlashini imkon qadar sodda tushuntirishga harakat qildim. Agar o'qib chiqib, bu ish sizga mosdek tuyulsa, keyingi qadamni birga boshlaymiz."
 		};
 	</script>
 	<!-- ============================================================ -->
@@ -49,31 +27,21 @@
 
 	<style>
 		:root {
-			--cream: #fdf8f2;
-			--warm: #f7ece0;
-			--warm2: #f0dbc8;
-			--terra: #c0623a;
-			--terra-l: #e8835f;
-			--terra-d: #8b3a1e;
-			--terra-dd: #5c2210;
-			--text: #1e140e;
-			--muted: #6b5548;
-			--green: #3a6b48;
-			--green-l: #e4f3eb;
-			--green-d: #1f4a2d;
-			--red-l: #fff0ee;
-			--red-text: #8b2a1e;
-			--border: #e0ccb8;
-			--tg: #ce6e47;
-			/* #2481cc */
-			--shadow-sm: 0 2px 12px rgba(90, 40, 15, 0.10);
-			--shadow-md: 0 6px 28px rgba(90, 40, 15, 0.15);
-			--shadow-lg: 0 12px 48px rgba(90, 40, 15, 0.20);
+			--cream: #fdf6ee;
+			--warm: #f5e6d0;
+			--terracotta: #c0623a;
+			--terra-light: #e8835f;
+			--terra-dark: #8b3a1e;
+			--text: #2d1f17;
+			--muted: #7a6255;
+			--green: #4a7c59;
+			--green-light: #e8f5ed;
+			--card-bg: #fffaf5;
+			--border: #e8d5c0;
+			--shadow: rgba(139, 58, 30, 0.12);
 		}
 
-		*,
-		*::before,
-		*::after {
+		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
@@ -81,7 +49,6 @@
 
 		html {
 			scroll-behavior: smooth;
-			-webkit-text-size-adjust: 100%;
 		}
 
 		body {
@@ -91,131 +58,728 @@
 			font-size: 16px;
 			line-height: 1.7;
 			overflow-x: hidden;
-			padding-bottom: 110px;
 		}
 
-		.wrap {
-			max-width: 500px;
+		/* ── UTILITY ── */
+		.container {
+			max-width: 520px;
 			margin: 0 auto;
-			padding: 0 18px;
+			padding: 0 20px;
 		}
 
-		/* PROGRESS BAR */
-		#progress {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 4px;
-			background: linear-gradient(90deg, var(--terra) 0%, var(--terra-l) 100%);
-			z-index: 400;
-			width: 0%;
-			transition: width .12s linear;
-			border-radius: 0 2px 2px 0;
+		.accent {
+			color: var(--terracotta);
+			font-style: italic;
+			font-family: 'Playfair Display', serif;
 		}
 
-		/* FLOATING BUTTON */
-		#float-btn {
-			position: fixed;
-			bottom: 20px;
-			left: 50%;
-			transform: translateX(-50%) translateY(80px);
-			z-index: 300;
-			background: var(--tg);
+		.tag {
+			display: inline-block;
+			background: var(--terra-dark);
 			color: #fff;
-			border: none;
-			border-radius: 50px;
-			padding: 15px 28px;
-			font-size: 15px;
+			font-size: 11px;
 			font-weight: 700;
-			font-family: 'Nunito', sans-serif;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			gap: 9px;
-			box-shadow: 0 8px 28px rgba(36, 129, 204, .45);
-			text-decoration: none;
-			white-space: nowrap;
-			opacity: 0;
-			transition: opacity .35s, transform .35s, box-shadow .2s;
-			pointer-events: none;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			padding: 4px 12px;
+			border-radius: 20px;
+			margin-bottom: 12px;
 		}
 
-		#float-btn.on {
-			opacity: 1;
-			transform: translateX(-50%) translateY(0);
-			pointer-events: auto;
+		.section {
+			padding: 48px 0;
 		}
 
-		#float-btn:active {
-			box-shadow: 0 4px 14px rgba(36, 129, 204, .3);
+		.section+.section {
+			border-top: 1px solid var(--border);
 		}
 
-		/* HERO */
+		/* ── HERO ── */
 		#hero {
-			background: linear-gradient(168deg, var(--terra-dd) 0%, #7a3515 55%, var(--terra) 100%);
+			background: linear-gradient(160deg, #2d1f17 0%, #6b3520 100%);
 			color: #fff;
-			padding: 52px 0 48px;
+			padding: 56px 0 48px;
 			position: relative;
 			overflow: hidden;
-			/* text-align: center; */
 		}
 
 		#hero::before {
 			content: '';
 			position: absolute;
 			inset: 0;
-			background-image: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, .04) 0%, transparent 50%),
-				radial-gradient(circle at 80% 20%, rgba(255, 255, 255, .05) 0%, transparent 40%);
+			background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 			pointer-events: none;
 		}
 
-		#hero .wrap {
-			position: relative;
-		}
-
-		.hero-tag {
-			display: inline-block;
-			background: rgba(255, 255, 255, .15);
-			border: 1px solid rgba(255, 255, 255, .25);
-			border-radius: 50px;
-			padding: 5px 16px;
-			font-size: 12px;
-			font-weight: 700;
-			letter-spacing: .5px;
-			margin-bottom: 20px;
+		#hero .tag {
+			background: var(--terra-light);
+			color: #fff;
 		}
 
 		#hero h1 {
-			/* font-family: 'Playfair Display', serif; */
-			font-size: clamp(24px, 6.5vw, 34px);
-			line-height: 1.22;
-			margin-bottom: 14px;
-			font-weight: 700;
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(28px, 7vw, 38px);
+			line-height: 1.25;
+			margin-bottom: 16px;
 		}
 
 		#hero h1 em {
-			color: #f9c78a;
+			color: var(--terra-light);
 			font-style: italic;
 		}
 
-		#hero h3 {
-			/* font-family: 'Playfair Display', serif; */
-			font-size: clamp(24px, 6.5vw, 22px);
-			line-height: 1.22;
-			margin-bottom: 14px;
+		#hero .sub {
+			font-size: 15px;
+			opacity: 0.85;
+			margin-bottom: 28px;
+			line-height: 1.6;
+		}
+
+		.hero-badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 50px;
+			padding: 8px 18px;
+			font-size: 13px;
+			backdrop-filter: blur(4px);
+		}
+
+		.hero-badge span {
+			font-size: 18px;
+		}
+
+		/* ── EMPATHY ── */
+		#empathy {
+			background: var(--warm);
+		}
+
+		#empathy .thought-box {
+			background: #fff;
+			border-left: 4px solid var(--terracotta);
+			border-radius: 0 12px 12px 0;
+			padding: 16px 20px;
+			margin: 20px 0;
+			font-style: italic;
+			color: var(--muted);
+			font-size: 15px;
+		}
+
+		#empathy .thought-box strong {
+			color: var(--text);
+			font-style: normal;
+		}
+
+		/* ── WHAT IS ── */
+		.fact-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			margin: 24px 0;
+		}
+
+		.fact-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			padding: 18px 16px;
+			text-align: center;
+		}
+
+		.fact-card .num {
+			font-family: 'Playfair Display', serif;
+			font-size: 28px;
+			color: var(--terracotta);
+			font-weight: 700;
+			display: block;
+		}
+
+		.fact-card .label {
+			font-size: 12px;
+			color: var(--muted);
+			line-height: 1.4;
+			margin-top: 4px;
+		}
+
+		/* ── HOW IT WORKS ── */
+		.steps {
+			margin: 24px 0;
+		}
+
+		.step {
+			display: flex;
+			gap: 16px;
+			margin-bottom: 24px;
+			align-items: flex-start;
+			animation: fadeUp 0.5s ease both;
+		}
+
+		.step-num {
+			flex-shrink: 0;
+			width: 40px;
+			height: 40px;
+			background: var(--terracotta);
+			color: #fff;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 16px;
+			font-family: 'Playfair Display', serif;
+		}
+
+		.step-body h4 {
+			font-size: 15px;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+
+		.step-body p {
+			font-size: 14px;
+			color: var(--muted);
+		}
+
+		/* ── OBJECTIONS ── */
+		#objections {
+			background: #fff5f0;
+		}
+
+		.objection {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			margin-bottom: 16px;
+			overflow: hidden;
+		}
+
+		.obj-header {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 16px 18px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.obj-q {
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--terra-dark);
+			flex: 1;
+		}
+
+		.obj-q::before {
+			content: '"';
+		}
+
+		.obj-q::after {
+			content: '"';
+		}
+
+		.obj-toggle {
+			flex-shrink: 0;
+			width: 28px;
+			height: 28px;
+			background: var(--warm);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			transition: transform 0.3s ease;
+		}
+
+		.objection.open .obj-toggle {
+			transform: rotate(45deg);
+		}
+
+		.obj-answer {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease, padding 0.3s ease;
+			padding: 0 18px;
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.75;
+		}
+
+		.objection.open .obj-answer {
+			max-height: 300px;
+			padding: 0 18px 18px;
+		}
+
+		.obj-answer strong {
+			color: var(--text);
+		}
+
+		/* ── TESTIMONIALS ── */
+		.testi-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 20px;
+			padding: 22px 20px;
+			margin-bottom: 16px;
+			position: relative;
+		}
+
+		.testi-card::before {
+			content: '\201C';
+			font-family: 'Playfair Display', serif;
+			font-size: 64px;
+			color: var(--terra-light);
+			opacity: 0.3;
+			position: absolute;
+			top: -4px;
+			left: 14px;
+			line-height: 1;
+		}
+
+		.testi-text {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 16px;
+			font-style: italic;
+		}
+
+		.testi-author {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.testi-avatar {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			object-fit: cover;
+			background: var(--warm);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			overflow: hidden;
+		}
+
+		.testi-name {
+			font-weight: 700;
+			font-size: 14px;
+		}
+
+		.testi-meta {
+			font-size: 12px;
+			color: var(--muted);
+		}
+
+		.stars {
+			color: #f59e0b;
+			font-size: 12px;
+			letter-spacing: 1px;
+		}
+
+		/* ── CONSULTANT ── */
+		#consultant {
+			background: var(--warm);
+		}
+
+		.consult-card {
+			background: #fff;
+			border-radius: 24px;
+			padding: 28px 22px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 16px;
+			box-shadow: 0 8px 32px var(--shadow);
+		}
+
+		#consultant-photo {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid var(--terra-light);
+		}
+
+		.consult-name {
+			font-family: 'Playfair Display', serif;
+			font-size: 22px;
+			color: var(--terra-dark);
+		}
+
+		.consult-story {
+			font-size: 14px;
+			color: var(--muted);
+			font-style: italic;
+		}
+
+		/* ── CTA ── */
+		#cta {
+			background: linear-gradient(160deg, var(--terra-dark) 0%, var(--terracotta) 100%);
+			color: #fff;
+			text-align: center;
+			padding: 52px 0;
+		}
+
+		#cta h2 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(24px, 6vw, 32px);
+			margin-bottom: 10px;
+		}
+
+		#cta p {
+			opacity: 0.88;
+			font-size: 15px;
+			margin-bottom: 28px;
+		}
+
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			max-width: 340px;
+			margin: 0 auto 14px;
+			padding: 16px 24px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			border: none;
+			text-decoration: none;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.btn:active {
+			transform: scale(0.97);
+		}
+
+		.btn-primary {
+			background: #fff;
+			color: var(--terra-dark);
+			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+		}
+
+		.btn-primary:hover {
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+			transform: translateY(-1px);
+		}
+
+		.btn-secondary {
+			background: rgba(255, 255, 255, 0.15);
+			color: #fff;
+			border: 2px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.btn-icon {
+			font-size: 20px;
+		}
+
+		.fine-print {
+			font-size: 12px;
+			opacity: 0.65;
+			margin-top: 20px;
+		}
+
+		/* ── CTA · DECISION CHECKLIST ── */
+		.cta-intro {
+			opacity: 0.88;
+			font-size: 15px;
+			margin-bottom: 24px;
+		}
+
+		.decision-list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			text-align: left;
+			margin-bottom: 28px;
+		}
+
+		.decision-item {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.16);
+			border-radius: 14px;
+			padding: 13px 16px;
+		}
+
+		.decision-check {
+			flex-shrink: 0;
+			width: 26px;
+			height: 26px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.9);
+			color: var(--terra-dark);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 13px;
 			font-weight: 700;
 		}
 
-		#hero .hero-sub {
+		.decision-item span.decision-text {
+			font-size: 14.5px;
+			color: #fff;
+			opacity: 0.95;
+			line-height: 1.45;
+		}
+
+		.cta-final-text {
 			font-size: 15px;
-			opacity: .82;
+			opacity: 0.9;
+			margin-bottom: 24px;
 			line-height: 1.6;
+		}
+
+		/* ── SECTION TITLES ── */
+		.section-title {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(22px, 5vw, 28px);
+			color: var(--text);
+			margin-bottom: 8px;
+			line-height: 1.3;
+		}
+
+		.section-sub {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 24px;
+		}
+
+		/* ── STICKY CTA BAR ── */
+		.sticky-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--terra-dark);
+			padding: 12px 20px;
+			z-index: 100;
+			display: flex;
+			gap: 10px;
+			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+			transform: translateY(100%);
+			transition: transform 0.4s ease;
+		}
+
+		.sticky-bar.visible {
+			transform: translateY(0);
+		}
+
+		.sticky-bar .btn {
+			margin: 0;
+			flex: 1;
+			padding: 13px 10px;
+			font-size: 13px;
+		}
+
+		.sticky-bar .btn-primary {
+			background: var(--terra-light);
+			color: #fff;
+		}
+
+		.sticky-bar .btn-secondary {
+			background: rgba(255, 255, 255, 0.12);
+			border-color: rgba(255, 255, 255, 0.3);
+		}
+
+		/* ── ANIMATIONS ── */
+		@keyframes fadeUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.fade-in {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 0.6s ease, transform 0.6s ease;
+		}
+
+		.fade-in.visible {
+			opacity: 1;
+			transform: none;
+		}
+
+		/* ── PROGRESS BAR ── */
+		#progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: var(--terra-light);
+			z-index: 200;
+			width: 0%;
+			transition: width 0.1s linear;
+		}
+
+		footer {
+			text-align: center;
+			padding: 24px;
+			font-size: 12px;
+			color: var(--muted);
+			border-top: 1px solid var(--border);
+		}
+
+		/* ── WOMEN PROOF ── */
+		.women-proof {
+			margin: 24px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.wp-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 14px 16px;
+		}
+
+		.wp-icon {
+			font-size: 22px;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+
+		.wp-text {
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		/* ── ZERO TEASER ── */
+		.zero-box {
+			display: flex;
+			gap: 16px;
+			align-items: flex-start;
+			background: linear-gradient(135deg, #fffbf0, #fff3e0);
+			border: 2px solid #f0c070;
+			border-radius: 18px;
+			padding: 20px 18px;
+		}
+
+		.zero-icon {
+			font-size: 28px;
+			flex-shrink: 0;
+		}
+
+		.zero-text strong {
+			display: block;
+			font-size: 16px;
+			color: var(--terra-dark);
+			margin-bottom: 6px;
+		}
+
+		.zero-text p {
+			font-size: 14px;
+			color: var(--muted);
+			margin: 0;
+		}
+
+		/* ── COMMUNITY ── */
+		.community-card {
+			background: linear-gradient(135deg, #f0fdf4, #e8f5ed);
+			border: 1px solid #b6dfc4;
+			border-radius: 20px;
+			padding: 22px 20px;
+			margin-top: 4px;
+		}
+
+		.comm-header {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 10px;
+		}
+
+		.comm-icon {
+			font-size: 24px;
+		}
+
+		.comm-header strong {
+			font-size: 16px;
+			color: var(--green);
+		}
+
+		.comm-text {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 18px;
+		}
+
+		.comm-features {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.comm-feat {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+			font-size: 14px;
+			color: var(--text);
+		}
+
+		.comm-feat span:first-child {
+			flex-shrink: 0;
+			font-size: 16px;
+		}
+
+		/* ── URGENCY ── */
+		.urgency-bar {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			justify-content: center;
+			background: rgba(255, 255, 255, 0.12);
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			border-radius: 50px;
+			padding: 10px 20px;
+			font-size: 13px;
+			margin-bottom: 24px;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.urgency-bar strong {
+			color: #fff;
+		}
+
+		/* ── DIVIDER ── */
+		.wave-divider {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: -1px 0;
+		}
+	</style>
+	<style>
+		.wrap {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 0 18px;
 		}
 
 		/* VIDEO SECTION */
 		#video-section {
-			background: #fff;
 			padding: 32px 0 28px;
 		}
 
@@ -226,7 +790,7 @@
 			box-shadow: var(--shadow-lg);
 			margin-bottom: 16px;
 			background: #111;
-			aspect-ratio: 9/16;
+			aspect-ratio: 16/9;
 			/* max-height: 72vh; */
 		}
 
@@ -325,422 +889,6 @@
 			font-style: normal;
 		}
 
-		/* PRIMARY CTA BUTTON */
-		.btn-primary {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			width: 100%;
-			background: var(--tg);
-			color: #fff;
-			text-decoration: none;
-			border: none;
-			border-radius: 16px;
-			padding: 18px 24px;
-			font-size: 16px;
-			font-weight: 700;
-			font-family: 'Nunito', sans-serif;
-			cursor: pointer;
-			box-shadow: 0 6px 24px rgba(36, 129, 204, .38);
-			transition: transform .18s, box-shadow .18s;
-			letter-spacing: .2px;
-		}
-
-		.btn-primary:active {
-			transform: scale(.97);
-			box-shadow: 0 3px 12px rgba(36, 129, 204, .28);
-		}
-
-		.btn-primary .btn-icon {
-			font-size: 20px;
-		}
-
-		.btn-sub {
-			text-align: center;
-			font-size: 12px;
-			color: var(--muted);
-			margin-top: 10px;
-		}
-
-		/* SECTION SHARED */
-		.sec {
-			padding: 36px 0 32px;
-		}
-
-		.sec-divider {
-			border: none;
-			border-top: 2px solid var(--warm2);
-		}
-
-		.sec-heading {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			margin-bottom: 22px;
-		}
-
-		.sec-heading-bar {
-			width: 4px;
-			height: 28px;
-			border-radius: 2px;
-			background: linear-gradient(to bottom, var(--terra), var(--terra-l));
-			flex-shrink: 0;
-		}
-
-		.sec-heading h2 {
-			/* font-family: 'Playfair Display', serif; */
-			font-size: clamp(19px, 5vw, 24px);
-			line-height: 1.28;
-			color: var(--text);
-		}
-
-		/* HOW IT WORKS */
-		#how-it-works {
-			background: var(--cream);
-		}
-
-		.steps-list {
-			display: flex;
-			flex-direction: column;
-			gap: 0;
-			margin-bottom: 28px;
-		}
-
-		.step-row {
-			display: flex;
-			gap: 0;
-			align-items: stretch;
-		}
-
-		.step-left {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 48px;
-			flex-shrink: 0;
-		}
-
-		.step-dot {
-			width: 44px;
-			height: 44px;
-			border-radius: 50%;
-			background: linear-gradient(135deg, var(--terra), var(--terra-l));
-			color: #fff;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 17px;
-			font-weight: 700;
-			font-family: 'Playfair Display', serif;
-			flex-shrink: 0;
-			box-shadow: 0 4px 14px rgba(192, 98, 58, .35);
-		}
-
-		.step-connector {
-			width: 2px;
-			flex: 1;
-			min-height: 20px;
-			background: linear-gradient(to bottom, var(--terra-l), var(--warm2));
-			margin: 2px auto;
-		}
-
-		.step-body {
-			flex: 1;
-			background: #fff;
-			border-radius: 16px;
-			padding: 14px 16px;
-			margin: 0 0 10px 12px;
-			box-shadow: var(--shadow-sm);
-			border: 1px solid var(--border);
-		}
-
-		.step-body strong {
-			display: block;
-			font-size: 15px;
-			color: var(--text);
-			margin-bottom: 3px;
-		}
-
-		.step-body p {
-			font-size: 13px;
-			color: var(--muted);
-			line-height: 1.55;
-		}
-
-		/* WHY US */
-		#why-us {
-			background: var(--warm);
-		}
-
-		.why-cards {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			margin-bottom: 8px;
-		}
-
-		.why-card {
-			background: #fff;
-			border-radius: 18px;
-			padding: 18px 18px 16px;
-			box-shadow: var(--shadow-sm);
-			border: 1px solid var(--border);
-			display: flex;
-			gap: 14px;
-			align-items: flex-start;
-		}
-
-		.why-icon {
-			width: 48px;
-			height: 48px;
-			border-radius: 14px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 22px;
-			flex-shrink: 0;
-		}
-
-		.why-icon.teal {
-			background: #e0f5ef;
-		}
-
-		.why-icon.amber {
-			background: #fff4e0;
-		}
-
-		.why-icon.violet {
-			background: #f0eeff;
-		}
-
-		.why-card-text strong {
-			display: block;
-			font-size: 15px;
-			color: var(--text);
-			margin-bottom: 5px;
-		}
-
-		.why-card-text p {
-			font-size: 13px;
-			color: var(--muted);
-			line-height: 1.6;
-		}
-
-		/* NOT FOR EVERYONE */
-		#not-for-all {
-			background: var(--cream);
-		}
-
-		.not-card {
-			background: var(--red-l);
-			border: 1.5px solid #f5c4bc;
-			border-radius: 18px;
-			padding: 20px 18px;
-		}
-
-		.not-card h3 {
-			font-size: 15px;
-			font-weight: 700;
-			color: var(--red-text);
-			margin-bottom: 14px;
-			display: flex;
-			align-items: center;
-			gap: 8px;
-		}
-
-		.not-list {
-			list-style: none;
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		.not-list li {
-			display: flex;
-			gap: 10px;
-			align-items: flex-start;
-			font-size: 14px;
-			color: var(--red-text);
-			line-height: 1.5;
-		}
-
-		.not-list li::before {
-			content: "✗";
-			font-weight: 700;
-			flex-shrink: 0;
-			margin-top: 1px;
-			font-size: 15px;
-		}
-
-		/* FINAL CTA */
-		#final-cta {
-			background: linear-gradient(168deg, var(--terra-dd) 0%, var(--terra) 100%);
-			padding: 44px 0 48px;
-			text-align: center;
-			color: #fff;
-		}
-
-		#final-cta .pre-cta {
-			font-size: 15px;
-			opacity: .88;
-			line-height: 1.65;
-			margin-bottom: 24px;
-		}
-
-		#final-cta .pre-cta strong {
-			color: #f9c78a;
-			font-style: normal;
-		}
-
-		.cta-box {
-			background: rgba(255, 255, 255, .1);
-			border: 1px solid rgba(255, 255, 255, .2);
-			border-radius: 20px;
-			padding: 24px 20px;
-			margin-bottom: 20px;
-		}
-
-		.cta-box .cta-question {
-			font-family: 'Playfair Display', serif;
-			font-size: clamp(18px, 5vw, 24px);
-			line-height: 1.3;
-			margin-bottom: 18px;
-		}
-
-		.cta-box .cta-checks {
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-			margin-bottom: 22px;
-			text-align: left;
-		}
-
-		.cta-box .cta-checks span {
-			display: flex;
-			align-items: center;
-			gap: 9px;
-			font-size: 14px;
-			opacity: .88;
-		}
-
-		.cta-box .cta-checks span::before {
-			content: "✓";
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			background: rgba(255, 255, 255, .2);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 11px;
-			font-weight: 700;
-			flex-shrink: 0;
-		}
-
-		.btn-white {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			width: 100%;
-			background: #fff;
-			color: var(--terra-d);
-			text-decoration: none;
-			border-radius: 16px;
-			padding: 18px 24px;
-			font-size: 16px;
-			font-weight: 700;
-			font-family: 'Nunito', sans-serif;
-			cursor: pointer;
-			box-shadow: 0 6px 28px rgba(0, 0, 0, .2);
-			transition: transform .18s, box-shadow .18s;
-			letter-spacing: .2px;
-		}
-
-		.btn-white:active {
-			transform: scale(.97);
-			box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
-		}
-
-		.btn-white .btn-icon {
-			font-size: 20px;
-		}
-
-		.final-fine {
-			font-size: 12px;
-			opacity: .65;
-			margin-top: 14px;
-			line-height: 1.5;
-		}
-
-		/* FOOTER */
-		footer {
-			text-align: center;
-			padding: 24px 18px;
-			font-size: 12px;
-			color: var(--muted);
-			border-top: 1px solid var(--border);
-		}
-
-		footer .credit {
-			display: inline-block;
-			margin-top: 8px;
-			background: rgba(192, 98, 58, .1);
-			border-radius: 20px;
-			padding: 3px 14px;
-			font-size: 11px;
-			color: var(--terra-d);
-		}
-
-		footer .credit a {
-			color: var(--terra);
-			text-decoration: none;
-		}
-
-		/* FADE IN */
-		.fade {
-			opacity: 0;
-			transform: translateY(22px);
-			transition: opacity .55s ease, transform .55s ease;
-		}
-
-		.fade.in {
-			opacity: 1;
-			transform: none;
-		}
-
-		.cta-btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			width: 100%;
-			max-width: 360px;
-			padding: 17px 24px;
-			border-radius: 50px;
-			font-family: 'Inter', sans-serif;
-			font-size: 15px;
-			font-weight: 600;
-			cursor: pointer;
-			text-decoration: none;
-			background: var(--ember-bright);
-			color: #fff;
-			border: none;
-			transition: transform 0.15s, box-shadow 0.15s;
-			box-shadow: 0 6px 24px rgba(180, 80, 30, 0.35);
-		}
-
-		.cta-label {
-			text-align: center;
-			font-family: 'Lora', serif;
-			font-size: 17px;
-			color: rgba(255, 255, 255, 0.9);
-			margin-top: 28px;
-			margin-bottom: 14px;
-			line-height: 1.4;
-		}
-
 		.cta-arrow-row {
 			display: flex;
 			align-items: center;
@@ -753,7 +901,7 @@
 			color: var(--tg);
 			line-height: 1;
 			flex-shrink: 0;
-			padding-bottom: 5px;
+			padding-bottom: 23px;
 		}
 
 		.cta-arrow:first-child {
@@ -791,33 +939,107 @@
 				opacity: 1;
 			}
 		}
+
 	</style>
+	<!-- Meta Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '900979625779905');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=900979625779905&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- End Meta Pixel Code -->
 </head>
 
 <body>
 
 	<div id="progress"></div>
 
-	<a id="float-btn" class="tg-link" href="#" target="_blank">
-		✈️ &nbsp;Umidaga yozish
-	</a>
-
-	<!-- HERO -->
+	<!-- ══════════════════════════════════════
+     1. HERO
+	══════════════════════════════════════ -->
 	<section id="hero">
-		<div class="wrap">
-			<div class="hero-tag">📱 Instagram'dagi e'lonni ko'rdingizmi?</div>
-			<h1>Har kuni Instagramga ketadigan 1 soatingiz...</h1>
-			<h3>qo'shimcha daromadning boshlanishi bo'lishi mumkin.</h3>
-			<p class="hero-sub">Avval videoni ko'ring 👇<br>Keyin qarorni o'zingiz qabul qilasiz.</p>
+		<div class="container">
+			<div class="tag">18+ yildan beri O‘zbekistonda ishlayotgan tizim</div>
+			<h1>Uydan turib <em>haqiqiy</em> daromad — bu mumkin</h1>
+			<p class="sub">Siz hozir "yana onlayn pul ishlash deyishadi, lekin baribir natija chiqmaydi" deb o‘ylayotgan
+				bo‘lsangiz — o'qishda davom eting 👇. Men ham shunday deb o‘ylagan edim.</p>
+			<div class="hero-badge">
+				👩 O‘zim shu yo‘l bilan ishlayapman.
+			</div>
 		</div>
 	</section>
 
-	<!-- VIDEO -->
-	<section id="video-section">
+	<!-- ══════════════════════════════════════
+     2. EMPATHY
+	══════════════════════════════════════ -->
+	<section id="empathy" class="section fade-in">
+		<div class="container">
+			<div class="tag">Tushunaman</div>
+			<h2 class="section-title">Siz nima o'ylayotganingizni bilaman</h2>
+
+			<div class="thought-box"><strong>"Bu ham yana aldab pul topish yo'llaridan biri."</strong><br>Yoki: "Sotib
+				bo'lmaydi." Yoki: "Vaqtim yo'q."</div>
+
+			<p>Men ham shunday deb o'ylagan edim. Tanishlarimning aksariyati ham shunday deydi. Va ularning <strong>hammasi
+					ham noto'g'ri emas</strong> — chunki ko'p yomon sxemalar bor.</p>
+
+			<p style="margin-top:14px;">Shuning uchun men bu sahifada hech qanday va'da bermay, <strong>faqat
+					haqiqatni</strong> aytaman. O'qib, o'zingiz qaror qiling.</p>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     3. WHAT IS FABERLIC
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Kompaniya haqida</div>
+			<h2 class="section-title">Faberlic aslida nima?</h2>
+			<p class="section-sub">Bu oddiy savdo — farqi shuki, siz do‘kon ochmaysiz, telefon orqali ishlaysiz.</p>
+
+			<div class="women-proof">
+				<div class="wp-item">
+					<div class="wp-icon">🏠</div>
+					<div class="wp-text">Uy bekalari, o'qituvchilar, qishloq ayollari — hammasi oddiy hayotdan boshlagan.
+					</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">📱</div>
+					<div class="wp-text">Faqat telefon kerak. Do'kon, ombor, yoki ofis shart emas.</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">🇺🇿</div>
+					<div class="wp-text">18+ yildan beri O'zbekistonda — sizning qo'shningiz allaqachon ishlatgan bo'lishi
+						mumkin.
+					</div>
+				</div>
+				<div class="wp-item">
+					<div class="wp-icon">🌸</div>
+					<div class="wp-text">Atirlar, kosmetikalar, parvarish vositalari, kiyimlar, bolalar uchun kerakli
+						narsalar —
+						odamlar har oy baribir sotib oladigan mahsulotlar.</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="empathy" class="section fade-in" >
 		<div class="wrap">
+			<h2 class="section-title">🎥 4 daqiqada Faberlic qanday ishlashini tushuntirib beraman</h2>
+			<p class="section-sub">4 daqiqa ajrating. Keyin Faberlic qanday ishlashini aniq tushunasiz.</p>
 
 			<div class="video-wrapper" id="video-wrapper">
-				<video id="main-video" controls playsinline preload="metadata" src="video_compressed.mp4"></video>
+				<video id="main-video" controls playsinline preload="metadata" src="presentation.mp4"></video>
 
 				<div class="play-overlay" id="play-overlay" onclick="startVideo()">
 					<div class="play-btn-circle">
@@ -827,200 +1049,370 @@
 					<span class="play-label">Videoni ko'ring — 3:46</span>
 				</div>
 			</div>
+		</div>
+	</section>
 
-			<div class="video-author">
-				<img class="va-photo" id="u-photo" src="" alt="Umida">
-				<div class="va-text">
-					<strong id="u-name">Umida Ochilova</strong>
-					<span>Bu videodagi ayol — Umidaning o'zi.<br>Videoda aytilganlarning barchasi uning shaxsiy
-						tajribasi.</span>
+	<!-- ══════════════════════════════════════
+     4. HOW IT WORKS
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Amalda qanday ishlaydi</div>
+			<h2 class="section-title">Hech narsani bilmasangiz ham boshlashingiz mumkin</h2>
+			<p class="section-sub">Birinchi oyda qilish kerak bo'lgan narsa — atigi uchta qadam:</p>
+
+			<div class="steps">
+				<div class="step">
+					<div class="step-num">1</div>
+					<div class="step-body">
+						<h4>Ro'yxatdan o'ting</h4>
+						<p>Konsultant sifatida bepul ro'yxatdan o'tasiz. Hujjat kerak emas, to'lov kerak emas.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">2</div>
+					<div class="step-body">
+						<h4>Telegram gruppa oching</h4>
+						<p>Telegramda gruppa ochasiz va tanishlaringizni qo‘shasiz. Maxsus bot reklamani o‘zi tayyorlaydi —
+							nima
+							yozishni o‘ylamaysiz, rasm qidirib o‘tirmaysiz. Siz faqat gruppaga joylaysiz.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">3</div>
+					<div class="step-body">
+						<h4>Daromad qilishni boshlang</h4>
+						<p>Kompaniyadan ichki narxda olasiz, katalog narxida sotasiz.</p>
+					</div>
 				</div>
 			</div>
 
-			<p class="post-video-text">
-				Savolingiz bo'lsa, bemalol yozing.<br>
-				<strong>Avval gaplashamiz. Keyin bu ish sizga mosmi yoki yo'qmi, birga aniqlaymiz.</strong>
+			<div
+				style="background:var(--green-light); border-radius:14px; padding:16px 18px; font-size:14px; color:var(--green);">
+				<strong style="display:block; margin-bottom:4px;">💡 Haqiqiy raqam:</strong>
+				Ba’zilar birinchi oyda kichik pul topadi — 200–300 ming. Keyin asta-sekin ko‘payadi.
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     5. ZERO INVESTMENT TEASER
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="zero-box">
+				<div class="zero-icon">💡</div>
+				<div class="zero-text">
+					<strong>Qo'lda pul bo'lmasa ham boshlash mumkin</strong>
+					<p>
+						Eng oson yo‘li shunday: avval odamlardan buyurtma olasiz, pulni oldindan olasiz, keyin kompaniyadan
+						buyurtma
+						qilasiz.
+						Shuning uchun boshlash uchun o‘z pulingiz kerak emas.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     6. OBJECTIONS
+	══════════════════════════════════════ -->
+	<section id="objections" class="section fade-in">
+		<div class="container">
+			<div class="tag">Ko'p beriladigan savollar</div>
+			<h2 class="section-title">Balki siz ham shuni o‘ylayotgandirsiz</h2>
+			<p class="section-sub">Har biriga ochiq, yashirmasdan javob beraman.</p>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Bu ham yana aldab pul topish yo'llaridan birimi?</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>To‘g‘ri savol.</strong> Rostini aytsam, yomon sxemalar ko‘p.
+					Lekin bu yerda oddiy narsa: odamlar ishlatadigan mahsulot bor — atir, krem, kiyim.
+					Odamlar baribir oladi, siz esa shu orqali pul topasiz.
+					Bir marta o‘zingiz sinab ko‘rsangiz — hammasi tushunarli bo‘ladi.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Men sotishni bilmayman</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Siz sotmaysiz — ko‘rsatasiz.</strong> <br>
+					"Shu narsa yaxshi ekan" deb yozish — bu sotish emas. Siz buni allaqachon qila olasiz.
+
+					Siz yolg‘iz emassiz: maxsus bot reklama tayyorlab beradi, biz esa sizga bosqichma-bosqich hammasini
+					o'rgatamiz.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Vaqtim yo'q, uch bolam bor, ishim bor</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Ko‘pchilik aynan shunday holatda boshlagan.</strong> <br>
+					Bola, uy, ish — hammasi bor. Shunga qaramay asta sekin oz-ozdan boshlashadi. <br>
+
+					Bu ishda majburiy vaqt yo‘q: bo‘sh paytda — bola uxlaganda yoki tushlikda — ishlash ham yetarli.
+					Kuniga 20–30 daqiqa yetadi boshlash uchun.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Erim yoki oilam ruxsat bermaydi</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Bu haqiqatan ham qiyin holat.</strong> <br>
+					Shuning uchun ko‘pchilik juda kichik qadam bilan boshlaydi — bitta buyurtma, bitta daromad.
+
+					Natijani ko‘rgandan keyin ko‘p hollarda qarash o‘zgaradi. Sekin-sekin tushunishadi.
+				</div>
+			</div>
+
+			<div class="objection" onclick="toggleObj(this)">
+				<div class="obj-header">
+					<div class="obj-q">Boshlash uchun pulim yo'q</div>
+					<div class="obj-toggle">+</div>
+				</div>
+				<div class="obj-answer">
+					<strong>Tushunarli.</strong> <br>
+					Bunaqa qilsangiz ham bo'ladi: avval odamlardan buyurtma olasiz, pulni oldindan olasiz, keyin kompaniyadan
+					buyurtma qilasiz.
+
+					Ya’ni siz o‘z pulingizni ishlatmaysiz. Ro‘yxatdan o‘tish bepul — boshlash uchun bir so‘m ham kerak emas.
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     7. TESTIMONIALS
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Tajribalar</div>
+			<h2 class="section-title">Oddiy ayollar qanday boshlagan</h2>
+			<p class="section-sub">Hammasi ham boshida shubha bilan boshlagan</p>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Avval kerak emas dedim. Keyin shunchaki sinab ko‘rdim. Birinchi oyda ozgina daromadga chiqdim, lekin shu
+					menga ishonch berdi. Hozir asta-sekin davom ettiryapman."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌸</div>
+					<div>
+						<div class="testi-name">Nodira X., Farg'ona</div>
+						<div class="testi-meta">Uy bekasi, 2 bolali</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Men qishloqdanman. Avval bu narsa ishlamaydi deb o‘ylardim. Lekin telefon orqali buyurtma olish mumkin
+					ekan. Hozir oz-ozdan daromad qilayapman."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌻</div>
+					<div>
+						<div class="testi-name">Shahnoza M., Namangan viloyati</div>
+						<div class="testi-meta">Dehqon oilasidan</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="testi-card">
+				<p class="testi-text">
+					"Ikki yil oldin turmushga chiqdim, ishlashni to'xtatdim. O'zimni g'am bosdi. Faberlic orqali nafaqat
+					daromad — o'z ishim, o'z pulum bor. Bu ko'proq ruhiy ozodlik."
+				</p>
+				<div class="testi-author">
+					<div class="testi-avatar">🌹</div>
+					<div>
+						<div class="testi-name">Mohira T., Toshkent</div>
+						<div class="testi-meta">25 yosh, yangi oila</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     7b. COMMUNITY
+	══════════════════════════════════════ -->
+	<section class="section fade-in">
+		<div class="container">
+			<div class="tag">Yolg‘iz boshlamaysiz</div>
+			<h2 class="section-title">Boshlaganda ko‘pchilikda bir xil savol bo‘ladi: nimadan boshlayman?</h2>
+			<p class="section-sub">Shuning uchun siz yolg‘iz qolmaysiz — hammasini birga o‘rganamiz.</p>
+
+			<div class="community-card">
+				<div class="comm-header">
+					<span class="comm-icon">🤝</span>
+					<strong>Yopiq guruhimizga qo‘shilasiz</strong>
+				</div>
+
+				<p class="comm-text">
+					Bu yerda siz kabi oddiy ayollar bor — uy bekalari, onalar, yangi boshlovchilar. Hammasi shu yo‘lni endi
+					boshlagan yoki o‘rganayapti.
+				</p>
+
+				<div class="comm-features">
+					<div class="comm-feat">
+						<span>💬</span>
+						<span>Savol bersangiz — tezda javob beramiz, yolg‘iz qolmaysiz</span>
+					</div>
+					<div class="comm-feat">
+						<span>📚</span>
+						<span>Birinchi kundan nima qilish kerakligini oddiy qilib tushuntiramiz</span>
+					</div>
+					<div class="comm-feat">
+						<span>🎉</span>
+						<span>Birinchi buyurtma kelganda — siz bilan birga xursand bo‘lamiz</span>
+					</div>
+					<div class="comm-feat">
+						<span>🚫</span>
+						<span>Hech qanday majburiyat yo'q — o‘z vaqtingiz va sharoitingizdan kelib chiqib ishlaysiz</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="consultant" class="section fade-in">
+		<div class="container">
+			<div class="tag">Men ham shunday boshlaganman</div>
+			<div class="consult-card">
+				<img id="consultant-photo" src="" alt="Konsultant rasmi">
+				<div>
+					<div class="consult-name" id="consultant-name"></div>
+					<div class="testi-meta" style="margin-top:4px;" id="consultant-title">Oddiy ayol | Faberlic Direktor</div>
+				</div>
+				<p class="consult-story" id="consultant-story"></p>
+				<p style="font-size:13px; color:var(--muted); text-align:center;">
+					Agar bu ish sizga mos deb o'ylasangiz, bemalol yozing. Keyingi qadamni birga boshlaymiz.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+     9. CTA
+	══════════════════════════════════════ -->
+	<section id="cta">
+		<div class="container">
+			<div class="tag" style="background:rgba(255,255,255,0.2); color:#fff;">Qaror qiling</div>
+			<h2>Qaror qilishdan oldin</h2>
+			<p class="cta-intro">O'zingizdan shu 4 ta savolni so'rang:</p>
+
+			<div class="decision-list">
+				<div class="decision-item">
+					<div class="decision-check">✓</div>
+					<span class="decision-text">Men qo'shimcha daromad qilishni xohlayman</span>
+				</div>
+				<div class="decision-item">
+					<div class="decision-check">✓</div>
+					<span class="decision-text">Kuniga 1–2 soat vaqt ajrata olaman</span>
+				</div>
+				<div class="decision-item">
+					<div class="decision-check">✓</div>
+					<span class="decision-text">O'rganishga tayyorman</span>
+				</div>
+				<div class="decision-item">
+					<div class="decision-check">✓</div>
+					<span class="decision-text">Tez boyishni kutmayman</span>
+				</div>
+			</div>
+
+			<p class="cta-final-text">
+				Agar yuqoridagilarga rozi bo'lsangiz, bepul ro'yxatdan o'tish uchun menga Telegram orqali yozing.
 			</p>
 
 			<div class="cta-arrow-row">
 				<span class="cta-arrow">→</span>
-				<a class="btn-primary tg-link" href="#" target="_blank">
-					<span class="btn-icon">💬</span>
-					Umidaga Telegramdan yozish
+				<a class="btn btn-primary" id="cta-telegram" href="#" target="_blank">
+					Ha, Telegramda yozaman
 				</a>
 				<span class="cta-arrow">←</span>
 			</div>
-			<p class="btn-sub">Men odatda bir necha daqiqada javob beraman 🙂</p>
 
+			<div class="fine-print">Ro'yxatdan o'tganingizda hech qanday to'lov talab qilinmaydi.</div>
 		</div>
 	</section>
 
-	<hr class="sec-divider">
-
-	<!-- HOW IT WORKS -->
-	<section id="how-it-works" class="sec fade">
-		<div class="wrap">
-			<div class="sec-heading">
-				<div class="sec-heading-bar"></div>
-				<h2>Agar menga yozsangiz, keyin nima bo'ladi?</h2>
-			</div>
-
-			<div class="steps-list">
-
-				<div class="step-row">
-					<div class="step-left">
-						<div class="step-dot">1</div>
-						<div class="step-connector"></div>
-					</div>
-					<div class="step-body">
-						<strong>Menga yozasiz</strong>
-						<p>Telegramda oddiy savol bilan. Hech qanday majburiyat yo'q.</p>
-					</div>
-				</div>
-
-				<div class="step-row">
-					<div class="step-left">
-						<div class="step-dot">2</div>
-						<div class="step-connector"></div>
-					</div>
-					<div class="step-body">
-						<strong>Avval gaplashamiz</strong>
-						<p>Savollaringizga javob beraman. Shoshilmay hammasini tushuntiraman.</p>
-					</div>
-				</div>
-
-				<div class="step-row">
-					<div class="step-left">
-						<div class="step-dot">3</div>
-						<div class="step-connector"></div>
-					</div>
-					<div class="step-body">
-						<strong>Agar sizga mos kelsa — bepul ro'yxatdan o'tasiz</strong>
-						<p>Ro'yxatdan o'tish bepul. Hech qanday majburiy to'lov yo'q.</p>
-					</div>
-				</div>
-
-				<div class="step-row">
-					<div class="step-left">
-						<div class="step-dot">4</div>
-						<div class="step-connector"></div>
-					</div>
-					<div class="step-body">
-						<strong>Nimadan boshlashni birga ko'rib chiqamiz</strong>
-						<p>Hech narsani oldindan bilishingiz shart emas.</p>
-					</div>
-				</div>
-
-				<div class="step-row">
-					<div class="step-left">
-						<div class="step-dot">5</div>
-					</div>
-					<div class="step-body">
-						<strong>O'z daromad manbaingizni qurishni boshlaysiz</strong>
-						<p>Oz-ozdan. Bo'sh vaqtingizga qarab. Uydan turib.</p>
-					</div>
-				</div>
-
-			</div>
+	<!-- <footer>
+		<div class="container"style="margin-bottom: 12px;">
+			Faberlic Rasmiy Konsultanti · O'zbekiston
 		</div>
-	</section>
+	</footer> -->
 
-	<hr class="sec-divider">
-
-	<!-- WHY US -->
-	<section id="why-us" class="sec fade">
-		<div class="wrap">
-			<div class="sec-heading">
-				<div class="sec-heading-bar"></div>
-				<h2>Biz bilan ish boshlasangiz...</h2>
-			</div>
-
-			<div class="why-cards">
-				<div class="why-card">
-					<div class="why-icon teal">🤝</div>
-					<div class="why-card-text">
-						<strong>Yolg'iz qolmaysiz</strong>
-						<p>Ishni bir o'zingiz boshlamaysiz. Savollaringiz bo'lsa — doim yordam beramiz.</p>
-					</div>
-				</div>
-				<div class="why-card">
-					<div class="why-icon amber">📱</div>
-					<div class="why-card-text">
-						<strong>Tayyor yordamchilar</strong>
-						<p>Bizda tayyor botlar, reklama materiallari, ko'rsatmalar bor. Bular ishlarni ancha yengillashtiradi.
-						</p>
-					</div>
-				</div>
-				<div class="why-card">
-					<div class="why-icon violet">🌱</div>
-					<div class="why-card-text">
-						<strong>Oddiy bosqichlar</strong>
-						<p>Hamma narsani birdan bilishingiz shart emas. Har kuni oz-ozdan o'rganasiz. O'zingizga qulay vaqtda.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<hr class="sec-divider">
-
-	<!-- NOT FOR EVERYONE -->
-	<section id="not-for-all" class="sec fade">
-		<div class="wrap">
-			<div class="not-card">
-				<h3>⚠️ Bu ish hammaga ham mos kelavermaydi</h3>
-				<p style="margin-bottom: 10px;">Agar siz...</p>
-				<ul class="not-list">
-					<li>Tez va oson boyishni kutayotgan bo'lsangiz.</li>
-					<li>Hech qanday harakat qilmasdan natija kutayotgan bo'lsangiz.</li>
-					<li>Hamma ishni boshqalar qilib berishini istasangiz.</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	<!-- FINAL CTA -->
-	<section id="final-cta" class="fade">
-		<div class="wrap">
-			<p class="pre-cta">
-				Odatda tez javob beraman.<br>
-				<strong>Bemalol yozing 🙂</strong>
-			</p>
-
-			<div class="cta-box">
-				<div class="cta-question">
-					Balki bu ish sizga mos kelar.<br>Balki mos kelmas.
-				</div>
-				<p>Shuni birga aniqlab olamiz.</p>
-				<div class="cta-checks">
-					<span>Hech qanday to'lov yo'q</span>
-					<span>Hech qanday majburiyat yo'q</span>
-					<span>Qarorni faqat o'zingiz qabul qilasiz</span>
-				</div>
-				<a class="btn-white tg-link" href="#" target="_blank">
-					<span class="btn-icon">✈️</span>
-					Umidaga yozish
-				</a>
-			</div>
-
-			<p class="final-fine">
-				Shunchaki gaplashamiz. Qaror sizniki.
-			</p>
-		</div>
-	</section>
 	<script>
-		const TG_MSG =
-			'?text=Assalomu%20alaykum.%20Videoni%20ko%27rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F';
-		const TG_LINK = CONSULTANT.telegram + TG_MSG;
+		const vid = document.getElementById('main-video');
 
+		let trackedStart = false;
+		let tracked50 = false;
+		let tracked95 = false;
+
+		vid.addEventListener('play', () => {
+			if (!trackedStart) {
+				trackedStart = true;
+				fbq('trackCustom', 'VideoStarted');
+				console.log('Tracked: VideoStarted');
+			}
+		});
+
+		vid.addEventListener('timeupdate', () => {
+			if (!vid.duration) return;
+
+			const progress = vid.currentTime / vid.duration;
+
+			if (progress >= 0.5 && !tracked50) {
+				tracked50 = true;
+				fbq('trackCustom', 'Video50');
+				console.log('Tracked: Video50');
+			}
+
+			if (progress >= 0.95 && !tracked95) {
+				tracked95 = true;
+				fbq('trackCustom', 'Video95');
+				console.log('Tracked: Video95');
+			}
+		});
+
+		function startVideo() {
+			const vid = document.getElementById('main-video');
+			const overlay = document.getElementById('play-overlay');
+			vid.play();
+			overlay.classList.add('hidden');
+		}
+
+		let scroll25Tracked = false;
 		let scroll50Tracked = false;
 		let scroll75Tracked = false;
+		let scroll90Tracked = false;
 
 		window.addEventListener("scroll", () => {
-			const scrollPosition = window.scrollY + window.innerHeight;
-			const pageHeight = document.documentElement.scrollHeight;
-			const progress = scrollPosition / pageHeight;
+			const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+			if (pageHeight <= 0) return;
+			const progress = window.scrollY / pageHeight;
+
+			if (progress >= 0.25) {
+				if (scroll25Tracked == false) {
+					fbq('trackCustom', 'Scrolled25');
+					console.log("Tracked: Scrolled25");
+				}
+				scroll25Tracked = true;
+			}
 
 			if (progress >= 0.5) {
 				if (scroll50Tracked == false) {
@@ -1037,91 +1429,69 @@
 				}
 				scroll75Tracked = true;
 			}
+
+			if (progress >= 0.90) {
+				if (scroll90Tracked == false) {
+					fbq('trackCustom', 'Scrolled90');
+					console.log("Tracked: Scrolled90");
+				}
+				scroll90Tracked = true;
+			}
 		});
 
-		let redirected = false;
+		const message = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
 
-		const telegramMsg =
-			`?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
+		const link = CONSULTANT.telegram + message;
 
-		const link = CONSULTANT.telegram + telegramMsg;
+		document.querySelector("#cta-telegram").addEventListener("click", (e) => {
+			e.preventDefault();
+			fbq('track', 'Lead');
+			console.log("Tracked: Lead");
 
-
-		document.querySelectorAll(".tg-link").forEach(button => {
-			button.addEventListener("click", (e) => {
-				e.preventDefault();
-				fbq('track', 'Lead');
-				console.log("Tracked: Lead");
-
-				setTimeout(function () {
-					window.location.href = link;
-				}, 1000);
-			});
+			setTimeout(function () {
+				window.location.href = link;
+			}, 300);
 		});
 	</script>
 	<script>
-		// Populate
+		// ── Fill consultant data ──
 		document.addEventListener('DOMContentLoaded', () => {
-			document.getElementById('u-photo').src = CONSULTANT.photo;
-			document.getElementById('u-name').textContent = CONSULTANT.name;
+			document.getElementById('consultant-photo').src = CONSULTANT.photo;
+			document.getElementById('consultant-name').textContent = CONSULTANT.name;
+			// document.getElementById('consultant-title').textContent = CONSULTANT.city + ' · Faberlic konsultanti';
+			document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
 
-			// Set video src
-			const vid = document.getElementById('main-video');
-			if (CONSULTANT.videoUrl && CONSULTANT.videoUrl !== 'YOUR_VIDEO_URL_HERE') {
-				vid.src = CONSULTANT.videoUrl;
-			} else {
-				vid.style.display = 'none';
-				document.getElementById('play-overlay').innerHTML =
-					'<div style="color:rgba(255,255,255,.5);font-size:13px;padding:20px;text-align:center;">Video URL qo\'shilmagan</div>';
-			}
-
-			// All TG links
-			document.querySelectorAll('.tg-link').forEach(el => el.href = TG_LINK);
-			document.getElementById('float-btn').href = TG_LINK;
+			const message = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
+			['cta-telegram'].forEach(id => {
+				document.getElementById(id).href = CONSULTANT.telegram + message;
+			});
 		});
 
-		// Video play
-		function startVideo() {
-			const vid = document.getElementById('main-video');
-			const overlay = document.getElementById('play-overlay');
-			vid.play();
-			overlay.classList.add('hidden');
-			track('played_video');
-		}
-
-		document.getElementById('main-video')?.addEventListener('play', () => {
-			document.getElementById('play-overlay').classList.add('hidden');
-		});
-
-		// Progress bar + floating button
+		// ── Progress bar ──
 		window.addEventListener('scroll', () => {
 			const s = document.documentElement;
 			const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
 			document.getElementById('progress').style.width = pct + '%';
-			document.getElementById('float-btn')
-				.classList.toggle('on', s.scrollTop > 400);
-		}, {
-			passive: true
 		});
 
-		// Fade in
-		document.querySelectorAll('.fade').forEach(el =>
-			new IntersectionObserver(
-				([e]) => {
-					if (e.isIntersecting) el.classList.add('in');
-				}, {
-					threshold: 0.07
-				}
-			).observe(el)
-		);
+		// ── Fade-in on scroll ──
+		const fadeEls = document.querySelectorAll('.fade-in');
+		const io = new IntersectionObserver((entries) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) e.target.classList.add('visible');
+			});
+		}, {
+			threshold: 0.1
+		});
+		fadeEls.forEach(el => io.observe(el));
 
-		function toggleFaq(el) {
-			const was = el.classList.contains('open');
-			document.querySelectorAll('.faq').forEach(f => f.classList.remove('open'));
-			if (!was) el.classList.add('open');
+		// ── Accordion objections ──
+		function toggleObj(el) {
+			const isOpen = el.classList.contains('open');
+			document.querySelectorAll('.objection').forEach(o => o.classList.remove('open'));
+			if (!isOpen) el.classList.add('open');
 		}
 	</script>
-
 </body>
 
 </html>

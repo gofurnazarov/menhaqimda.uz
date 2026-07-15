@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bu imkoniyat sizga mosmi?</title>
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '2082798438970493');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=2082798438970493&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- ============================================================
+     KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
+     ============================================================ -->
+	<script>
+		const CONSULTANT = {
+			name: "Umida Ochilova",
+			photo: "https://menhaqimda.uz/umidaochilova/me.png",
+			telegram: "https://t.me/umida_fab",
+			shortStory: "Men ham yosh ona, oddiy qishloq ayoliman. Men ham boshida shubha bilan boshlaganman. Uyda o'tirardim, qo'shimcha daromad kerak edi. Avvaliga ishonmadim, lekin baribir sinab ko'rdim. Sekin-sekin tushuna boshladim va davom ettirdim. Agar sizda ham savol bo'lsa — bemalol yozing. Shunchaki tushuntirib beraman, hech qanday majburiyat yo'q."
+		};
+	</script>
+	<!-- ============================================================ -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+	<style>
+		:root {
+			--ink: #1a1209;
+			--ink-mid: #4a3728;
+			--ink-soft: #7a6357;
+			--paper: #faf7f2;
+			--paper-warm: #f3ece0;
+			--paper-card: #fff;
+			--line: #e5ddd0;
+			--ember: #b85c2c;
+			--ember-bright: #d4703c;
+			--ember-dim: #e8b89a;
+			--ember-pale: #fdf0e8;
+			--green: #3d6b4a;
+			--green-pale: #edf5ef;
+		}
+
+		*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+		html { scroll-behavior: smooth; }
+
+		body {
+			font-family: 'Inter', sans-serif;
+			background: var(--paper);
+			color: var(--ink);
+			font-size: 16px;
+			line-height: 1.75;
+			overflow-x: hidden;
+		}
+
+		/* ── READING COLUMN ── */
+		.col {
+			max-width: 480px;
+			margin: 0 auto;
+			padding: 0 22px;
+		}
+
+		/* ── PROGRESS ── */
+		#progress {
+			position: fixed;
+			top: 0; left: 0;
+			height: 2px;
+			background: var(--ember);
+			z-index: 300;
+			width: 0%;
+			transition: width 0.1s linear;
+		}
+
+		/* ══════════════════════════
+		   OPENING
+		══════════════════════════ */
+		#opening {
+			padding: 64px 0 52px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.eyebrow {
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color: var(--ember);
+			margin-bottom: 20px;
+		}
+
+		#opening h1 {
+			font-family: 'Lora', serif;
+			font-size: clamp(26px, 7vw, 36px);
+			line-height: 1.3;
+			color: var(--ink);
+			margin-bottom: 22px;
+			font-weight: 600;
+		}
+
+		#opening h1 em {
+			font-style: italic;
+			color: var(--ember);
+		}
+
+		.opening-body {
+			font-size: 15px;
+			color: var(--ink-mid);
+			margin-bottom: 28px;
+			line-height: 1.8;
+		}
+
+		.opening-body p + p {
+			margin-top: 14px;
+		}
+
+		.question-hint {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: var(--paper-warm);
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			padding: 10px 16px;
+			font-size: 13px;
+			color: var(--ink-soft);
+		}
+
+		/* ══════════════════════════
+		   SECTIONS — shared
+		══════════════════════════ */
+		.block {
+			padding: 52px 0;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.block-label {
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color: var(--ink-soft);
+			margin-bottom: 18px;
+		}
+
+		.block h2 {
+			font-family: 'Lora', serif;
+			font-size: clamp(20px, 5vw, 26px);
+			line-height: 1.35;
+			color: var(--ink);
+			margin-bottom: 20px;
+			font-weight: 600;
+		}
+
+		.block p {
+			font-size: 15px;
+			color: var(--ink-mid);
+			line-height: 1.8;
+		}
+
+		.block p + p {
+			margin-top: 14px;
+		}
+
+		/* ══════════════════════════
+		   Q2 — "Bu menga o'xshagan..."
+		══════════════════════════ */
+		.doubt-list {
+			margin: 22px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.doubt-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+			font-size: 15px;
+			color: var(--ink-mid);
+		}
+
+		.doubt-item::before {
+			content: '·';
+			color: var(--ember);
+			font-size: 22px;
+			line-height: 1.3;
+			flex-shrink: 0;
+		}
+
+		.reassure {
+			background: var(--paper-warm);
+			border-left: 3px solid var(--ember-dim);
+			border-radius: 0 10px 10px 0;
+			padding: 16px 18px;
+			font-size: 15px;
+			color: var(--ink-mid);
+			font-style: italic;
+			margin-top: 24px;
+		}
+
+		/* ══════════════════════════
+		   Q3 — Story
+		══════════════════════════ */
+		#story-section {
+			background: var(--ink);
+			color: var(--paper);
+			border-bottom: none;
+		}
+
+		#story-section .block-label {
+			color: rgba(255,255,255,0.4);
+		}
+
+		#story-section h2 {
+			color: var(--paper);
+		}
+
+		.story-lines {
+			margin: 28px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+		}
+
+		.story-line {
+			display: flex;
+			align-items: flex-start;
+			gap: 16px;
+			padding: 14px 0;
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+
+		.story-line:last-child {
+			border-bottom: none;
+		}
+
+		.story-line .dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--ember-bright);
+			flex-shrink: 0;
+			margin-top: 8px;
+		}
+
+		.story-line .text {
+			font-size: 15px;
+			color: rgba(255,255,255,0.75);
+			line-height: 1.7;
+		}
+
+		.story-line .text strong {
+			color: #fff;
+			font-weight: 500;
+		}
+
+		.story-note {
+			font-size: 14px;
+			color: rgba(255,255,255,0.4);
+			text-align: center;
+			margin-top: 28px;
+			padding-top: 24px;
+			border-top: 1px solid rgba(255,255,255,0.1);
+		}
+
+		.growth-note {
+			margin-top: 20px;
+			padding: 14px 18px;
+			background: rgba(255,255,255,0.05);
+			border-left: 2px solid rgba(255,255,255,0.2);
+			border-radius: 0 8px 8px 0;
+			font-size: 13px;
+			color: rgb(236 170 131);
+			line-height: 1.7;
+			font-style: italic;
+		}
+
+		/* ══════════════════════════
+		   Q4 — Faberlic
+		══════════════════════════ */
+		.faberlic-card {
+			margin-top: 24px;
+			background: var(--paper-card);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 22px 20px;
+		}
+
+		.faberlic-card .fc-name {
+			font-family: 'Lora', serif;
+			font-size: 18px;
+			color: var(--ink);
+			font-weight: 600;
+			margin-bottom: 6px;
+		}
+
+		.faberlic-card .fc-note {
+			font-size: 13px;
+			color: var(--ink-soft);
+			margin-bottom: 20px;
+		}
+
+		.not-list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.not-item {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-size: 14px;
+			color: var(--ink-mid);
+		}
+
+		.not-icon {
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: var(--green-pale);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 13px;
+			flex-shrink: 0;
+		}
+
+		/* ══════════════════════════
+		   Q5 — Why people quit
+		══════════════════════════ */
+		#why-quit {
+			background: var(--ember-pale);
+			border-bottom: 1px solid var(--ember-dim);
+		}
+
+		.quit-list {
+			margin: 22px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.quit-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+			font-size: 15px;
+			color: var(--ink-mid);
+		}
+
+		.quit-item .q-bullet {
+			font-size: 16px;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+
+		/* ══════════════════════════
+		   Q6 — What we do different
+		══════════════════════════ */
+		.diff-list {
+			margin-top: 24px;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		.diff-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			padding: 16px 18px;
+			background: var(--paper-card);
+			border: 1px solid var(--line);
+			border-radius: 12px;
+		}
+
+		.diff-check {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: var(--green);
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+
+		.diff-text {
+			font-size: 14px;
+			color: var(--ink-mid);
+			line-height: 1.65;
+		}
+
+		.diff-text strong {
+			display: block;
+			color: var(--ink);
+			font-size: 15px;
+			margin-bottom: 2px;
+		}
+
+		.no-miracle {
+			margin-top: 24px;
+			font-size: 14px;
+			color: var(--ink-soft);
+			font-style: italic;
+			text-align: center;
+		}
+
+		/* ══════════════════════════
+		   Q2b — Why people write
+		══════════════════════════ */
+		.ask-list {
+			margin: 22px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.ask-item {
+			font-family: 'Lora', serif;
+			font-style: italic;
+			font-size: 16px;
+			color: var(--ink);
+			padding: 12px 16px;
+			background: var(--paper-card);
+			border: 1px solid var(--line);
+			border-radius: 10px;
+		}
+
+		/* ══════════════════════════
+		   Core promise
+		══════════════════════════ */
+		.core-promise {
+			margin-top: 28px;
+			padding: 20px 20px;
+			background: var(--ink);
+			color: rgba(255,255,255,0.85);
+			border-radius: 14px;
+			font-size: 15px;
+			line-height: 1.75;
+			text-align: center;
+		}
+
+		.core-promise em {
+			color: var(--ember-dim);
+			font-style: italic;
+		}
+
+		/* ══════════════════════════
+		   Future vision
+		══════════════════════════ */
+		#future-section {
+			background: var(--paper-warm);
+		}
+
+		.future-lines {
+			margin-top: 24px;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		.future-line {
+			font-size: 15px;
+			color: var(--ink-mid);
+			line-height: 1.7;
+		}
+
+		.future-highlight {
+			font-weight: 500;
+			color: var(--ink);
+		}
+
+		.future-quote {
+			font-family: 'Lora', serif;
+			font-style: italic;
+			font-size: 18px;
+			color: var(--ember);
+			padding: 14px 0 10px;
+		}
+
+		.future-end {
+			margin-top: 8px;
+			font-size: 15px;
+			color: var(--ink);
+			font-weight: 500;
+			line-height: 1.75;
+		}
+
+		/* ══════════════════════════
+		   Q7 — CTA
+		══════════════════════════ */
+		#cta-section {
+			background: linear-gradient(160deg, var(--ink) 0%, #3a1a08 100%);
+			color: #fff;
+			border-bottom: none;
+		}
+
+		#cta-section .block-label {
+			color: rgba(255,255,255,0.4);
+		}
+
+		#cta-section h2 {
+			color: #fff;
+			font-size: clamp(22px, 6vw, 30px);
+		}
+
+		#cta-section p {
+			color: rgba(255,255,255,0.7);
+			font-size: 15px;
+			margin-top: 16px;
+		}
+
+		.consultant-row {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 28px 0;
+			padding: 16px 18px;
+			background: rgba(255,255,255,0.07);
+			border: 1px solid rgba(255,255,255,0.12);
+			border-radius: 14px;
+		}
+
+		.consultant-photo {
+			width: 56px;
+			height: 56px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 2px solid var(--ember-bright);
+			flex-shrink: 0;
+		}
+
+		.consultant-info .c-name {
+			font-family: 'Lora', serif;
+			font-size: 16px;
+			color: #fff;
+			font-weight: 600;
+		}
+
+		.consultant-info .c-role {
+			font-size: 12px;
+			color: rgba(255,255,255,0.5);
+			margin-top: 2px;
+		}
+
+		.consultant-story {
+			font-size: 13px;
+			color: rgba(255,255,255,0.6);
+			font-style: italic;
+			margin-top: 10px;
+			line-height: 1.7;
+		}
+
+		.cta-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			max-width: 360px;
+			padding: 17px 24px;
+			border-radius: 50px;
+			font-family: 'Inter', sans-serif;
+			font-size: 15px;
+			font-weight: 600;
+			cursor: pointer;
+			text-decoration: none;
+			background: var(--ember-bright);
+			color: #fff;
+			border: none;
+			transition: transform 0.15s, box-shadow 0.15s;
+			box-shadow: 0 6px 24px rgba(180, 80, 30, 0.35);
+		}
+
+		.cta-label {
+			text-align: center;
+			font-family: 'Lora', serif;
+			font-size: 17px;
+			color: rgba(255,255,255,0.9);
+			margin-top: 28px;
+			margin-bottom: 14px;
+			line-height: 1.4;
+		}
+
+		.cta-arrow-row {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 14px;
+		}
+
+		.cta-arrow {
+			font-size: 32px;
+			color: var(--ember-bright);
+			line-height: 1;
+			flex-shrink: 0;
+			padding-bottom: 5px;
+		}
+
+		.cta-arrow:first-child {
+			animation: bounce-right 1.2s ease-in-out infinite;
+		}
+
+		.cta-arrow:last-child {
+			animation: bounce-left 1.2s ease-in-out infinite;
+		}
+
+		@keyframes bounce-right {
+			0%, 100% { transform: translateX(0); opacity: 0.6; }
+			50% { transform: translateX(5px); opacity: 1; }
+		}
+
+		@keyframes bounce-left {
+			0%, 100% { transform: translateX(0); opacity: 0.6; }
+			50% { transform: translateX(-5px); opacity: 1; }
+		}
+
+		.cta-btn:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 10px 32px rgba(180, 80, 30, 0.45);
+		}
+
+		.cta-btn:active {
+			transform: scale(0.98);
+		}
+
+		.cta-note {
+			text-align: center;
+			font-size: 12px;
+			color: rgba(255,255,255,0.35);
+			margin-top: 14px;
+		}
+
+		/* ══════════════════════════
+		   STICKY BAR
+		══════════════════════════ */
+		.sticky-bar {
+			position: fixed;
+			bottom: 0; left: 0; right: 0;
+			background: var(--ink);
+			border-top: 1px solid rgba(255,255,255,0.1);
+			padding: 12px 22px 16px;
+			z-index: 200;
+			transform: translateY(100%);
+			transition: transform 0.35s ease;
+		}
+
+		.sticky-bar.show {
+			transform: translateY(0);
+		}
+
+		.sticky-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			width: 100%;
+			padding: 14px;
+			border-radius: 50px;
+			background: var(--ember-bright);
+			color: #fff;
+			font-family: 'Inter', sans-serif;
+			font-size: 14px;
+			font-weight: 600;
+			text-decoration: none;
+			transition: opacity 0.15s;
+		}
+
+		/* ══════════════════════════
+		   FOOTER
+		══════════════════════════ */
+		footer {
+			text-align: center;
+			padding: 28px 20px;
+			font-size: 12px;
+			color: var(--ink-soft);
+			border-top: 1px solid var(--line);
+			line-height: 1.9;
+		}
+
+		footer a { color: var(--ember); text-decoration: none; }
+
+		/* ══════════════════════════
+		   FADE IN
+		══════════════════════════ */
+		.fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.55s ease, transform 0.55s ease;
+		}
+
+		.fade-in.visible {
+			opacity: 1;
+			transform: none;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.fade-in { opacity: 1; transform: none; }
+		}
+
+		/* ── HERO CHECKLIST ── */
+		.hero-checklist {
+			margin: 18px 0 0;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.hero-check {
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
+			font-size: 16px;
+			color: var(--ink-mid);
+		}
+
+		.hero-check::before {
+			content: '•';
+			color: var(--ember);
+			flex-shrink: 0;
+			font-size: 18px;
+			line-height: 1.4;
+		}
+
+		.hero-cta-hint {
+			margin-top: 22px;
+			font-family: 'Lora', serif;
+			font-style: italic;
+			font-size: 18px;
+			color: var(--ember);
+		}
+
+		/* ── PHILOSOPHY ── */
+		#philosophy {
+			background: var(--ink);
+			color: var(--paper);
+		}
+
+		#philosophy .block-label {
+			color: rgba(255,255,255,0.4);
+		}
+
+		#philosophy h2 {
+			color: #fff;
+		}
+
+		.philosophy-lines {
+			margin-top: 28px;
+			display: flex;
+			flex-direction: column;
+			gap: 0;
+		}
+
+		.philosophy-line {
+			display: flex;
+			flex-direction: column;
+			padding: 16px 0;
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+
+		.philosophy-line:last-child { border-bottom: none; }
+
+		.ph-if {
+			font-size: 13px;
+			color: rgba(255,255,255,0.4);
+			margin-bottom: 3px;
+		}
+
+		.ph-then {
+			font-size: 16px;
+			color: #fff;
+			font-weight: 500;
+		}
+
+		/* ── WHAT HAPPENS NEXT ── */
+		.what-happens {
+			margin: 28px 0;
+			background: rgba(255,255,255,0.06);
+			border: 1px solid rgba(255,255,255,0.12);
+			border-radius: 16px;
+			padding: 20px 18px;
+		}
+
+		.wh-title {
+			font-size: 11px;
+			font-weight: 600;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			color: rgba(255,255,255,0.35);
+			margin-bottom: 18px;
+		}
+
+		.wh-step {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		.wh-num {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: var(--ember-bright);
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			font-weight: 700;
+			flex-shrink: 0;
+		}
+
+		.wh-text {
+			font-size: 14px;
+			color: rgba(255,255,255,0.8);
+			line-height: 1.65;
+			padding-top: 2px;
+		}
+
+		.wh-arrow {
+			text-align: center;
+			color: rgba(255,255,255,0.2);
+			font-size: 16px;
+			padding: 6px 0 6px 36px;
+		}
+
+		/* ── SCROLL REASONS (keep for fallback) ── */
+		.scroll-reasons {
+			display: none;
+		}
+
+		/* ── STORY DAY LABELS ── */
+		.story-day {
+			flex-shrink: 0;
+			font-size: 10px;
+			font-weight: 600;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			color: var(--ember-bright);
+			background: rgba(212, 112, 60, 0.15);
+			border-radius: 20px;
+			padding: 3px 10px;
+			margin-top: 6px;
+			white-space: nowrap;
+		}
+
+		/* ── NOT FOR ALL ── */
+		#not-for-all {
+			background: var(--paper-warm);
+		}
+
+		.nfa-list {
+			margin: 20px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.nfa-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+			font-size: 15px;
+			color: var(--ink-mid);
+		}
+
+		.nfa-x {
+			color: #c0392b;
+			font-weight: 700;
+			font-size: 14px;
+			flex-shrink: 0;
+			margin-top: 2px;
+		}
+
+		.nfa-but {
+			margin-top: 6px;
+			padding: 16px 18px;
+			background: var(--green-pale);
+			border-left: 3px solid var(--green);
+			border-radius: 0 10px 10px 0;
+			font-size: 15px;
+			color: var(--green);
+			line-height: 1.75;
+		}
+	</style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<!-- ══════════════════════════════════════
+     Q1 — "Bu nima o'zi?"
+══════════════════════════════════════ -->
+<section id="opening">
+	<div class="col">
+		<div class="eyebrow">Savol birdan boshlaymiz</div>
+		<h1>
+			Har kuni Instagramga ketadigan 1 soatingiz...<br>
+			<em>qo'shimcha daromadning boshlanishi bo'lishi mumkin.</em>
+		</h1>
+
+		<div class="opening-body">
+			<p>Agar siz hozir:</p>
+		</div>
+
+		<div class="hero-checklist">
+			<div class="hero-check">qo'shimcha daromad qilishni xohlasangiz,</div>
+			<div class="hero-check">lekin qayerdan boshlashni bilmayotgan bo'lsangiz —</div>
+		</div>
+
+		<div class="hero-cta-hint">
+			keyingi 3 daqiqani ajrating.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q2 — "Bu menga o'xshagan odamlar uchunmi?"
+══════════════════════════════════════ -->
+<section class="block fade-in">
+	<div class="col">
+		<div class="block-label">Kimlar uchun</div>
+		<h2>Ko'p ayollar qo'shimcha daromad qilishni xohlaydi. Lekin...</h2>
+
+		<div class="doubt-list">
+			<div class="doubt-item">Qo'limdan nima ham kelardi?</div>
+			<div class="doubt-item">Biror kasbim yo'q.</div>
+			<div class="doubt-item">Tajribam va bilim yo'q.</div>
+			<div class="doubt-item">Uyda bolalar bilanman.</div>
+			<div class="doubt-item">Uydan tashqariga chiqa olmayman.</div>
+		</div>
+
+		<div class="reassure">
+			Agar siz ham shunday o'ylayotgan bo'lsangiz —<br>
+			siz yolg'iz emassiz.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q2b — "Nega odam menga yozadi?"
+══════════════════════════════════════ -->
+<section class="block fade-in" id="why-buy">
+	<div class="col">
+		<div class="block-label">Eng oddiy savol</div>
+		<h2>Sizdan ham hech shunday so'rashganmi?</h2>
+
+		<div class="ask-list">
+			<div class="ask-item">"Shu kremni ishlatganmisiz?"</div>
+			<div class="ask-item">"Qaysi biri yaxshiroq ekan?"</div>
+			<div class="ask-item">"Ishlatadigan atiringizni qayerdan olgansiz?"</div>
+		</div>
+
+		<p>Odamlar ko'pincha reklamadagi notanish odamdan emas, savdogorlardan emas, <strong>tanishidan</strong> tavsiya olishni afzal ko'radi.</p>
+
+		<div class="reassure" style="margin-top: 22px;">
+			Siz tavsiya qilayotgan mahsulotlarni Faberlic orqali buyurtma qilish mumkin bo'ladi.<br><br>
+			Shunchaki tavsiya qilishni — hamma qila oladi. <br>
+			Shu jumladan siz ham.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q3 — "Xo'sh, bu qanday ishlaydi?"
+══════════════════════════════════════ -->
+<section class="block fade-in" id="story-section">
+	<div class="col">
+		<div class="block-label">Amalda qanday ko'rinadi</div>
+		<h2>Ko'pchilik aynan shunday boshlaydi.</h2>
+
+		<div class="story-lines">
+			<div class="story-line">
+				<div class="story-day">1-kun</div>
+				<div class="text">Ro'yxatdan o'tasiz. Hech qanday hujjat yoki to'lov kerak emas.</div>
+			</div>
+			<div class="story-line">
+				<div class="story-day">2-kun</div>
+				<div class="text">Ko'pchilik Telegram ishlatadi. Shuning uchun <strong>kichik Telegram gruppa ochasiz</strong> — oila, qarindoshlar, qo'shnilar, tanishlarni qo'shasiz.</div>
+			</div>
+			<div class="story-line">
+				<div class="story-day">3-kun</div>
+				<div class="text">Biz sizga <strong>nima qilishni ko'rsatamiz.</strong> Taxmin emas — aniq ketma-ketlik.</div>
+			</div>
+			<div class="story-line">
+				<div class="story-day">Bir necha kundan keyin...</div>
+				<div class="text">Gruppangizdagi tanishingiz yozadi:<br>
+					<span style="font-style:italic; opacity:0.7;">"Narxi qancha?"</span>
+				</div>
+			</div>
+			<div class="story-line">
+				<div class="dot"></div>
+				<div class="text">Siz buyurtma berasiz. Mahsulot yetib keladi.</div>
+			</div>
+			<div class="story-line last">
+				<div class="dot" style="background: var(--ember-bright);"></div>
+				<div class="text" style="color: #fff; font-weight: 500;">
+					Mana shu sizning <strong style="color: var(--ember-bright);">birinchi savdongiz</strong> bo'ladi.
+				</div>
+			</div>
+		</div>
+
+		<div class="story-note">Ko'pchilik aynan shunday boshlaydi.</div>
+
+		<div class="growth-note">
+			Aslida bu Faberlicdagi imkoniyatlarning faqat boshlanishi.<br>
+			Lekin avval eng oddiy usulni o'zlashtirib olamiz.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q4 — "Bu qaysi kompaniya orqali ishlaydi?"
+══════════════════════════════════════ -->
+<section class="block fade-in">
+	<div class="col">
+		<div class="block-label">Vosita</div>
+		<h2>Bu ishni amalga oshirish uchun biz Faberlic kompaniyasidan foydalanamiz.</h2>
+
+		<div class="faberlic-card">
+			<div class="fc-name">Faberlic</div>
+			<div class="fc-note">18 yildan beri O'zbekistonda ishlayotgan xalqaro kompaniya.</div>
+			<div class="not-list">
+				<div class="not-item">
+					<div class="not-icon">✓</div>
+					Siz mahsulot ishlab chiqarmaysiz.
+				</div>
+				<div class="not-item">
+					<div class="not-icon">✓</div>
+					Siz ombor ochmaysiz.
+				</div>
+				<div class="not-item">
+					<div class="not-icon">✓</div>
+					Siz yetkazib bermaysiz.
+				</div>
+			</div>
+		</div>
+
+		<p style="margin-top: 18px; font-size: 14px; color: var(--ink-soft); font-style: italic;">
+			Sizning vazifangiz mahsulot ishlab chiqarish yoki yetkazib berish emas.
+		</p>
+	</div>
+</section>
+<!-- ══════════════════════════════════════
+     Q5 — "Unda nega hamma ham natija qilmaydi?"
+══════════════════════════════════════ -->
+<section class="block fade-in" id="why-quit">
+	<div class="col">
+		<div class="block-label">Eng muhim savol</div>
+		<h2>Ko'pchilik Faberlicga kiradi. Lekin bir necha haftadan keyin tashlab qo'yadi.</h2>
+
+		<p>Mahsulot yomonligi uchun emas.</p>
+
+		<div class="quit-list">
+			<div class="quit-item">
+				<span class="q-bullet">—</span>
+				<span>nimadan boshlashni bilmaydi.</span>
+			</div>
+			<div class="quit-item">
+				<span class="q-bullet">—</span>
+				<span>to'g'ri tavfsiya qilishni bilmaydi.</span>
+			</div>
+			<div class="quit-item">
+				<span class="q-bullet">—</span>
+				<span>kimlarga tavfsiya qilishni bilmaydi.</span>
+			</div>
+			<div class="quit-item">
+				<span class="q-bullet">—</span>
+				<span>yolg'iz qoladi.</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q6 — "Biz nimani boshqacha qildik?"
+══════════════════════════════════════ -->
+<section class="block fade-in">
+	<div class="col">
+		<div class="block-label">Bizning farqimiz</div>
+		<h2>Biz aynan boshlashdagi qiyinchiliklarni kamaytirishga harakat qildik.</h2>
+
+		<p style="font-size:14px; color:var(--ink-soft); margin-bottom: 24px;">
+			Biz ham shu muammolarni ko'p marta ko'rdik. Shuning uchun boshlashdagi chalkashliklarni kamaytiradigan tizim yaratishga harakat qildik.
+		</p>
+
+		<div class="diff-list">
+			<div class="diff-item">
+				<div class="diff-check">✓</div>
+				<div class="diff-text">
+					<strong>Ertaga nimadan boshlashni bilasiz.</strong>
+					Birinchi kuni nima qilish kerakligini bilasiz — taxmin emas, aniq ketma-ketlik.
+				</div>
+			</div>
+			<div class="diff-item">
+				<div class="diff-check">✓</div>
+				<div class="diff-text">
+					<strong>Har kuni qaysi mahsulotni tavfsiya qilishni o'ylamaysiz.</strong>
+					Tayyor materiallar bor. Siz faqat joylaysiz.
+				</div>
+			</div>
+			<div class="diff-item">
+				<div class="diff-check">✓</div>
+				<div class="diff-text">
+					<strong>Ba'zi takrorlanadigan ishlarni tizim bajaradi.</strong>
+					Vaqtingiz tejaydi.
+				</div>
+			</div>
+			<div class="diff-item">
+				<div class="diff-check">✓</div>
+				<div class="diff-text">
+					<strong>Savol bo'lsa — yolg'iz qolmaysiz.</strong>
+					Umida mahsulot va mijozlar bo'yicha doim yoningizda.
+				</div>
+			</div>
+		</div>
+
+		<div class="core-promise">
+			Biz sizga pul ishlab bermaymiz.<br>
+			Biz ishni boshlashni <em>tushunarli va osonroq</em> qilamiz.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Philosophy — why choose us
+══════════════════════════════════════ -->
+<section class="block fade-in" id="philosophy">
+	<div class="col">
+		<div class="block-label">Bizning maqsadimiz</div>
+		<h2>Sizni iloji boricha tezroq birinchi savdongizgacha olib borish.</h2>
+
+		<div class="philosophy-lines">
+			<div class="philosophy-line">
+				<div class="ph-if">Texnologiya yordami kerak bo'lsa —</div>
+				<div class="ph-then">texnologiya yaratib beramiz.</div>
+			</div>
+			<div class="philosophy-line">
+				<div class="ph-if">Tayyor narsa kerak bo'lsa —</div>
+				<div class="ph-then">tayyorini beramiz.</div>
+			</div>
+			<div class="philosophy-line">
+				<div class="ph-if">O'rgatish kerak bo'lsa —</div>
+				<div class="ph-then">hammasini oddiy qilib qadamma-qadam o'rgatamiz.</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Emotional bridge — realistic future
+══════════════════════════════════════ -->
+<section class="block fade-in" id="future-section">
+	<div class="col">
+		<div class="block-label">Bir necha oydan keyin</div>
+		<h2>Tasavvur qiling.</h2>
+
+		<div class="future-lines">
+			<div class="future-line">Bir necha oy o'tdi.</div>
+			<div class="future-line future-highlight">Telefoningizga xabar keldi.</div>
+			<div class="future-line future-quote">"Opa, yana o'sha kremdan bormi?"</div>
+			<div class="future-line">Shu paytda tushunasiz...</div>
+			<div class="future-line future-end">
+				Sizning kichik mijozlaringiz<br>asta-sekin shakllanmoqda.
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Not for everyone — expectation setting
+══════════════════════════════════════ -->
+<section class="block fade-in" id="not-for-all">
+	<div class="col">
+		<div class="block-label">Ochiq aytaylik</div>
+		<h2>Bu ish sizga mos kelmasligi ham mumkin.</h2>
+
+		<div class="nfa-list">
+			<div class="nfa-item">
+				<span class="nfa-x">✕</span>
+				<span>Bir haftada katta daromad kutayotgan bo'lsangiz.</span>
+			</div>
+			<div class="nfa-item">
+				<span class="nfa-x">✕</span>
+				<span>Hech qanday harakat qilmasdan natija kutayotgan bo'lsangiz.</span>
+			</div>
+		</div>
+
+		<div class="nfa-but">
+			Lekin oz-ozdan o'rganib,
+			asta-sekin qo'shimcha daromad qilishni xohlasangiz —
+			bemalol yozing.
+		</div>
+	</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     Q7 — "Endi nima qilaman?"
+══════════════════════════════════════ -->
+<section class="block fade-in" id="cta-section">
+	<div class="col">
+		<div class="block-label">Keyingi qadam</div>
+		<h2>Agar hali ham "Bu menga mosmi?" deb o'ylayotgan bo'lsangiz —</h2>
+
+		<p>
+			menga yozing.<br><br>
+			Men sizni ro'yxatdan o'tishga majburlamayman.<br>
+			Avval savollaringizga javob beraman.<br>
+			Keyin birgalikda bu imkoniyat sizga mos yoki mos emasligini aniqlaymiz.
+		</p>
+
+		<p style="margin-top:14px; color:rgba(255,255,255,0.5); font-size:14px; font-style:italic;">
+			Hatto oxirida boshlamaslikka qaror qilsangiz ham mayli. Avval tushunib olaylik.
+		</p>
+
+		<div class="what-happens">
+			<div class="wh-title">Yozganingizdan keyin nima bo'ladi?</div>
+			<div class="wh-step">
+				<div class="wh-num">1</div>
+				<div class="wh-text">Siz yozasiz.</div>
+			</div>
+			<div class="wh-arrow">↓</div>
+			<div class="wh-step">
+				<div class="wh-num">2</div>
+				<div class="wh-text">Umida bir nechta savol beradi.</div>
+			</div>
+			<div class="wh-arrow">↓</div>
+			<div class="wh-step">
+				<div class="wh-num">3</div>
+				<div class="wh-text">Bu imkoniyat sizga mos yoki mos emasligini birga aniqlaysiz.</div>
+			</div>
+			<div class="wh-arrow">↓</div>
+			<div class="wh-step">
+				<div class="wh-num">4</div>
+				<div class="wh-text">Mos bo'lsa — boshlaysiz. Mos bo'lmasa — hech qanday majburiyat yo'q.</div>
+			</div>
+		</div>
+
+		<div class="consultant-row">
+			<img class="consultant-photo" id="consultant-photo" src="" alt="">
+			<div class="consultant-info">
+				<div class="c-name" id="consultant-name"></div>
+				<div class="c-role">Faberlic konsultanti · O'zbekiston</div>
+			</div>
+		</div>
+		<p class="consultant-story" id="consultant-story" style="color:rgba(255,255,255,0.55);font-size:13px;font-style:italic;margin-bottom:4px;"></p>
+
+		<div class="cta-label">Bu sizga mosmi? — Birga aniqlaylik</div>
+
+		<div class="cta-arrow-row">
+			<span class="cta-arrow">→</span>
+			<a class="cta-btn" id="cta-telegram" href="#" target="_blank">
+				<span>💬</span>
+				Umidaga yozish
+			</a>
+			<span class="cta-arrow">←</span>
+		</div>
+
+		<div class="cta-note">Majburiyat yo'q. Shunchaki savol berasiz.</div>
+	</div>
+</section>
+
+<div class="sticky-bar" id="sticky-bar">
+	<a class="sticky-btn" id="sticky-btn" href="#" target="_blank">
+		💬 Umidaga yozish
+	</a>
+</div>
+
+<footer>
+	<div>Faberlic Rasmiy Konsultanti · O'zbekiston</div>
+	<div style="margin-top:6px;">
+		Sayt <a href="https://menhaqimda.uz">menhaqimda.uz</a> tomonidan yaratildi
+	</div>
+</footer>
+<script>
+	let scroll50Tracked = false;
+	let scroll75Tracked=false;
+
+	window.addEventListener("scroll", () => {
+		const scrollPosition = window.scrollY + window.innerHeight;
+		const pageHeight = document.documentElement.scrollHeight;
+		const progress = scrollPosition / pageHeight;
+
+		if (progress >= 0.5) {
+			if(scroll50Tracked == false) {
+				fbq('trackCustom', 'Scrolled50');
+				console.log("Tracked: Scrolled50");
+			}
+			scroll50Tracked = true;
+		}
+
+		if (progress >= 0.75) {
+			if(scroll75Tracked == false) {
+				fbq('trackCustom', 'Scrolled75');
+				console.log("Tracked: Scrolled75");
+			}
+			scroll75Tracked = true;
+		}
+	});
+
+	let redirected = false;
+
+	const telegramMsg = `?text=Assalomu%20alaykum%2C%20sahifangizni%20ko%E2%80%98rdim.%20Qanday%20boshlashni%20tushuntirib%20bera%20olasizmi%3F`;
+	
+	const link = CONSULTANT.telegram + telegramMsg;
+
+
+	document.querySelectorAll(".cta-btn, .sticky-btn").forEach(button => {
+		button.addEventListener("click", (e) => {
+			e.preventDefault();
+			fbq('track', 'Lead');
+			console.log("Tracked: Lead");
+			
+			setTimeout(function() {
+				window.location.href = link;
+			}, 1000); 
+		});
+	});
+</script>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		// Fill consultant
+		document.getElementById('consultant-photo').src = CONSULTANT.photo;
+		document.getElementById('consultant-name').textContent = CONSULTANT.name;
+		document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
+
+		const link = CONSULTANT.telegram + telegramMsg;
+		document.getElementById('cta-telegram').href = link;
+		document.getElementById('sticky-btn').href = link;
+	});
+
+	// Progress bar
+	window.addEventListener('scroll', () => {
+		const s = document.documentElement;
+		const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+		document.getElementById('progress').style.width = pct + '%';
+
+		// Sticky bar — show after 30% scroll
+		const bar = document.getElementById('sticky-bar');
+		if (pct > 30) bar.classList.add('show');
+		else bar.classList.remove('show');
+	});
+
+	// Fade-in on scroll
+	const io = new IntersectionObserver((entries) => {
+		entries.forEach(e => {
+			if (e.isIntersecting) e.target.classList.add('visible');
+		});
+	}, { threshold: 0.08 });
+
+	document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
