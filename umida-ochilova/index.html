@@ -803,13 +803,22 @@
 		}
 
 		.video-wrapper .play-overlay {
+			background:
+				linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.6)),
+				url("thumbnail.png");
+
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			/* background-image: url(thumbnail.png);
+			background-size: cover;
+			background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .6) 100%); */
 			position: absolute;
 			inset: 0;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .6) 100%);
 			cursor: pointer;
 			transition: opacity .3s;
 		}
