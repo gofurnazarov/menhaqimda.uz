@@ -153,11 +153,11 @@
 		}
 
 		/* ── EMPATHY ── */
-		#empathy {
+		#empathy, .empathy {
 			background: var(--warm);
 		}
 
-		#empathy .thought-box {
+		#empathy .thought-box, .empathy .thought-box {
 			background: #fff;
 			border-left: 4px solid var(--terracotta);
 			border-radius: 0 12px 12px 0;
@@ -168,7 +168,7 @@
 			font-size: 15px;
 		}
 
-		#empathy .thought-box strong {
+		#empathy .thought-box strong, .empathy .thought-box strong {
 			color: var(--text);
 			font-style: normal;
 		}
@@ -981,22 +981,23 @@
 		<div class="container">
 			<div class="tag">18+ yildan beri O‘zbekistonda ishlayotgan tizim</div>
 			<h1>Uydan turib <em>haqiqiy</em> daromad — bu mumkin</h1>
-			<p class="sub">Siz hozir "yana onlayn pul ishlash deyishadi, lekin baribir natija chiqmaydi" deb o‘ylayotgan
-				bo‘lsangiz — o'qishda davom eting 👇. Men ham shunday deb o‘ylagan edim.</p>
-			<div class="hero-badge">
+			<p class="sub">Siz hozir <strong>"yana onlayn pul ishlash deyishadi, lekin baribir natija chiqmaydi"</strong> deb o‘ylayotgan bo'lishingiz mumkin. Men ham shunday deb o‘ylagan edim.</p>
+
+			<p class="sub">Men siz uchun qisqa video tayyorladim. Uni ko'rib bu ish qanday ishlashini va oddiy ayollar ham uddalayotganini bilib olasiz 👇</p>
+			<!-- <div class="hero-badge">
 				👩 O‘zim shu yo‘l bilan ishlayapman.
-			</div>
+			</div> -->
 		</div>
 	</section>
 
-	<section id="empathy" class="section fade-in" >
+	<section id="video" class="empathy section fade-in" >
 		<div class="wrap">
 			<div class="tag">Videoni ko'ring</div>
 			<h2 class="section-title">4 daqiqada oddiy ayollar bu ish orqali qanday daromad qilishini bilib olasiz.</h2>
 			<p class="section-sub">Quyidagi videoni oxirigacha ko'rsangiz bu ish orqali 0 dan qanday qilib katta daromadga chiqishni sodda ko'rinishda tushunib olasiz 👇</p>
 
 			<div class="video-wrapper" id="video-wrapper">
-				<video id="main-video" controls playsinline preload="metadata" src="video.mp4"></video>
+				<video id="main-video" controls playsinline preload="metadata" src="https://f003.backblazeb2.com/file/gofurs-public-bucket/presentation.mp4"></video>
 
 				<div class="play-overlay" id="play-overlay" onclick="startVideo()">
 					<div class="play-btn-circle">

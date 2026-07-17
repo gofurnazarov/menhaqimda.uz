@@ -3,15 +3,26 @@
  * Detects Instagram / Facebook in-app browser and moves the visitor
  * into the device's normal browser (Chrome / Safari).
  *
- * The fallback UI is designed to look like a natural part of the page —
- * warm colors, a friendly explanation, no browser jargon, no dark
- * "warning" overlay — since scary/technical-looking popups make a
- * non-tech audience close the tab instead of tapping.
+ * DESIGN: instead of a modal popup, this shows the #hero section
+ * fully and normally, then gates everything AFTER it behind an
+ * inline "O'qishda davom etish ->" button (matches the page's own
+ * copy: "...o'qishda davom eting"). Nothing below the hero is
+ * rendered until the visitor taps that button, so it still works
+ * as a real gate - it just never looks like a system dialog or a
+ * popup, which matters a lot for a cautious, non-technical audience.
+ *
+ * On Android, Instagram shows its OWN native "You're leaving our
+ * app" confirmation after any intent:// launch - that's Meta's
+ * gate, built into the Instagram app, and no script can suppress
+ * it. This version tells the visitor about that step in advance
+ * (small note under the button) so it reads as an expected next
+ * step rather than a surprise.
  *
  * USAGE: Paste as the FIRST <script> in <head>, before any pixel/
- * analytics/video scripts. If a page-level `CONSULTANT` object with
- * a `name` field already exists (as in the Faberlic template), the
- * overlay will personalize itself automatically.
+ * analytics/video scripts. Requires a <section id="hero"> as used
+ * in the Faberlic template - if no #hero element is found, it
+ * falls back to a plain bottom-sheet card so the script never
+ * breaks other pages.
  */
 (function () {
 	'use strict';
@@ -22,13 +33,13 @@
 	var isInstagram = /Instagram/i.test(ua);
 	var isInApp = isFacebook || isInstagram;
 
-	if (!isInApp) return;
-	if (sessionStorage.getItem('iar_redirected') === '1') return;
+	  if (!isInApp) return;
+	  if (sessionStorage.getItem('iar_redirected') === '1') return;
 
 	var isIOS = /iPhone|iPad|iPod/i.test(ua);
 	var isAndroid = /Android/i.test(ua);
 
-	var currentUrl = window.location.href;
+	var currentUrl = window.location.href + '#video';
 	var urlNoProtocol = currentUrl.replace(/^https?:\/\//, '');
 
 	function markRedirected() {
@@ -44,7 +55,7 @@
 		} else if (isAndroid) {
 			window.location.href =
 				'intent://' + urlNoProtocol +
-				'#Intent;scheme=https;package=com.android.chrome;' +
+				'#Intent;scheme=https;' +
 				'S.browser_fallback_url=' + encodeURIComponent(currentUrl) +
 				';end';
 		} else {
@@ -52,85 +63,147 @@
 		}
 	}
 
-	function tryAutoRedirect() {
-		if (isIOS || isAndroid) doRedirect();
+	// Robust "wait until document.body exists" helper.
+	function whenBodyReady(callback) {
+		if (document.body) {
+			callback();
+			return;
+		}
+		document.addEventListener('DOMContentLoaded', function () {
+			if (document.body) {
+				callback();
+			} else {
+				var attempts = 0;
+				var poll = setInterval(function () {
+					attempts++;
+					if (document.body) {
+						clearInterval(poll);
+						callback();
+					} else if (attempts > 40) {
+						clearInterval(poll);
+					}
+				}, 50);
+			}
+		});
 	}
 
-	function showFallbackCard() {
-		// Personalize with the consultant's name if the page defines one
-		var name = (typeof window.CONSULTANT !== 'undefined' && window.CONSULTANT.name) ?
-			window.CONSULTANT.name.split(' ')[0] :
-			null;
+	var androidHintHTML = isAndroid ?
+		'<div style="font-size:12.5px;color:#8b6f5c;margin-top:12px;' +
+		'background:#f5e6d0;border-radius:12px;padding:9px 14px;line-height:1.5;' +
+		'max-width:340px;margin-left:auto;margin-right:auto;">' +
+		'\u2139\uFE0F Bosgandan keyin yana bitta oyna chiqishi mumkin \u2014 ' +
+		'u yerda <strong>"Continue"</strong> tugmasini bosing.' +
+		'</div>' :
+		'';
 
-		var subline = name ?
-			name + ' bilan bog\u2018lanish uchun sahifani to\u2018liq oching' :
-			'Sahifani to\u2018liq ko\u2018rish uchun bosing';
+	// ── Preferred path: inline gate right after #hero ──
+	function buildInlineGate() {
+		//  var hero = document.getElementById('hero');
+		var hero = document.querySelector('#hero');
+		var heroContainer = document.querySelector('#hero .container');
+		if (!hero) return false;
 
-		var style = document.createElement('style');
-		style.textContent =
-			'@keyframes iarFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}' +
-			'@keyframes iarPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}' +
-			'#iar-card *{box-sizing:border-box;}';
-		document.head.appendChild(style);
+		// Hide everything after the hero section until the button is tapped
+		var hiddenNodes = [];
+		var node = hero.nextElementSibling;
+		while (node) {
+			hiddenNodes.push({
+				el: node,
+				display: node.style.display
+			});
+			node.style.display = 'none';
+			node = node.nextElementSibling;
+		}
+
+		hero.style.cssText += 'height: 100vh;';
+
+		var gate = document.createElement('div');
+		gate.id = 'iar-gate';
+		gate.style.cssText =
+			'max-width:520px;margin:0 auto;padding:35px 20px 35px;' +
+			'font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;' +
+			'animation:iarFadeIn .4s ease both;';
+
+		gate.innerHTML =
+			'<button id="iar-btn" style="' +
+			'display:inline-flex;align-items:center;gap:8px;' +
+			'background:#c0623a;color:#fff;border:none;' +
+			'padding:16px 30px;border-radius:50px;font-size:16px;font-weight:700;' +
+			'font-family:Nunito,sans-serif;cursor:pointer;' +
+			'box-shadow:0 6px 20px rgba(192,98,58,.32);' +
+			'animation:iarPulse 2.2s ease-in-out infinite;">' +
+			'🎥 Videoni ko\u2018rish → ' +
+			'</button>' +
+			androidHintHTML;
+
+		heroContainer.insertAdjacentElement('afterend', gate);
+
+		document.getElementById('iar-btn').addEventListener('click', function () {
+			// Reveal the rest of the page regardless of what happens next -
+			// never leave the visitor stuck with no way forward.
+			hiddenNodes.forEach(function (item) {
+				item.el.style.display = item.display || '';
+			});
+			gate.style.display = 'none';
+			doRedirect();
+		});
+
+		return true;
+	}
+
+	// ── Fallback path: no #hero found on this page, use a small
+	//    bottom-sheet card instead so the script still works elsewhere ──
+	function buildFallbackCard() {
+		injectKeyframes();
 
 		var overlay = document.createElement('div');
 		overlay.id = 'iar-overlay';
 		overlay.style.cssText =
-			'position:fixed;inset:0;z-index:999999;' +
-			'background:rgba(45,31,23,0.55);' + /* warm dark tint, page still visible behind */
+			'position:fixed;inset:0;z-index:999999;background:rgba(45,31,23,0.5);' +
 			'display:flex;align-items:flex-end;justify-content:center;' +
-			'padding:0;font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;';
+			'font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;';
 
 		overlay.innerHTML =
-			'<div id="iar-card" style="' +
-			'width:100%;max-width:480px;background:#fdf6ee;' +
-			'border-radius:24px 24px 0 0;padding:26px 24px 30px;' +
-			'box-shadow:0 -8px 40px rgba(139,58,30,0.25);' +
-			'animation:iarFadeIn .35s ease both;' +
-			'text-align:center;">' +
-
-			'<div style="width:56px;height:56px;border-radius:50%;background:#f5e6d0;' +
-			'display:flex;align-items:center;justify-content:center;margin:0 auto 14px;' +
-			'animation:iarPulse 1.8s ease-in-out infinite;">' +
-			'<span style="font-size:26px;">\u{1F449}</span>' +
+			'<div style="width:100%;max-width:480px;background:#fdf6ee;' +
+			'border-radius:24px 24px 0 0;padding:24px 22px 28px;' +
+			'box-shadow:0 -8px 40px rgba(139,58,30,.25);' +
+			'animation:iarFadeIn .35s ease both;text-align:center;">' +
+			'<div style="font-size:15px;color:#2d1f17;font-weight:700;margin-bottom:16px;">' +
+			'Sahifani to\u2018liq ko\u2018rish uchun bosing' +
 			'</div>' +
-
-			'<div style="font-family:\'Playfair Display\',serif;font-size:19px;' +
-			'color:#2d1f17;font-weight:700;margin-bottom:8px;line-height:1.35;">' +
-			subline +
-			'</div>' +
-
-			'<div style="font-size:14px;color:#7a6255;margin-bottom:22px;line-height:1.6;">' +
-			'"Davom etish" ni bosing \u2014 sahifa xuddi shu ko\u2018rinishda davom etadi.' +
-			'</div>' +
-
-			'<button id="iar-btn" style="' +
-			'width:100%;background:#c0623a;color:#fff;border:none;' +
-			'padding:16px 24px;border-radius:50px;font-size:16px;font-weight:700;' +
-			'font-family:Nunito,sans-serif;cursor:pointer;' +
-			'box-shadow:0 6px 20px rgba(192,98,58,0.35);">' +
+			'<button id="iar-btn" style="width:100%;background:#c0623a;color:#fff;' +
+			'border:none;padding:15px 24px;border-radius:50px;font-size:15px;' +
+			'font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;">' +
 			'Davom etish \u2192' +
 			'</button>' +
-
+			androidHintHTML +
 			'</div>';
 
 		document.body.appendChild(overlay);
-
 		document.getElementById('iar-btn').addEventListener('click', function () {
-			overlay.style.transition = 'opacity .2s ease';
-			overlay.style.opacity = '0';
+			overlay.remove();
 			doRedirect();
 		});
 	}
 
-	// 1) Try the silent redirect first
-	tryAutoRedirect();
+	function showGate() {
+		var built = buildInlineGate();
+		if (!built) buildFallbackCard();
+	}
 
-	// 2) If still here after a beat, the silent method was blocked by the
-	//    OS/browser — show the warm fallback card instead of doing nothing
-	setTimeout(function () {
-		if (document.visibilityState === 'visible') {
-			showFallbackCard();
-		}
-	}, 800);
+	if (isIOS) {
+		// iOS has no native second gate, so try the silent method first.
+		// Most visitors never see any UI at all.
+		doRedirect();
+		setTimeout(function () {
+			if (document.visibilityState === 'visible') {
+				whenBodyReady(showGate);
+			}
+		}, 800);
+	} else if (isAndroid) {
+		// Android always shows Instagram's own gate after the intent
+		// fires, so there's no benefit to a silent attempt - lead with
+		// the inline gate immediately.
+		whenBodyReady(showGate);
+	}
 })();
