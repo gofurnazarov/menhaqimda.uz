@@ -23,7 +23,7 @@
 	// ── SCOPE CHECK — remove these two lines to show this to everyone ──
 	var ua = navigator.userAgent || navigator.vendor || window.opera || '';
 	var isInApp = /FBAN|FBAV/i.test(ua) || /Instagram/i.test(ua);
-	//   if (!isInApp) return;
+	  if (!isInApp) return;
 	// ─────────────────────────────────────────────────────────────────
 
 	function whenBodyReady(callback) {
