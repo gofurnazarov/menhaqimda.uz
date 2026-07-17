@@ -1,69 +1,31 @@
 /**
- * inapp-redirect.js
- * Detects Instagram / Facebook in-app browser and moves the visitor
- * into the device's normal browser (Chrome / Safari).
+ * content-gate.js
+ * No browser redirect anymore - this is now a pure engagement gate.
  *
- * DESIGN: instead of a modal popup, this shows the #hero section
- * fully and normally, then gates everything AFTER it behind an
- * inline "O'qishda davom etish ->" button (matches the page's own
- * copy: "...o'qishda davom eting"). Nothing below the hero is
- * rendered until the visitor taps that button, so it still works
- * as a real gate - it just never looks like a system dialog or a
- * popup, which matters a lot for a cautious, non-technical audience.
+ * Shows the #hero section normally, hides everything after it, and
+ * places an "O'qishda davom etish ->" button right under the hero.
+ * Tapping the button reveals the rest of the page and smooth-scrolls
+ * down to #video-section.
  *
- * On Android, Instagram shows its OWN native "You're leaving our
- * app" confirmation after any intent:// launch - that's Meta's
- * gate, built into the Instagram app, and no script can suppress
- * it. This version tells the visitor about that step in advance
- * (small note under the button) so it reads as an expected next
- * step rather than a surprise.
+ * Only activates for visitors coming from the Instagram / Facebook
+ * in-app browser (same audience this was originally built for). If
+ * you want this to run for every visitor regardless of app, delete
+ * the two lines under "SCOPE CHECK" below.
  *
- * USAGE: Paste as the FIRST <script> in <head>, before any pixel/
- * analytics/video scripts. Requires a <section id="hero"> as used
- * in the Faberlic template - if no #hero element is found, it
- * falls back to a plain bottom-sheet card so the script never
- * breaks other pages.
+ * USAGE: Paste as a <script> tag anywhere in <head>, after the
+ * CONSULTANT config block. Requires <section id="hero"> and
+ * <section id="video-section"> to exist on the page, matching the
+ * Faberlic template.
  */
 (function () {
 	'use strict';
 
+	// ── SCOPE CHECK — remove these two lines to show this to everyone ──
 	var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+	var isInApp = /FBAN|FBAV/i.test(ua) || /Instagram/i.test(ua);
+	//   if (!isInApp) return;
+	// ─────────────────────────────────────────────────────────────────
 
-	var isFacebook = /FBAN|FBAV/i.test(ua);
-	var isInstagram = /Instagram/i.test(ua);
-	var isInApp = isFacebook || isInstagram;
-
-	  if (!isInApp) return;
-	  if (sessionStorage.getItem('iar_redirected') === '1') return;
-
-	var isIOS = /iPhone|iPad|iPod/i.test(ua);
-	var isAndroid = /Android/i.test(ua);
-
-	var currentUrl = window.location.href + '#video';
-	var urlNoProtocol = currentUrl.replace(/^https?:\/\//, '');
-
-	function markRedirected() {
-		try {
-			sessionStorage.setItem('iar_redirected', '1');
-		} catch (e) {}
-	}
-
-	function doRedirect() {
-		markRedirected();
-		if (isIOS) {
-			window.location.href = 'x-safari-' + currentUrl;
-		} else if (isAndroid) {
-			window.location.href =
-				'intent://' + urlNoProtocol +
-				'#Intent;scheme=https;' +
-				'S.browser_fallback_url=' + encodeURIComponent(currentUrl) +
-				';end';
-		} else {
-			window.open(currentUrl, '_blank');
-		}
-	}
-
-	// Robust "wait until document.body exists" helper.
 	function whenBodyReady(callback) {
 		if (document.body) {
 			callback();
@@ -87,23 +49,14 @@
 		});
 	}
 
-	var androidHintHTML = isAndroid ?
-		'<div style="font-size:12.5px;color:#8b6f5c;margin-top:12px;' +
-		'background:#f5e6d0;border-radius:12px;padding:9px 14px;line-height:1.5;' +
-		'max-width:340px;margin-left:auto;margin-right:auto;">' +
-		'\u2139\uFE0F Bosgandan keyin yana bitta oyna chiqishi mumkin \u2014 ' +
-		'u yerda <strong>"Continue"</strong> tugmasini bosing.' +
-		'</div>' :
-		'';
 
-	// ── Preferred path: inline gate right after #hero ──
-	function buildInlineGate() {
-		//  var hero = document.getElementById('hero');
-		var hero = document.querySelector('#hero');
+	function buildGate() {
+		var hero = document.getElementById('hero');
 		var heroContainer = document.querySelector('#hero .container');
-		if (!hero) return false;
+		if (!hero) return; // template mismatch - do nothing rather than break the page
 
-		// Hide everything after the hero section until the button is tapped
+		// Hide everything after the hero until the button is tapped
+		hero.style.height = '100vh';
 		var hiddenNodes = [];
 		var node = hero.nextElementSibling;
 		while (node) {
@@ -115,95 +68,41 @@
 			node = node.nextElementSibling;
 		}
 
-		hero.style.cssText += 'height: 100vh;';
-
 		var gate = document.createElement('div');
-		gate.id = 'iar-gate';
+		gate.id = 'cg-gate';
 		gate.style.cssText =
-			'max-width:520px;margin:0 auto;padding:35px 20px 35px;' +
-			'font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;' +
-			'animation:iarFadeIn .4s ease both;';
+			'max-width:520px;margin:0 auto;padding:6px 20px 34px;' +
+			'font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;';
 
 		gate.innerHTML =
-			'<button id="iar-btn" style="' +
+			'<button id="cg-btn" style="' +
 			'display:inline-flex;align-items:center;gap:8px;' +
 			'background:#c0623a;color:#fff;border:none;' +
 			'padding:16px 30px;border-radius:50px;font-size:16px;font-weight:700;' +
 			'font-family:Nunito,sans-serif;cursor:pointer;' +
 			'box-shadow:0 6px 20px rgba(192,98,58,.32);' +
-			'animation:iarPulse 2.2s ease-in-out infinite;">' +
-			'🎥 Videoni ko\u2018rish → ' +
-			'</button>' +
-			androidHintHTML;
+			'animation:cgPulse 2.2s ease-in-out infinite;">' +
+			'🎥 Videoni ko\u2018rish \u2192' +
+			'</button>';
 
 		heroContainer.insertAdjacentElement('afterend', gate);
 
-		document.getElementById('iar-btn').addEventListener('click', function () {
-			// Reveal the rest of the page regardless of what happens next -
-			// never leave the visitor stuck with no way forward.
+		document.getElementById('cg-btn').addEventListener('click', function () {
 			hiddenNodes.forEach(function (item) {
 				item.el.style.display = item.display || '';
 			});
 			gate.style.display = 'none';
-			doRedirect();
-		});
+			hero.style.height = '';
 
-		return true;
-	}
-
-	// ── Fallback path: no #hero found on this page, use a small
-	//    bottom-sheet card instead so the script still works elsewhere ──
-	function buildFallbackCard() {
-		injectKeyframes();
-
-		var overlay = document.createElement('div');
-		overlay.id = 'iar-overlay';
-		overlay.style.cssText =
-			'position:fixed;inset:0;z-index:999999;background:rgba(45,31,23,0.5);' +
-			'display:flex;align-items:flex-end;justify-content:center;' +
-			'font-family:Nunito,-apple-system,Roboto,Arial,sans-serif;';
-
-		overlay.innerHTML =
-			'<div style="width:100%;max-width:480px;background:#fdf6ee;' +
-			'border-radius:24px 24px 0 0;padding:24px 22px 28px;' +
-			'box-shadow:0 -8px 40px rgba(139,58,30,.25);' +
-			'animation:iarFadeIn .35s ease both;text-align:center;">' +
-			'<div style="font-size:15px;color:#2d1f17;font-weight:700;margin-bottom:16px;">' +
-			'Sahifani to\u2018liq ko\u2018rish uchun bosing' +
-			'</div>' +
-			'<button id="iar-btn" style="width:100%;background:#c0623a;color:#fff;' +
-			'border:none;padding:15px 24px;border-radius:50px;font-size:15px;' +
-			'font-weight:700;font-family:Nunito,sans-serif;cursor:pointer;">' +
-			'Davom etish \u2192' +
-			'</button>' +
-			androidHintHTML +
-			'</div>';
-
-		document.body.appendChild(overlay);
-		document.getElementById('iar-btn').addEventListener('click', function () {
-			overlay.remove();
-			doRedirect();
-		});
-	}
-
-	function showGate() {
-		var built = buildInlineGate();
-		if (!built) buildFallbackCard();
-	}
-
-	if (isIOS) {
-		// iOS has no native second gate, so try the silent method first.
-		// Most visitors never see any UI at all.
-		doRedirect();
-		setTimeout(function () {
-			if (document.visibilityState === 'visible') {
-				whenBodyReady(showGate);
+			var video = document.getElementById('video');
+			if (video) {
+				video.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
 			}
-		}, 800);
-	} else if (isAndroid) {
-		// Android always shows Instagram's own gate after the intent
-		// fires, so there's no benefit to a silent attempt - lead with
-		// the inline gate immediately.
-		whenBodyReady(showGate);
+		});
 	}
+
+	whenBodyReady(buildGate);
 })();
