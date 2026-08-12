@@ -17,7 +17,7 @@
 			shortStory: "Men ham boshida bu ish menga to'g'ri kelarmikan deb o'ylaganman. Lekin sinab ko'rdim va asta-sekin o'rganib ketdim. Shuning uchun bu sahifada Faberlic qanday ishlashini imkon qadar sodda tushuntirishga harakat qildim. Agar o'qib chiqib, bu ish sizga mosdek tuyulsa, keyingi qadamni birga boshlaymiz."
 		};
 	</script>
-	<script src="inapp-redirect.js"></script>
+	<!-- <script src="inapp-redirect.js"></script> -->
 	<!-- ============================================================ -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -950,24 +950,66 @@
 			}
 		}
 
+		/* ── INCOME BREAKDOWN ── */
+		.income-box {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 20px 20px 18px;
+			margin-bottom: 20px;
+		}
+
+		.income-box .income-title {
+			font-family: 'Playfair Display', serif;
+			font-size: 17px;
+			color: var(--terra-dark);
+			margin-bottom: 14px;
+			line-height: 1.4;
+		}
+
+		.income-rows {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin-bottom: 12px;
+		}
+
+		.income-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 10px;
+			font-size: 14px;
+			padding: 10px 12px;
+			background: var(--warm);
+			border-radius: 10px;
+		}
+
+		.income-row .income-label {
+			color: var(--muted);
+		}
+
+		.income-row .income-value {
+			font-weight: 700;
+			color: var(--text);
+			white-space: nowrap;
+		}
+
+		.income-row.income-total {
+			background: var(--green-light);
+		}
+
+		.income-row.income-total .income-value {
+			color: var(--green);
+			font-size: 15px;
+		}
+
+		.income-note {
+			font-size: 12.5px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
 	</style>
-	<!-- Meta Pixel Code -->
-	<script>
-	!function(f,b,e,v,n,t,s)
-	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-	n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];
-	s.parentNode.insertBefore(t,s)}(window, document,'script',
-	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '900979625779905');
-	fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=900979625779905&ev=PageView&noscript=1"
-	/></noscript>
-	<!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -993,7 +1035,7 @@
 	<section id="video" class="empathy section fade-in" >
 		<div class="wrap">
 			<div class="tag">Videoni ko'ring</div>
-			<h2 class="section-title">4 daqiqada oddiy ayollar bu ish orqali qanday daromad qilishini bilib olasiz.</h2>
+			<h2 class="section-title">Faberlic’da ishni 0 dan qanday boshlash mumkin?</h2>
 			<p class="section-sub">Quyidagi videoni oxirigacha ko'rsangiz bu ish orqali 0 dan qanday qilib katta daromadga chiqishni sodda ko'rinishda tushunib olasiz 👇</p>
 
 			<div class="video-wrapper" id="video-wrapper">
@@ -1006,6 +1048,29 @@
 					</div>
 					<span class="play-label">Videoni ko'ring — 4:58</span>
 				</div>
+			</div>
+
+			<div class="income-box">
+				<div class="income-title">85 mln so‘m daromad qanday hisoblanadi?</div>
+				<div class="income-rows">
+					<div class="income-row">
+						<span class="income-label">Direktorlik darajasida o‘rtacha</span>
+						<span class="income-value">4 mln so‘m × 18 katalog</span>
+					</div>
+					<div class="income-row">
+						<span class="income-label">Yillik asosiy daromad</span>
+						<span class="income-value">= 72 mln so‘m</span>
+					</div>
+					<div class="income-row">
+						<span class="income-label">+ Direktorlik bonusi</span>
+						<span class="income-value">13 mln so‘m</span>
+					</div>
+					<div class="income-row income-total">
+						<span class="income-label">Jami / yiliga</span>
+						<span class="income-value">72 mln + 13 mln = 85 mln so‘m</span>
+					</div>
+				</div>
+				<p class="income-note">Bu o‘rtacha hisob-kitob bo‘lib, haqiqiy daromad natijaga, sotuv hajmiga va boshqa shartlarga qarab farq qilishi mumkin.</p>
 			</div>
 		</div>
 	</section>
@@ -1347,13 +1412,13 @@
 			</div>
 
 			<p class="cta-final-text">
-				Agar yuqoridagilarga rozi bo'lsangiz, bepul ro'yxatdan o'tish uchun menga Telegram orqali yozing.
+				Agar yuqoridagilarga rozi bo‘lsangiz va bu ish bilan yanada yaqindan tanishmoqchi bo‘lsangiz, menga Telegram orqali yozing.
 			</p>
 
 			<div class="cta-arrow-row">
 				<span class="cta-arrow">→</span>
 				<a class="btn btn-primary" id="cta-telegram" href="#" target="_blank">
-					Ha, Telegramda yozaman
+					Ha, batafsil bilmoqchiman
 				</a>
 				<span class="cta-arrow">←</span>
 			</div>
@@ -1370,35 +1435,6 @@
 	<script>
 		const vid = document.getElementById('main-video');
 
-		let trackedStart = false;
-		let tracked50 = false;
-		let tracked95 = false;
-
-		vid.addEventListener('play', () => {
-			if (!trackedStart) {
-				trackedStart = true;
-				fbq('trackCustom', 'VideoStarted');
-				console.log('Tracked: VideoStarted');
-			}
-		});
-
-		vid.addEventListener('timeupdate', () => {
-			if (!vid.duration) return;
-
-			const progress = vid.currentTime / vid.duration;
-
-			if (progress >= 0.5 && !tracked50) {
-				tracked50 = true;
-				fbq('trackCustom', 'Video50');
-				console.log('Tracked: Video50');
-			}
-
-			if (progress >= 0.95 && !tracked95) {
-				tracked95 = true;
-				fbq('trackCustom', 'Video95');
-				console.log('Tracked: Video95');
-			}
-		});
 
 		function startVideo() {
 			const vid = document.getElementById('main-video');
@@ -1406,63 +1442,6 @@
 			vid.play();
 			overlay.classList.add('hidden');
 		}
-
-		let scroll25Tracked = false;
-		let scroll50Tracked = false;
-		let scroll75Tracked = false;
-		let scroll90Tracked = false;
-
-		window.addEventListener("scroll", () => {
-			const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-			if (pageHeight <= 0) return;
-			const progress = window.scrollY / pageHeight;
-
-			if (progress >= 0.25) {
-				if (scroll25Tracked == false) {
-					fbq('trackCustom', 'Scrolled25');
-					console.log("Tracked: Scrolled25");
-				}
-				scroll25Tracked = true;
-			}
-
-			if (progress >= 0.5) {
-				if (scroll50Tracked == false) {
-					fbq('trackCustom', 'Scrolled50');
-					console.log("Tracked: Scrolled50");
-				}
-				scroll50Tracked = true;
-			}
-
-			if (progress >= 0.75) {
-				if (scroll75Tracked == false) {
-					fbq('trackCustom', 'Scrolled75');
-					console.log("Tracked: Scrolled75");
-				}
-				scroll75Tracked = true;
-			}
-
-			if (progress >= 0.90) {
-				if (scroll90Tracked == false) {
-					fbq('trackCustom', 'Scrolled90');
-					console.log("Tracked: Scrolled90");
-				}
-				scroll90Tracked = true;
-			}
-		});
-
-		const message = `?text=Assalomu%20alaykum.%20Sahifangizni%20o%E2%80%98qib%20chiqdim.%20Ishni%20boshlash%20bo%E2%80%98yicha%20keyingi%20qadam%20qanday%3F`;
-
-		const link = CONSULTANT.telegram + message;
-
-		document.querySelector("#cta-telegram").addEventListener("click", (e) => {
-			e.preventDefault();
-			fbq('track', 'Contact');
-			console.log("Tracked: Contact");
-
-			setTimeout(function () {
-				window.location.href = link;
-			}, 300);
-		});
 	</script>
 	<script>
 		// ── Fill consultant data ──
@@ -1472,7 +1451,7 @@
 			// document.getElementById('consultant-title').textContent = CONSULTANT.city + ' · Faberlic konsultanti';
 			document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
 
-			const message = `?text=Assalomu%20alaykum.%20Sahifangizni%20o%E2%80%98qib%20chiqdim.%20Ishni%20boshlash%20bo%E2%80%98yicha%20keyingi%20qadam%20qanday%3F`;
+			const message = `?text=Assalomu alaykum! Sahifangizni o‘qib chiqdim. Faberlic’da ishlashga qiziqib qoldim. Bu ishni yaqindan tushuntirib bera olasizmi?`;
 			['cta-telegram'].forEach(id => {
 				document.getElementById(id).href = CONSULTANT.telegram + message;
 			});
