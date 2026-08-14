@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<title>Telegram guruh orqali qo‘shimcha daromad</title>
+	<meta name="description"
+		content="Telegram guruh ochib, botni ulab, oyiga 200 000 so‘m yoki undan ko‘proq qo‘shimcha daromad qilish mumkin. Qanday ishlashini bitta misolda ko‘ring.">
+
+	<!-- ===================== META PIXEL (placeholder) ===================== -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		try {
+			fbq('init', 'YOUR_META_PIXEL_ID');
+			fbq('track', 'PageView');
+			fbq('track', 'ViewContent');
+		} catch (e) { /* pixel not configured yet */ }
+	</script>
+
+	<style>
+		:root {
+			--bg: #FAF6EF;
+			--bg-alt: #F2EADC;
+			--paper: #FFFFFF;
+			--text: #241E19;
+			--text-muted: #6E6259;
+			--accent: #A23A28;
+			--accent-dark: #7C2A1C;
+			--accent-tint: #F3DAD2;
+			--border: #E6D9C6;
+			--shadow: 0 2px 14px rgba(36, 30, 25, 0.06);
+			--radius: 18px;
+			--radius-sm: 12px;
+			--maxw: 460px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--text);
+			font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+			overflow-x: hidden;
+		}
+
+		h1,
+		h2,
+		h3,
+		.display {
+			font-family: 'Fraunces', Georgia, serif;
+			font-weight: 600;
+			letter-spacing: -0.01em;
+			color: var(--text);
+			margin: 0;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		.wrap {
+			max-width: var(--maxw);
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		section {
+			padding: 44px 0;
+		}
+
+		.alt {
+			background: var(--bg-alt);
+		}
+
+		.paper-section {
+			background: var(--paper);
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 12.5px;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--accent);
+			margin-bottom: 10px;
+		}
+
+		.eyebrow::before {
+			content: "";
+			width: 14px;
+			height: 1px;
+			background: var(--accent);
+			display: inline-block;
+		}
+
+		h2.section-title {
+			font-size: 24px;
+			line-height: 1.28;
+			margin-bottom: 14px;
+		}
+
+		p.lede {
+			font-size: 15.5px;
+			color: var(--text-muted);
+			margin: 0 0 4px 0;
+		}
+
+		/* ---------- Buttons ---------- */
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			width: 100%;
+			padding: 16px 22px;
+			border-radius: 100px;
+			font-family: 'Manrope', sans-serif;
+			font-weight: 700;
+			font-size: 16.5px;
+			text-decoration: none;
+			border: none;
+			cursor: pointer;
+			transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+		}
+
+		.btn-primary {
+			background: var(--accent);
+			color: #FFF8F3;
+			box-shadow: 0 8px 20px rgba(162, 58, 40, 0.28);
+		}
+
+		.btn-primary:active {
+			transform: scale(0.98);
+		}
+
+		.btn-primary:hover {
+			background: var(--accent-dark);
+		}
+
+		.reassure {
+			text-align: center;
+			font-size: 13.5px;
+			color: var(--text-muted);
+			margin-top: 12px;
+		}
+
+		.reassure svg {
+			vertical-align: -2px;
+			margin-right: 4px;
+		}
+
+		/* ---------- HERO ---------- */
+		.hero {
+			padding-top: 36px;
+			padding-bottom: 30px;
+		}
+
+		.hero-tag {
+			display: inline-block;
+			background: var(--accent-tint);
+			color: var(--accent-dark);
+			font-size: 12.5px;
+			font-weight: 700;
+			padding: 6px 12px;
+			border-radius: 100px;
+			margin-bottom: 16px;
+		}
+
+		.hero h1 {
+			font-size: 29px;
+			line-height: 1.22;
+			margin-bottom: 16px;
+		}
+
+		.hero h1 em {
+			font-style: normal;
+			color: var(--accent);
+		}
+
+		.hero-scroll-cue {
+			font-size: 14.5px;
+			color: var(--text-muted);
+			margin: 0;
+		}
+
+		/* ---------- Story beats (mechanism, told as one narrative) ---------- */
+		.story-setup {
+			background: var(--paper);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 16px 18px;
+			margin: 18px 0 22px 0;
+			font-size: 14.5px;
+			color: var(--text-muted);
+			box-shadow: var(--shadow);
+		}
+
+		.story-setup strong {
+			color: var(--text);
+			font-family: 'Fraunces', serif;
+			font-weight: 600;
+		}
+
+		.steps {
+			position: relative;
+			margin-top: 6px;
+		}
+
+		.steps::before {
+			content: "";
+			position: absolute;
+			left: 23px;
+			top: 8px;
+			bottom: 8px;
+			width: 2px;
+			background-image: linear-gradient(var(--border) 60%, rgba(0, 0, 0, 0) 0%);
+			background-position: left;
+			background-size: 2px 10px;
+			background-repeat: repeat-y;
+		}
+
+		.step {
+			position: relative;
+			display: flex;
+			gap: 16px;
+			padding: 13px 0;
+		}
+
+		.step-num {
+			flex: 0 0 auto;
+			width: 46px;
+			height: 46px;
+			border-radius: 50%;
+			background: var(--paper);
+			border: 2px solid var(--accent);
+			color: var(--accent);
+			font-family: 'Fraunces', serif;
+			font-weight: 700;
+			font-size: 18px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1;
+		}
+
+		.step-body {
+			padding-top: 6px;
+		}
+
+		.step-body p {
+			font-size: 15px;
+			color: var(--text);
+			margin: 0;
+		}
+
+		.step-body .auto-tag {
+			display: inline-block;
+			margin-top: 6px;
+			font-size: 11.5px;
+			font-weight: 700;
+			color: var(--accent-dark);
+			background: var(--accent-tint);
+			padding: 3px 8px;
+			border-radius: 100px;
+		}
+
+		/* ---------- Receipt / ledger card ---------- */
+		.receipt {
+			background: var(--paper);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 24px 22px;
+			box-shadow: var(--shadow);
+			font-family: 'Fraunces', serif;
+			position: relative;
+			margin-top: 22px;
+		}
+
+		.receipt::before,
+		.receipt::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 10px;
+			background-image: radial-gradient(circle at 8px 5px, var(--bg) 5px, transparent 5.5px);
+			background-size: 16px 10px;
+			background-repeat: repeat-x;
+		}
+
+		.receipt::before {
+			top: -5px;
+		}
+
+		.receipt::after {
+			bottom: -5px;
+			transform: rotate(180deg);
+		}
+
+		.receipt-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			padding: 9px 0;
+			font-size: 15px;
+		}
+
+		.receipt-row.divider {
+			border-top: 1px dashed var(--border);
+		}
+
+		.receipt-row .label {
+			font-family: 'Manrope', sans-serif;
+			font-size: 13.5px;
+			color: var(--text-muted);
+		}
+
+		.receipt-row .val {
+			font-weight: 600;
+		}
+
+		.receipt-row.total .val {
+			color: var(--accent);
+			font-size: 20px;
+		}
+
+		.receipt-row.total .label {
+			font-family: 'Fraunces', serif;
+			font-size: 15px;
+			color: var(--text);
+			font-weight: 600;
+		}
+
+		.receipt-note {
+			margin-top: 14px;
+			padding-top: 14px;
+			border-top: 1px dashed var(--border);
+			font-family: 'Manrope', sans-serif;
+			font-size: 13.5px;
+			color: var(--text-muted);
+		}
+
+		.receipt-caption {
+			font-family: 'Manrope', sans-serif;
+			font-size: 12px;
+			color: var(--text-muted);
+			text-align: center;
+			margin-top: 10px;
+		}
+
+		.mid-cta {
+			text-align: center;
+			margin-top: 26px;
+		}
+
+		.mid-cta-q {
+			font-family: 'Fraunces', serif;
+			font-size: 17px;
+			font-weight: 600;
+			margin: 0 0 14px 0;
+			color: var(--text);
+		}
+
+		/* ---------- Reveal card (soft brand intro) ---------- */
+		.reveal-card {
+			background: var(--paper);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.reveal-card p {
+			margin: 0;
+			font-size: 15px;
+		}
+
+		.reveal-card p+p {
+			margin-top: 12px;
+			color: var(--text-muted);
+			font-size: 14.5px;
+		}
+
+		.info-card-list {
+			margin-top: 18px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.info-card {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+			background: var(--bg-alt);
+			border: 1px solid var(--border);
+			border-radius: var(--radius-sm);
+			padding: 14px 16px;
+		}
+
+		.info-icon {
+			flex: 0 0 auto;
+			font-size: 20px;
+			line-height: 1.4;
+		}
+
+		.info-card p {
+			margin: 0;
+			font-size: 14px;
+			color: var(--text-muted);
+			line-height: 1.55;
+		}
+
+		.audience-list {
+			list-style: none;
+			margin: 16px 0 0 0;
+			padding: 0;
+		}
+
+		.audience-list li {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+			padding: 8px 0;
+			font-size: 14px;
+		}
+
+		.audience-list .dot {
+			flex: 0 0 auto;
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: var(--accent);
+			margin-top: 7px;
+		}
+
+		.honest-note {
+			margin-top: 16px;
+			background: var(--bg-alt);
+			border-radius: var(--radius-sm);
+			padding: 13px 15px;
+			font-size: 13.5px;
+			color: var(--text-muted);
+			border-left: 3px solid var(--accent);
+		}
+
+		/* ---------- Start steps ---------- */
+		.start-list {
+			margin-top: 18px;
+		}
+
+		.start-item {
+			display: flex;
+			gap: 12px;
+			align-items: flex-start;
+			padding: 10px 0;
+		}
+
+		.start-item svg {
+			flex: 0 0 auto;
+			margin-top: 2px;
+		}
+
+		.start-item p {
+			margin: 0;
+			font-size: 14.5px;
+			color: var(--text-muted);
+		}
+
+		.start-item strong {
+			color: var(--text);
+			font-weight: 600;
+		}
+
+		/* ---------- Private group section ---------- */
+		.group-card {
+			background: var(--paper);
+			border-radius: 22px;
+			border: 1px solid var(--border);
+			padding: 26px 22px;
+			box-shadow: var(--shadow);
+			text-align: center;
+		}
+
+		.group-avatars {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 16px;
+		}
+
+		.avatar-stack {
+			display: flex;
+		}
+
+		.avatar-stack span {
+			width: 34px;
+			height: 34px;
+			border-radius: 50%;
+			border: 2px solid var(--paper);
+			margin-left: -10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: 'Fraunces', serif;
+			font-weight: 600;
+			font-size: 13px;
+			color: #fff;
+		}
+
+		.avatar-stack span:first-child {
+			margin-left: 0;
+		}
+
+		/* ---------- FAQ ---------- */
+		.faq-item {
+			border-bottom: 1px solid var(--border);
+		}
+
+		.faq-item:first-child {
+			border-top: 1px solid var(--border);
+		}
+
+		.faq-q {
+			width: 100%;
+			text-align: left;
+			background: none;
+			border: none;
+			padding: 17px 4px;
+			font-family: 'Fraunces', serif;
+			font-size: 15.5px;
+			font-weight: 600;
+			color: var(--text);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 12px;
+			cursor: pointer;
+		}
+
+		.faq-q .icon {
+			flex: 0 0 auto;
+			width: 22px;
+			height: 22px;
+			position: relative;
+		}
+
+		.faq-q .icon::before,
+		.faq-q .icon::after {
+			content: "";
+			position: absolute;
+			background: var(--accent);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.faq-q .icon::before {
+			width: 14px;
+			height: 2px;
+		}
+
+		.faq-q .icon::after {
+			width: 2px;
+			height: 14px;
+			transition: transform .2s ease;
+		}
+
+		.faq-item.open .faq-q .icon::after {
+			transform: translate(-50%, -50%) rotate(90deg) scaleX(0);
+		}
+
+		.faq-a {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height .25s ease;
+		}
+
+		.faq-a p {
+			margin: 0;
+			padding: 0 4px 18px 4px;
+			font-size: 14.5px;
+			color: var(--text-muted);
+		}
+
+		/* ---------- Final CTA ---------- */
+		.final-cta {
+			text-align: center;
+		}
+
+		.final-cta h2 {
+			font-size: 25px;
+			margin-bottom: 10px;
+		}
+
+		.final-cta p {
+			color: var(--text-muted);
+			margin-bottom: 24px;
+			font-size: 15.5px;
+		}
+
+		footer {
+			padding: 26px 0 100px 0;
+			text-align: center;
+		}
+
+		footer p {
+			font-size: 12px;
+			color: var(--text-muted);
+			line-height: 1.6;
+		}
+
+		/* ---------- Sticky CTA ---------- */
+		.sticky-cta {
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 50;
+			padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+			background: linear-gradient(180deg, rgba(250, 246, 239, 0) 0%, var(--bg) 22%);
+		}
+
+		.sticky-cta .inner {
+			max-width: var(--maxw);
+			margin: 0 auto;
+		}
+
+		.sticky-cta .btn {
+			box-shadow: 0 10px 24px rgba(162, 58, 40, 0.32);
+		}
+
+		section.hero,
+		section#mexanizm,
+		section#vazifa,
+		section#tizim,
+		section#boshlash,
+		section#faq,
+		footer {
+			padding-bottom: 56px;
+		}
+
+		@media (min-width: 480px) {
+			:root {
+				--maxw: 480px;
+			}
+		}
+	</style>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
+	</style>
+</head>
+
+<body>
+
+	<!-- ===================== HERO ===================== -->
+	<section class="hero">
+		<div class="wrap">
+			<span class="hero-tag">Yangi imkoniyat</span>
+			<h1>Telegram guruh ochib, <em>qanday qilib</em> qo‘shimcha daromad qilinadi?</h1>
+			<p class="hero-scroll-cue">Pastda bitta aniq misolda ko‘rsatamiz ↓</p>
+		</div>
+	</section>
+
+	<!-- ===================== QANDAY ISHLAYDI — bitta misolda ===================== -->
+	<section id="mexanizm" class="alt">
+		<div class="wrap">
+			<span class="eyebrow">Qanday ishlaydi</span>
+			<h2 class="section-title">Bitta misolda tushuntiramiz</h2>
+
+			<div class="story-setup">
+				<strong>Masalan:</strong> Malika opa Telegram’da o‘z guruhini ochadi va u yerga yaqinlari, tanishlari,
+				qarindoshlarini taklif qiladi. Guruhda 40 kishi bo‘ladi. Keyin nima bo‘ladi — pastda:
+			</div>
+
+			<div class="steps">
+				<div class="step">
+					<div class="step-num">1</div>
+					<div class="step-body">
+						<p>Bizning maxsus bot har kuni guruhga 5 ta mahsulot haqida post joylaydi — masalan, yuz uchun krem, rasmi, qo'shimcha ma'lumotlari va
+							narxi bilan.</p>
+						<span class="auto-tag">Bu avtomatik — Malika opa hech narsa qilmaydi</span>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">2</div>
+					<div class="step-body">
+						<p>Guruhdagi Gulnora reklamani ko‘radi va yozadi: <em>“Bu qancha turadi? Menga ham zakas qiling.”</em>
+						</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">3</div>
+					<div class="step-body">
+						<p>Malika opa shu mahsulotni ichki narxda buyurtma qiladi — masalan <strong>80 000 so‘m</strong>ga.
+						</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">4</div>
+					<div class="step-body">
+						<p>Gulnoraga esa katalog narxida — <strong>100 000 so‘m</strong>ga sotadi. Orasidagi farq uning
+							cho‘ntagida qoladi.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="receipt">
+				<div class="receipt-row">
+					<span class="label">Gulnora to‘lagan narx</span>
+					<span class="val">100 000 so‘m</span>
+				</div>
+				<div class="receipt-row">
+					<span class="label">Malika opa to‘lagan narx</span>
+					<span class="val">80 000 so‘m</span>
+				</div>
+				<div class="receipt-row divider total">
+					<span class="label">Malika opaning foydasi</span>
+					<span class="val">20 000 so‘m</span>
+				</div>
+				<div class="receipt-note">
+					Shunga o‘xshash 10 ta buyurtma bir oyda bo‘lsa — <strong>200 000 so‘m</strong> qo‘shimcha daromad
+					bo‘ladi.
+				</div>
+			</div>
+			<p class="receipt-caption">Bu faqat misol. Haqiqiy narx va foiz mahsulotga qarab farq qiladi.</p>
+		</div>
+	</section>
+
+	<!-- ===================== BOT VA SIZ — clarification + mid-CTA, own section ===================== -->
+	<section id="vazifa" class="paper-section">
+		<div class="wrap">
+			<div class="honest-note">
+				Bot reklama qilish jarayonini avtomatlashtiradi. Mijozlarni esa siz o‘zingiz qarindoshlaringiz, yaqinlaringiz, qo'shnilaringizni taklif qilish orqali guruhingizga olib kelasiz — botning
+				o‘zi mijoz olib kelmaydi. Daromadingiz guruhdagi odamlar soni va buyurtmalarga bog‘liq.
+			</div>
+
+			<div class="mid-cta">
+				<p class="mid-cta-q">Qanday ishlashini amalda ko‘rmoqchimisiz?</p>
+				<a href="https://t.me/+aaF5oqIpZ4tiOGFi" class="btn btn-primary" id="cta-mid" onclick="trackCTA('mid')">
+					Yopiq guruhga qo‘shilish
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+						<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+				</a>
+				<p class="reassure">Kirish bepul.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===================== FABERLIC ASLIDA NIMA — trust cards ===================== -->
+	<section id="tizim" class="alt">
+		<div class="wrap">
+			<span class="eyebrow">Kompaniya haqida</span>
+			<h2 class="section-title">Faberlic aslida nima?</h2>
+			<p class="lede">Bu oddiy savdo — farqi shuki, siz do‘kon ochmaysiz, telefon orqali ishlaysiz.</p>
+
+			<div class="info-card-list">
+				<div class="info-card">
+					<span class="info-icon">🏠</span>
+					<p>Uy bekalari, o‘qituvchilar, oddiy ayollar — hammasi oddiy hayotdan boshlagan.</p>
+				</div>
+				<div class="info-card">
+					<span class="info-icon">📱</span>
+					<p>Faqat telefon kerak. Do‘kon, ombor yoki ofis shart emas.</p>
+				</div>
+				<div class="info-card">
+					<span class="info-icon">🇺🇿</span>
+					<p>18+ yildan beri O‘zbekistonda — qo‘shningiz allaqachon ishlatgan bo‘lishi mumkin.</p>
+				</div>
+				<div class="info-card">
+					<span class="info-icon">🌸</span>
+					<p>Atirlar, kosmetikalar, parvarish vositalari, kiyimlar, bolalar uchun kerakli narsalar, vitaminlar va
+						oziq-ovqat qo‘shimchalari (BAD) — odamlar har oy baribir sotib oladigan mahsulotlar.</p>
+				</div>
+			</div>
+
+			<ul class="audience-list">
+				<li><span class="dot"></span>Uyda o‘tirib qo‘shimcha daromad qilishni xohlaysizmi?</li>
+				<li><span class="dot"></span>Telegram’dan foydalanasizmi?</li>
+				<li><span class="dot"></span>Yaqinlaringizga mahsulot tavsiya qilishga tayyormisiz?</li>
+			</ul>
+
+			<div class="honest-note">
+				Bu — “tez boyish” usuli emas. Daromad buyurtma va sotuvlar soniga bog‘liq.
+			</div>
+		</div>
+	</section>
+
+	<!-- ===================== BOSHLASH QIYIN EMAS ===================== -->
+	<section id="boshlash">
+		<div class="wrap">
+			<span class="eyebrow">Boshlash</span>
+			<h2 class="section-title">Boshlash qiyin emas</h2>
+
+			<div class="start-list">
+				<div class="start-item">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="10" stroke="#A23A28" stroke-width="1.8" />
+						<path d="M8 12.5l2.5 2.5 5.5-5.5" stroke="#A23A28" stroke-width="1.8" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+					<p><strong>Faberlic’ga a’zo bo‘lish bepul.</strong></p>
+				</div>
+				<div class="start-item">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="10" stroke="#A23A28" stroke-width="1.8" />
+						<path d="M8 12.5l2.5 2.5 5.5-5.5" stroke="#A23A28" stroke-width="1.8" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+					<p><strong>A'zo bo'lishdan avval ish qanday ishlashini bemalol ko‘rib chiqishingiz mumkin.</strong> Hammasini oldindan
+						bilishingiz shart emas.</p>
+				</div>
+				<div class="start-item">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+						<circle cx="12" cy="12" r="10" stroke="#A23A28" stroke-width="1.8" />
+						<path d="M8 12.5l2.5 2.5 5.5-5.5" stroke="#A23A28" stroke-width="1.8" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+					<p>Guruhga qo‘shilganingizdan so‘ng, botni qanday ulash haqida <strong>qo‘llanma</strong> beriladi.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===================== PRIVATE GROUP ===================== -->
+	<section id="guruh" class="paper-section">
+		<div class="wrap">
+			<span class="eyebrow">Yopiq guruh</span>
+			<h2 class="section-title">Avval qanday ishlashini ko‘rib chiqing</h2>
+
+			<div class="group-card">
+				<div class="group-avatars">
+					<div class="avatar-stack">
+						<span style="background:#A23A28;">M</span>
+						<span style="background:#C77B58;">G</span>
+						<span style="background:#D9A679;">N</span>
+						<span style="background:#8B5E4A;">D</span>
+					</div>
+				</div>
+				<p style="font-size:15px; margin: 0 0 8px 0;">Bizning jamoamizda aynan shu usulda ishlayotgan ayollar
+					yig‘ilgan yopiq Telegram guruhimiz bor.</p>
+				<p style="font-size:14px; color:var(--text-muted); margin: 0 0 22px 0;">U yerda ish jarayoni, bot va
+					boshlash tartibi haqida batafsil ma’lumot olasiz. Botni guruhingizga qanday ulash bo‘yicha qo‘llanma ham beriladi.</p>
+
+				<a href="https://t.me/+aaF5oqIpZ4tiOGFi" class="btn btn-primary" id="cta-group"
+					onclick="trackCTA('group')">
+					Yopiq guruhga qo‘shilish
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+						<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+				</a>
+				<p class="reassure">Kirish bepul.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===================== FAQ ===================== -->
+	<section id="faq" class="alt">
+		<div class="wrap">
+			<span class="eyebrow">Savol-javob</span>
+			<h2 class="section-title">Ko‘p beriladigan savollar</h2>
+
+			<div class="faq-list">
+				<div class="faq-item">
+					<button class="faq-q" onclick="toggleFaq(this)">
+						<span>Faberlic’ga a’zo bo‘lish pullikmi?</span>
+						<span class="icon"></span>
+					</button>
+					<div class="faq-a">
+						<p>Yo‘q. Faberlic’ga a’zo bo‘lish bepul.</p>
+					</div>
+				</div>
+				<div class="faq-item">
+					<button class="faq-q" onclick="toggleFaq(this)">
+						<span>Oldindan mahsulot sotib olishim shartmi?</span>
+						<span class="icon"></span>
+					</button>
+					<div class="faq-a">
+						<p>Majburiy xarid talab qilinmaydi. Mahsulotga buyurtma tushganda kerakli mahsulotni olish mumkin.</p>
+					</div>
+				</div>
+				<div class="faq-item">
+					<button class="faq-q" onclick="toggleFaq(this)">
+						<span>Bot o‘zi sotuv qiladimi?</span>
+						<span class="icon"></span>
+					</button>
+					<div class="faq-a">
+						<p>Yo‘q. Bot faqat reklama postlarini avtomatik joylaydi. Mijoz bilan muloqot qilish va buyurtmani
+							olish sizning vazifangiz.</p>
+					</div>
+				</div>
+				<div class="faq-item">
+					<button class="faq-q" onclick="toggleFaq(this)">
+						<span>200 000 so‘m daromad kafolatlanadimi?</span>
+						<span class="icon"></span>
+					</button>
+					<div class="faq-a">
+						<p>Yo‘q. 200 000 so‘m kafolatlangan daromad emas. Daromad qancha mahsulot sotishingizga bog‘liq.</p>
+					</div>
+				</div>
+				<div class="faq-item">
+					<button class="faq-q" onclick="toggleFaq(this)">
+						<span>Faberlic’da ishlashni bilmayman. Boshlay olamanmi?</span>
+						<span class="icon"></span>
+					</button>
+					<div class="faq-a">
+						<p>Ha. Boshlash tartibi va botni ulash bo‘yicha bosqichma-bosqich ko‘rsatma va tayyor darslar beriladi.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===================== FINAL CTA ===================== -->
+	<section id="oxirgi" class="paper-section final-cta">
+		<div class="wrap">
+			<h2>Qanday ishlashini avval ko‘rib chiqing</h2>
+			<p>Qiziqsangiz, yopiq guruhimizga qo‘shiling. Kirish bepul.</p>
+			<a href="https://t.me/+aaF5oqIpZ4tiOGFi" class="btn btn-primary" id="cta-final" onclick="trackCTA('final')">
+				Yopiq guruhga qo‘shilish
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+					<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+						stroke-linejoin="round" />
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<footer>
+		<div class="wrap">
+			<p>Daromad ko‘rsatkichlari kafolat emas, misol tariqasida keltirilgan. Haqiqiy daromad shaxsiy faoliyat va
+				sotuvlarga bog‘liq.</p>
+		</div>
+	</footer>
+
+	<!-- ===================== STICKY CTA ===================== -->
+	<div class="sticky-cta" id="stickyCta">
+		<div class="inner">
+			<a href="https://t.me/+aaF5oqIpZ4tiOGFi" class="btn btn-primary" id="cta-sticky"
+				onclick="trackCTA('sticky')">
+				Yopiq guruhga qo‘shilish
+			</a>
+		</div>
+	</div>
+
+	<script>
+		function toggleFaq(btn) {
+			var item = btn.closest('.faq-item');
+			var answer = item.querySelector('.faq-a');
+			var isOpen = item.classList.contains('open');
+			document.querySelectorAll('.faq-item.open').forEach(function (openItem) {
+				if (openItem !== item) {
+					openItem.classList.remove('open');
+					openItem.querySelector('.faq-a').style.maxHeight = null;
+				}
+			});
+			if (isOpen) {
+				item.classList.remove('open');
+				answer.style.maxHeight = null;
+			} else {
+				item.classList.add('open');
+				answer.style.maxHeight = answer.scrollHeight + 'px';
+			}
+		}
+
+		var sticky = document.getElementById('stickyCta');
+		var heroSection = document.querySelector('section.hero');
+		var finalSection = document.getElementById('oxirgi');
+
+		function updateSticky() {
+			var heroRect = heroSection.getBoundingClientRect();
+			var finalRect = finalSection.getBoundingClientRect();
+			var pastHero = heroRect.bottom < 0;
+			var reachedFinal = finalRect.top < window.innerHeight * 0.6;
+			sticky.style.display = (pastHero && !reachedFinal) ? 'block' : 'none';
+		}
+		window.addEventListener('scroll', updateSticky, { passive: true });
+		window.addEventListener('resize', updateSticky);
+		updateSticky();
+
+		function trackCTA(source) {
+			try {
+				fbq('trackCustom', 'CTA_Click', { source: source });
+				fbq('trackCustom', 'TelegramGroup_Click', { source: source });
+			} catch (e) { }
+		}
+
+		var scroll50Fired = false, scroll75Fired = false;
+		window.addEventListener('scroll', function () {
+			var scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+			if (!scroll50Fired && scrolled > 0.5) {
+				scroll50Fired = true;
+				try { fbq('trackCustom', 'Scroll50'); } catch (e) { }
+			}
+			if (!scroll75Fired && scrolled > 0.75) {
+				scroll75Fired = true;
+				try { fbq('trackCustom', 'Scroll75'); } catch (e) { }
+			}
+		}, { passive: true });
+	</script>
+
+</body>
+
+</html>
