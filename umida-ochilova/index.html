@@ -3,22 +3,42 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Faberlic — Sizga mos imkoniyat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<title>0 dan qo‘shimcha daromad — Faberlic</title>
+	<meta name="description"
+		content="Telegram gruppa ochib, botni ulab, Faberlic mahsulotlari orqali qo‘shimcha daromad qilish mumkin. Qanday ishlashini bitta misolda ko‘ring.">
+
+	<!-- ===================== META PIXEL ===================== -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		try {
+			fbq('init', 'YOUR_META_PIXEL_ID');
+			fbq('track', 'PageView');
+			fbq('track', 'ViewContent');
+		} catch (e) { /* pixel not configured yet */ }
+	</script>
 
 	<!-- ============================================================
      KONSULTANT MA'LUMOTLARI — BU YERDA O'ZGARTIRING
      ============================================================ -->
 	<script>
 		const CONSULTANT = {
-			name: "Umida Ochilova", // Konsultant ismi
-			photo: "photo.png", // Rasm URL
-			telegram: "https://t.me/umida_fab", // Telegram link
+			name: "Umida Ochilova",
+			photo: "photo.png",
+			telegram: "https://t.me/umida_fab",
 			shortStory: "Men ham boshida bu ish menga to'g'ri kelarmikan deb o'ylaganman. Lekin sinab ko'rdim va asta-sekin o'rganib ketdim. Shuning uchun bu sahifada Faberlic qanday ishlashini imkon qadar sodda tushuntirishga harakat qildim. Agar o'qib chiqib, bu ish sizga mosdek tuyulsa, keyingi qadamni birga boshlaymiz."
 		};
 	</script>
-	<!-- <script src="inapp-redirect.js"></script> -->
-	<!-- ============================================================ -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +70,7 @@
 
 		html {
 			scroll-behavior: smooth;
+			-webkit-text-size-adjust: 100%;
 		}
 
 		body {
@@ -59,19 +80,19 @@
 			font-size: 16px;
 			line-height: 1.7;
 			overflow-x: hidden;
+			-webkit-font-smoothing: antialiased;
 		}
 
-		/* ── UTILITY ── */
 		.container {
 			max-width: 520px;
 			margin: 0 auto;
 			padding: 0 20px;
 		}
 
-		.accent {
-			color: var(--terracotta);
-			font-style: italic;
-			font-family: 'Playfair Display', serif;
+		.wrap {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 0 18px;
 		}
 
 		.tag {
@@ -91,8 +112,22 @@
 			padding: 48px 0;
 		}
 
-		.section+.section {
+		.section + .section {
 			border-top: 1px solid var(--border);
+		}
+
+		.section-title {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(22px, 5vw, 28px);
+			color: var(--text);
+			margin-bottom: 8px;
+			line-height: 1.3;
+		}
+
+		.section-sub {
+			font-size: 14px;
+			color: var(--muted);
+			margin-bottom: 24px;
 		}
 
 		/* ── HERO ── */
@@ -119,7 +154,7 @@
 
 		#hero h1 {
 			font-family: 'Playfair Display', serif;
-			font-size: clamp(28px, 7vw, 38px);
+			font-size: clamp(26px, 6.5vw, 36px);
 			line-height: 1.25;
 			margin-bottom: 16px;
 		}
@@ -131,90 +166,51 @@
 
 		#hero .sub {
 			font-size: 15px;
-			opacity: 0.85;
-			margin-bottom: 28px;
+			opacity: 0.88;
+			margin-bottom: 12px;
 			line-height: 1.6;
 		}
 
-		.hero-badge {
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			background: rgba(255, 255, 255, 0.1);
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			border-radius: 50px;
-			padding: 8px 18px;
-			font-size: 13px;
-			backdrop-filter: blur(4px);
-		}
-
-		.hero-badge span {
-			font-size: 18px;
-		}
-
-		/* ── EMPATHY ── */
-		#empathy, .empathy {
-			background: var(--warm);
-		}
-
-		#empathy .thought-box, .empathy .thought-box {
-			background: #fff;
-			border-left: 4px solid var(--terracotta);
-			border-radius: 0 12px 12px 0;
-			padding: 16px 20px;
-			margin: 20px 0;
-			font-style: italic;
-			color: var(--muted);
-			font-size: 15px;
-		}
-
-		#empathy .thought-box strong, .empathy .thought-box strong {
-			color: var(--text);
-			font-style: normal;
-		}
-
-		/* ── WHAT IS ── */
-		.fact-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 12px;
-			margin: 24px 0;
-		}
-
-		.fact-card {
+		/* ── MECHANISM ── */
+		.story-setup {
 			background: var(--card-bg);
 			border: 1px solid var(--border);
 			border-radius: 16px;
-			padding: 18px 16px;
-			text-align: center;
-		}
-
-		.fact-card .num {
-			font-family: 'Playfair Display', serif;
-			font-size: 28px;
-			color: var(--terracotta);
-			font-weight: 700;
-			display: block;
-		}
-
-		.fact-card .label {
-			font-size: 12px;
+			padding: 16px 18px;
+			margin: 18px 0 22px;
+			font-size: 14.5px;
 			color: var(--muted);
-			line-height: 1.4;
-			margin-top: 4px;
+			box-shadow: 0 2px 12px var(--shadow);
 		}
 
-		/* ── HOW IT WORKS ── */
+		.story-setup strong {
+			color: var(--text);
+			font-weight: 700;
+		}
+
 		.steps {
-			margin: 24px 0;
+			margin: 8px 0 20px;
+			position: relative;
+		}
+
+		.steps::before {
+			content: "";
+			position: absolute;
+			left: 19px;
+			top: 12px;
+			bottom: 12px;
+			width: 2px;
+			background-image: linear-gradient(var(--border) 60%, transparent 0%);
+			background-size: 2px 10px;
+			background-repeat: repeat-y;
 		}
 
 		.step {
 			display: flex;
 			gap: 16px;
-			margin-bottom: 24px;
+			padding: 12px 0;
 			align-items: flex-start;
-			animation: fadeUp 0.5s ease both;
+			position: relative;
 		}
 
 		.step-num {
@@ -230,6 +226,7 @@
 			font-weight: 700;
 			font-size: 16px;
 			font-family: 'Playfair Display', serif;
+			z-index: 1;
 		}
 
 		.step-body h4 {
@@ -241,562 +238,136 @@
 		.step-body p {
 			font-size: 14px;
 			color: var(--muted);
+			margin: 0;
 		}
 
-		/* ── OBJECTIONS ── */
-		#objections {
-			background: #fff5f0;
+		.auto-tag {
+			display: inline-block;
+			margin-top: 6px;
+			font-size: 11.5px;
+			font-weight: 700;
+			color: var(--terra-dark);
+			background: #f3dad2;
+			padding: 3px 8px;
+			border-radius: 10px;
 		}
 
-		.objection {
+		/* ── RECEIPT ── */
+		.receipt {
 			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 22px 20px;
+			box-shadow: 0 2px 14px var(--shadow);
+			margin-top: 8px;
+		}
+
+		.receipt-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			padding: 9px 0;
+			font-size: 15px;
+		}
+
+		.receipt-row.divider {
+			border-top: 1px dashed var(--border);
+			margin-top: 4px;
+			padding-top: 12px;
+		}
+
+		.receipt-row .label {
+			font-size: 13.5px;
+			color: var(--muted);
+		}
+
+		.receipt-row .val {
+			font-weight: 700;
+			color: var(--text);
+		}
+
+		.receipt-row.total .val {
+			color: var(--terracotta);
+			font-size: 18px;
+		}
+
+		.receipt-row.total .label {
+			font-weight: 700;
+			color: var(--text);
+			font-size: 15px;
+		}
+
+		.receipt-note {
+			margin-top: 14px;
+			padding-top: 14px;
+			border-top: 1px dashed var(--border);
+			font-size: 13.5px;
+			color: var(--muted);
+		}
+
+		.receipt-caption {
+			font-size: 12px;
+			color: var(--muted);
+			text-align: center;
+			margin-top: 12px;
+		}
+
+		/* ── HONEST NOTE ── */
+		.honest-note {
+			background: var(--warm);
+			border-radius: 14px;
+			padding: 16px 18px;
+			font-size: 14px;
+			color: var(--muted);
+			border-left: 4px solid var(--terracotta);
+			margin: 20px 0;
+			line-height: 1.65;
+		}
+
+		.honest-note strong {
+			color: var(--text);
+		}
+
+		/* ── SKEPTICISM ── */
+		.skepticism-box {
+			background: #fff5f0;
 			border: 1px solid var(--border);
 			border-radius: 16px;
-			margin-bottom: 16px;
-			overflow: hidden;
-		}
-
-		.obj-header {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			padding: 16px 18px;
-			cursor: pointer;
-			user-select: none;
-		}
-
-		.obj-q {
-			font-weight: 700;
-			font-size: 15px;
-			color: var(--terra-dark);
-			flex: 1;
-		}
-
-		.obj-q::before {
-			content: '"';
-		}
-
-		.obj-q::after {
-			content: '"';
-		}
-
-		.obj-toggle {
-			flex-shrink: 0;
-			width: 28px;
-			height: 28px;
-			background: var(--warm);
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 16px;
-			transition: transform 0.3s ease;
-		}
-
-		.objection.open .obj-toggle {
-			transform: rotate(45deg);
-		}
-
-		.obj-answer {
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height 0.4s ease, padding 0.3s ease;
-			padding: 0 18px;
-			font-size: 14px;
-			color: var(--muted);
-			line-height: 1.75;
-		}
-
-		.objection.open .obj-answer {
-			max-height: 300px;
-			padding: 0 18px 18px;
-		}
-
-		.obj-answer strong {
-			color: var(--text);
-		}
-
-		/* ── TESTIMONIALS ── */
-		.testi-card {
-			background: var(--card-bg);
-			border: 1px solid var(--border);
-			border-radius: 20px;
-			padding: 22px 20px;
-			margin-bottom: 16px;
-			position: relative;
-		}
-
-		.testi-card::before {
-			content: '\201C';
-			font-family: 'Playfair Display', serif;
-			font-size: 64px;
-			color: var(--terra-light);
-			opacity: 0.3;
-			position: absolute;
-			top: -4px;
-			left: 14px;
-			line-height: 1;
-		}
-
-		.testi-text {
-			font-size: 14px;
-			color: var(--muted);
-			margin-bottom: 16px;
-			font-style: italic;
-		}
-
-		.testi-author {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-		}
-
-		.testi-avatar {
-			width: 42px;
-			height: 42px;
-			border-radius: 50%;
-			object-fit: cover;
-			background: var(--warm);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 18px;
-			overflow: hidden;
-		}
-
-		.testi-name {
-			font-weight: 700;
-			font-size: 14px;
-		}
-
-		.testi-meta {
-			font-size: 12px;
-			color: var(--muted);
-		}
-
-		.stars {
-			color: #f59e0b;
-			font-size: 12px;
-			letter-spacing: 1px;
-		}
-
-		/* ── CONSULTANT ── */
-		#consultant {
-			background: var(--warm);
-		}
-
-		.consult-card {
-			background: #fff;
-			border-radius: 24px;
-			padding: 28px 22px;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			gap: 16px;
-			box-shadow: 0 8px 32px var(--shadow);
-		}
-
-		#consultant-photo {
-			width: 100px;
-			height: 100px;
-			border-radius: 50%;
-			object-fit: cover;
-			border: 4px solid var(--terra-light);
-		}
-
-		.consult-name {
-			font-family: 'Playfair Display', serif;
-			font-size: 22px;
-			color: var(--terra-dark);
-		}
-
-		.consult-story {
-			font-size: 14px;
-			color: var(--muted);
-			font-style: italic;
-		}
-
-		/* ── CTA ── */
-		#cta {
-			background: linear-gradient(160deg, var(--terra-dark) 0%, var(--terracotta) 100%);
-			color: #fff;
-			text-align: center;
-			padding: 52px 0;
-		}
-
-		#cta h2 {
-			font-family: 'Playfair Display', serif;
-			font-size: clamp(24px, 6vw, 32px);
-			margin-bottom: 10px;
-		}
-
-		#cta p {
-			opacity: 0.88;
-			font-size: 15px;
-			margin-bottom: 28px;
-		}
-
-		.btn {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			width: 100%;
-			max-width: 340px;
-			margin: 0 auto 14px;
-			padding: 16px 24px;
-			border-radius: 50px;
-			font-size: 15px;
-			font-weight: 700;
-			font-family: 'Nunito', sans-serif;
-			cursor: pointer;
-			border: none;
-			text-decoration: none;
-			transition: transform 0.2s ease, box-shadow 0.2s ease;
-		}
-
-		.btn:active {
-			transform: scale(0.97);
-		}
-
-		.btn-primary {
-			background: #fff;
-			color: var(--terra-dark);
-			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-		}
-
-		.btn-primary:hover {
-			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
-			transform: translateY(-1px);
-		}
-
-		.btn-secondary {
-			background: rgba(255, 255, 255, 0.15);
-			color: #fff;
-			border: 2px solid rgba(255, 255, 255, 0.4);
-		}
-
-		.btn-icon {
-			font-size: 20px;
-		}
-
-		.fine-print {
-			font-size: 12px;
-			opacity: 0.65;
-			margin-top: 20px;
-		}
-
-		/* ── CTA · DECISION CHECKLIST ── */
-		.cta-intro {
-			opacity: 0.88;
-			font-size: 15px;
-			margin-bottom: 24px;
-		}
-
-		.decision-list {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			text-align: left;
-			margin-bottom: 28px;
-		}
-
-		.decision-item {
-			display: flex;
-			align-items: center;
-			gap: 14px;
-			background: rgba(255, 255, 255, 0.08);
-			border: 1px solid rgba(255, 255, 255, 0.16);
-			border-radius: 14px;
-			padding: 13px 16px;
-		}
-
-		.decision-check {
-			flex-shrink: 0;
-			width: 26px;
-			height: 26px;
-			border-radius: 50%;
-			background: rgba(255, 255, 255, 0.9);
-			color: var(--terra-dark);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 13px;
-			font-weight: 700;
-		}
-
-		.decision-item span.decision-text {
-			font-size: 14.5px;
-			color: #fff;
-			opacity: 0.95;
-			line-height: 1.45;
-		}
-
-		.cta-final-text {
-			font-size: 15px;
-			opacity: 0.9;
-			margin-bottom: 24px;
-			line-height: 1.6;
-		}
-
-		/* ── SECTION TITLES ── */
-		.section-title {
-			font-family: 'Playfair Display', serif;
-			font-size: clamp(22px, 5vw, 28px);
-			color: var(--text);
-			margin-bottom: 8px;
-			line-height: 1.3;
-		}
-
-		.section-sub {
-			font-size: 14px;
-			color: var(--muted);
-			margin-bottom: 24px;
-		}
-
-		/* ── STICKY CTA BAR ── */
-		.sticky-bar {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background: var(--terra-dark);
-			padding: 12px 20px;
-			z-index: 100;
-			display: flex;
-			gap: 10px;
-			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
-			transform: translateY(100%);
-			transition: transform 0.4s ease;
-		}
-
-		.sticky-bar.visible {
-			transform: translateY(0);
-		}
-
-		.sticky-bar .btn {
-			margin: 0;
-			flex: 1;
-			padding: 13px 10px;
-			font-size: 13px;
-		}
-
-		.sticky-bar .btn-primary {
-			background: var(--terra-light);
-			color: #fff;
-		}
-
-		.sticky-bar .btn-secondary {
-			background: rgba(255, 255, 255, 0.12);
-			border-color: rgba(255, 255, 255, 0.3);
-		}
-
-		/* ── ANIMATIONS ── */
-		@keyframes fadeUp {
-			from {
-				opacity: 0;
-				transform: translateY(20px);
-			}
-
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.fade-in {
-			opacity: 0;
-			transform: translateY(24px);
-			transition: opacity 0.6s ease, transform 0.6s ease;
-		}
-
-		.fade-in.visible {
-			opacity: 1;
-			transform: none;
-		}
-
-		/* ── PROGRESS BAR ── */
-		#progress {
-			position: fixed;
-			top: 0;
-			left: 0;
-			height: 3px;
-			background: var(--terra-light);
-			z-index: 200;
-			width: 0%;
-			transition: width 0.1s linear;
-		}
-
-		footer {
-			text-align: center;
-			padding: 24px;
-			font-size: 12px;
-			color: var(--muted);
-			border-top: 1px solid var(--border);
-		}
-
-		/* ── WOMEN PROOF ── */
-		.women-proof {
-			margin: 24px 0;
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-		}
-
-		.wp-item {
-			display: flex;
-			align-items: flex-start;
-			gap: 14px;
-			background: var(--card-bg);
-			border: 1px solid var(--border);
-			border-radius: 14px;
-			padding: 14px 16px;
-		}
-
-		.wp-icon {
-			font-size: 22px;
-			flex-shrink: 0;
-			margin-top: 1px;
-		}
-
-		.wp-text {
-			font-size: 14px;
-			color: var(--muted);
-			line-height: 1.6;
-		}
-
-		/* ── ZERO TEASER ── */
-		.zero-box {
-			display: flex;
-			gap: 16px;
-			align-items: flex-start;
-			background: linear-gradient(135deg, #fffbf0, #fff3e0);
-			border: 2px solid #f0c070;
-			border-radius: 18px;
 			padding: 20px 18px;
+			margin: 8px 0;
 		}
 
-		.zero-icon {
-			font-size: 28px;
-			flex-shrink: 0;
-		}
-
-		.zero-text strong {
-			display: block;
-			font-size: 16px;
+		.skepticism-box .q {
+			font-weight: 700;
+			font-size: 15px;
 			color: var(--terra-dark);
-			margin-bottom: 6px;
+			margin-bottom: 10px;
+			font-style: italic;
 		}
 
-		.zero-text p {
+		.skepticism-box p {
 			font-size: 14px;
 			color: var(--muted);
 			margin: 0;
+			line-height: 1.7;
 		}
 
-		/* ── COMMUNITY ── */
-		.community-card {
-			background: linear-gradient(135deg, #f0fdf4, #e8f5ed);
-			border: 1px solid #b6dfc4;
-			border-radius: 20px;
-			padding: 22px 20px;
-			margin-top: 4px;
-		}
-
-		.comm-header {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			margin-bottom: 10px;
-		}
-
-		.comm-icon {
-			font-size: 24px;
-		}
-
-		.comm-header strong {
-			font-size: 16px;
-			color: var(--green);
-		}
-
-		.comm-text {
-			font-size: 14px;
-			color: var(--muted);
-			margin-bottom: 18px;
-		}
-
-		.comm-features {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-		}
-
-		.comm-feat {
-			display: flex;
-			gap: 10px;
-			align-items: flex-start;
-			font-size: 14px;
-			color: var(--text);
-		}
-
-		.comm-feat span:first-child {
-			flex-shrink: 0;
-			font-size: 16px;
-		}
-
-		/* ── URGENCY ── */
-		.urgency-bar {
-			display: flex;
-			align-items: center;
-			gap: 8px;
-			justify-content: center;
-			background: rgba(255, 255, 255, 0.12);
-			border: 1px solid rgba(255, 255, 255, 0.25);
-			border-radius: 50px;
-			padding: 10px 20px;
-			font-size: 13px;
-			margin-bottom: 24px;
-			color: rgba(255, 255, 255, 0.9);
-		}
-
-		.urgency-bar strong {
-			color: #fff;
-		}
-
-		/* ── DIVIDER ── */
-		.wave-divider {
-			display: block;
-			width: 100%;
-			height: 30px;
-			margin: -1px 0;
-		}
-	</style>
-	<style>
-		.wrap {
-			max-width: 500px;
-			margin: 0 auto;
-			padding: 0 18px;
-		}
-
-		/* VIDEO SECTION */
+		/* ── VIDEO ── */
 		#video-section {
-			padding: 32px 0 28px;
+			padding: 40px 0 32px;
 		}
 
 		.video-wrapper {
 			position: relative;
 			border-radius: 20px;
 			overflow: hidden;
-			box-shadow: var(--shadow-lg);
+			box-shadow: 0 8px 28px var(--shadow);
 			margin-bottom: 16px;
 			background: #111;
 			aspect-ratio: 16/9;
-			/* max-height: 72vh; */
 		}
 
-		.video-wrapper video,
-		.video-wrapper iframe {
+		.video-wrapper video {
 			width: 100%;
 			height: 100%;
 			display: block;
@@ -805,15 +376,11 @@
 
 		.video-wrapper .play-overlay {
 			background:
-				linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.6)),
+				linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .6)),
 				url("thumbnail.png");
-
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
-			/* background-image: url(thumbnail.png);
-			background-size: cover;
-			background: linear-gradient(to bottom, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .6) 100%); */
 			position: absolute;
 			inset: 0;
 			display: flex;
@@ -844,7 +411,7 @@
 		.play-btn-circle svg {
 			width: 28px;
 			height: 28px;
-			fill: var(--terra);
+			fill: var(--terracotta);
 			margin-left: 4px;
 		}
 
@@ -855,108 +422,13 @@
 			text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
 		}
 
-		.video-author {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			background: var(--warm);
-			border-radius: 14px;
-			padding: 12px 16px;
-			margin-bottom: 20px;
-		}
-
-		.va-photo {
-			width: 46px;
-			height: 46px;
-			border-radius: 50%;
-			object-fit: cover;
-			border: 2.5px solid var(--terra-l);
-			flex-shrink: 0;
-		}
-
-		.va-text strong {
-			display: block;
-			font-size: 14px;
-			color: var(--terra-d);
-		}
-
-		.va-text span {
-			font-size: 12px;
-			color: var(--muted);
-		}
-
-		.post-video-text {
-			font-size: 14px;
-			color: var(--muted);
-			text-align: center;
-			line-height: 1.6;
-			margin-bottom: 20px;
-			font-style: italic;
-		}
-
-		.post-video-text strong {
-			color: var(--text);
-			font-style: normal;
-		}
-
-		.cta-arrow-row {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 14px;
-		}
-
-		.cta-arrow {
-			font-size: 32px;
-			color: var(--tg);
-			line-height: 1;
-			flex-shrink: 0;
-			padding-bottom: 23px;
-		}
-
-		.cta-arrow:first-child {
-			animation: bounce-right 1.2s ease-in-out infinite;
-		}
-
-		.cta-arrow:last-child {
-			animation: bounce-left 1.2s ease-in-out infinite;
-		}
-
-		@keyframes bounce-right {
-
-			0%,
-			100% {
-				transform: translateX(0);
-				opacity: 0.6;
-			}
-
-			50% {
-				transform: translateX(5px);
-				opacity: 1;
-			}
-		}
-
-		@keyframes bounce-left {
-
-			0%,
-			100% {
-				transform: translateX(0);
-				opacity: 0.6;
-			}
-
-			50% {
-				transform: translateX(-5px);
-				opacity: 1;
-			}
-		}
-
-		/* ── INCOME BREAKDOWN ── */
+		/* ── INCOME BOX ── */
 		.income-box {
 			background: var(--card-bg);
 			border: 1px solid var(--border);
 			border-radius: 18px;
 			padding: 20px 20px 18px;
-			margin-bottom: 20px;
+			margin: 20px 0;
 		}
 
 		.income-box .income-title {
@@ -1009,6 +481,315 @@
 			color: var(--muted);
 			line-height: 1.6;
 		}
+
+		.income-bridge {
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.7;
+			margin-bottom: 16px;
+		}
+
+		.income-bridge strong {
+			color: var(--text);
+		}
+
+		/* ── WOMEN PROOF / FABERLIC ── */
+		.women-proof {
+			margin: 24px 0;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.wp-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 14px;
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 14px 16px;
+		}
+
+		.wp-icon {
+			font-size: 22px;
+			flex-shrink: 0;
+			margin-top: 1px;
+		}
+
+		.wp-text {
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.6;
+		}
+
+		/* ── START STEPS ── */
+		.start-list {
+			margin-top: 8px;
+		}
+
+		.start-item {
+			display: flex;
+			gap: 14px;
+			align-items: flex-start;
+			padding: 12px 0;
+		}
+
+		.start-item .check {
+			flex-shrink: 0;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: var(--green-light);
+			color: var(--green);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.start-item p {
+			margin: 0;
+			font-size: 14.5px;
+			color: var(--muted);
+			line-height: 1.55;
+		}
+
+		.start-item strong {
+			color: var(--text);
+			font-weight: 700;
+		}
+
+		/* ── FAQ / OBJECTIONS ── */
+		#objections {
+			background: #fff5f0;
+		}
+
+		.objection {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			margin-bottom: 12px;
+			overflow: hidden;
+		}
+
+		.obj-header {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 16px 18px;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.obj-q {
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--terra-dark);
+			flex: 1;
+		}
+
+		.obj-toggle {
+			flex-shrink: 0;
+			width: 28px;
+			height: 28px;
+			background: var(--warm);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 16px;
+			transition: transform 0.3s ease;
+		}
+
+		.objection.open .obj-toggle {
+			transform: rotate(45deg);
+		}
+
+		.obj-answer {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease, padding 0.3s ease;
+			padding: 0 18px;
+			font-size: 14px;
+			color: var(--muted);
+			line-height: 1.75;
+		}
+
+		.objection.open .obj-answer {
+			max-height: 320px;
+			padding: 0 18px 18px;
+		}
+
+		.obj-answer strong {
+			color: var(--text);
+		}
+
+		/* ── CONSULTANT ── */
+		#consultant {
+			background: var(--warm);
+		}
+
+		.consult-card {
+			background: #fff;
+			border-radius: 24px;
+			padding: 28px 22px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 14px;
+			box-shadow: 0 8px 32px var(--shadow);
+		}
+
+		#consultant-photo {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid var(--terra-light);
+			background: var(--warm);
+		}
+
+		.consult-name {
+			font-family: 'Playfair Display', serif;
+			font-size: 22px;
+			color: var(--terra-dark);
+		}
+
+		.consult-story {
+			font-size: 14px;
+			color: var(--muted);
+			font-style: italic;
+			line-height: 1.65;
+		}
+
+		/* ── CTA ── */
+		#cta {
+			background: linear-gradient(160deg, var(--terra-dark) 0%, var(--terracotta) 100%);
+			color: #fff;
+			text-align: center;
+			padding: 52px 0 64px;
+		}
+
+		#cta h2 {
+			font-family: 'Playfair Display', serif;
+			font-size: clamp(24px, 6vw, 32px);
+			margin-bottom: 12px;
+		}
+
+		#cta .cta-intro {
+			opacity: 0.9;
+			font-size: 15px;
+			margin-bottom: 24px;
+			line-height: 1.65;
+		}
+
+		.btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+			width: 100%;
+			max-width: 340px;
+			margin: 0 auto 14px;
+			padding: 16px 24px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight: 700;
+			font-family: 'Nunito', sans-serif;
+			cursor: pointer;
+			border: none;
+			text-decoration: none;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.btn:active {
+			transform: scale(0.97);
+		}
+
+		.btn-primary {
+			background: #fff;
+			color: var(--terra-dark);
+			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+		}
+
+		.btn-primary:hover {
+			box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+			transform: translateY(-1px);
+		}
+
+		.fine-print {
+			font-size: 12.5px;
+			opacity: 0.7;
+			margin-top: 16px;
+			line-height: 1.5;
+		}
+
+		/* ── STICKY CTA ── */
+		.sticky-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--terra-dark);
+			padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+			z-index: 100;
+			display: flex;
+			gap: 10px;
+			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+			transform: translateY(100%);
+			transition: transform 0.4s ease;
+		}
+
+		.sticky-bar.visible {
+			transform: translateY(0);
+		}
+
+		.sticky-bar .btn {
+			margin: 0;
+			flex: 1;
+			padding: 13px 10px;
+			font-size: 14px;
+			max-width: none;
+			background: var(--terra-light);
+			color: #fff;
+			box-shadow: none;
+		}
+
+		/* ── PROGRESS ── */
+		#progress {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 3px;
+			background: var(--terra-light);
+			z-index: 200;
+			width: 0%;
+			transition: width 0.1s linear;
+		}
+
+		/* ── ANIMATIONS ── */
+		.fade-in {
+			opacity: 0;
+			transform: translateY(24px);
+			transition: opacity 0.6s ease, transform 0.6s ease;
+		}
+
+		.fade-in.visible {
+			opacity: 1;
+			transform: none;
+		}
+
+		footer {
+			text-align: center;
+			padding: 28px 20px 100px;
+			font-size: 12px;
+			color: var(--muted);
+			border-top: 1px solid var(--border);
+			line-height: 1.6;
+		}
 	</style>
 </head>
 
@@ -1017,41 +798,112 @@
 	<div id="progress"></div>
 
 	<!-- ══════════════════════════════════════
-     1. HERO
+	     1. HERO
 	══════════════════════════════════════ -->
 	<section id="hero">
 		<div class="container">
-			<div class="tag">18+ yildan beri O‘zbekistonda ishlayotgan tizim</div>
-			<h1>Uydan turib <em>haqiqiy</em> daromad — bu mumkin</h1>
-			<p class="sub">Siz hozir <strong>"yana onlayn pul ishlash deyishadi, lekin baribir natija chiqmaydi"</strong> deb o‘ylayotgan bo'lishingiz mumkin. Men ham shunday deb o‘ylagan edim.</p>
-
-			<p class="sub">Men siz uchun qisqa video tayyorladim. Uni ko'rib bu ish qanday ishlashini va oddiy ayollar ham uddalayotganini bilib olasiz 👇</p>
-			<!-- <div class="hero-badge">
-				👩 O‘zim shu yo‘l bilan ishlayapman.
-			</div> -->
+			<div class="tag">18+ yildan beri O‘zbekistonda</div>
+			<h1>Hech qanday pulsiz <em>qo‘shimcha daromad</em> qilish va biznes boshlash mumkinmi?</h1>
+			<p class="sub">Quyida xuddi shunday imkoniyatlardan birini aniq misolda ko‘rsatib beramiz. Bu imkoniyat orqali siz uyda turib qo'shimcha daromad qilishni boshlashingiz va uni asta-sekin katta biznesga aylantirishingiz mumkin.</p>
+			<p class="sub" style="opacity:0.75; font-size:14px;">Hech qanday “tez boyish” yoki "katta tavakkalchilik" yo‘q. Bu yerda faqatgina boshqalar allaqachon ishlatib asta-sekin natijaga qilgan usul ko'rsatilgan.</p>
 		</div>
 	</section>
 
-	<section id="video" class="empathy section fade-in" >
-		<div class="wrap">
-			<div class="tag">Videoni ko'ring</div>
-			<h2 class="section-title">Faberlic’da ishni 0 dan qanday boshlash mumkin?</h2>
-			<p class="section-sub">Quyidagi videoni oxirigacha ko'rsangiz bu ish orqali 0 dan qanday qilib katta daromadga chiqishni sodda ko'rinishda tushunib olasiz 👇</p>
+	<!-- ══════════════════════════════════════
+	     2. MECHANISM — bitta misol
+	══════════════════════════════════════ -->
+	<section class="section fade-in" id="mexanizm">
+		<div class="container">
+			<div class="tag">Qanday ishlaydi</div>
+			<h2 class="section-title">Bitta kichik misolda tushuntiramiz</h2>
+			<p class="section-sub">Malika opa misolida bu usulni qadamma-qadam ko‘rib chiqamiz.</p>
 
-			<div class="video-wrapper" id="video-wrapper">
-				<video id="main-video" controls playsinline preload="metadata" src="https://f003.backblazeb2.com/file/gofurs-public-bucket/presentation.mp4"></video>
+			<div class="story-setup">
+				<strong>Masalan:</strong> Malika opa Telegram’da o‘z gruppasini ochadi va u yerga yaqinlari, tanishlari, qarindoshlarini taklif qiladi. Gruppada taxminan 40 kishi bo‘ladi. Keyin nima bo‘ladi:
+			</div>
 
-				<div class="play-overlay" id="play-overlay" onclick="startVideo()">
-					<div class="play-btn-circle">
-						<svg viewBox="0 0 24 24">
-							<path d="M8 5v14l11-7z" /></svg>
+			<div class="steps">
+				<div class="step">
+					<div class="step-num">1</div>
+					<div class="step-body">
+						<p>Faqatgina bizning kamandadagilar uchun yaratilgan maxsus bot har kuni gruppaga 5 ta mahsulot reklamasini joylaydi — masalan, yuz uchun krem, rasm, qo‘shimcha ma’lumot va narxi bilan.</p>
+						<span class="auto-tag">Bu avtomatik — Malika opa o'zi qo'lda reklama tayyorlab gruppaga har kuni tashlashiga xojat qolmaydi.</span>
 					</div>
-					<span class="play-label">Videoni ko'ring — 4:58</span>
+				</div>
+				<div class="step">
+					<div class="step-num">2</div>
+					<div class="step-body">
+						<p>Gruppadagi Gulnora opa reklamani ko‘radi va yozadi: <em>“Bu qancha turadi? Menga ham zakas qilib bering.”</em></p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">3</div>
+					<div class="step-body">
+						<p>Malika opa shu mahsulotni ichki narxda buyurtma qiladi — masalan <strong>80 000 so‘m</strong>ga.</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step-num">4</div>
+					<div class="step-body">
+						<p>Gulnora opaga esa katalog narxida — <strong>100 000 so‘m</strong>ga sotadi. Orasidagi farq uning cho‘ntagida qoladi.</p>
+					</div>
 				</div>
 			</div>
 
+			<div class="receipt">
+				<div class="receipt-row">
+					<span class="label">Gulnora opa to‘lagan narx</span>
+					<span class="val">100 000 so‘m</span>
+				</div>
+				<div class="receipt-row">
+					<span class="label">Malika opa to‘lagan narx</span>
+					<span class="val">80 000 so‘m</span>
+				</div>
+				<div class="receipt-row divider total">
+					<span class="label">Malika opaning foydasi</span>
+					<span class="val">20 000 so‘m</span>
+				</div>
+				<div class="receipt-note">
+					Shunga o‘xshash 10 ta buyurtma bir oyda bo‘lsa — taxminan <strong>200 000 so‘m</strong> qo‘shimcha daromad bo‘ladi.
+				</div>
+			</div>
+			<p class="receipt-caption" style="margin-bottom: 20px;">Bu faqat misol. Haqiqiy narx va foiz mahsulotga qarab farq qiladi.</p>
+
+			<div class="skepticism-box">
+				<div class="q">Muhim!</div>
+				<p>
+					Bu ishni sarmoyasiz boshlamoqchi bo'lsangiz, olgan buyurtmalaringizdan oldindan to'lov olib keyin mahsulotni yetkazib berishingiz mumkin. Yoki 300-400 ming so'm bilan boshlab obarotga kirib olishingiz mumkin.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ══════════════════════════════════════
+	     5. VIDEO
+	══════════════════════════════════════ -->
+	<section id="video-section" class="section fade-in" style="border-top: 1px solid var(--border);">
+		<div class="wrap">
+			<div class="tag">Videoni ko‘ring</div>
+			<h2 class="section-title">Bu qanday kattaroq imkoniyatga aylanishi mumkin?</h2>
+			<p class="section-sub">Yuqorida oddiy chakana savdo usulini ko‘rdingiz. Quyidagi videoda shu ish qanday o‘sib, kattaroq biznesga aylanishi mumkinligi haqida batafsilroq tushuntiriladi.</p>
+
+			<div class="video-wrapper" id="video-wrapper">
+				<video id="main-video" controls playsinline preload="metadata"
+					src="https://f003.backblazeb2.com/file/gofurs-public-bucket/presentation.mp4"></video>
+				<div class="play-overlay" id="play-overlay" onclick="startVideo()">
+					<div class="play-btn-circle">
+						<svg viewBox="0 0 24 24">
+							<path d="M8 5v14l11-7z" />
+						</svg>
+					</div>
+					<span class="play-label">Videoni ko‘ring — 4:58</span>
+				</div>
+			</div>
+		
 			<div class="income-box">
 				<div class="income-title">85 mln so‘m daromad qanday hisoblanadi?</div>
+				<p class="income-note" style="padding-bottom: 10px;">To'liq tushunish uchun videoni ko'ring 👆</p>
+
 				<div class="income-rows">
 					<div class="income-row">
 						<span class="income-label">Direktorlik darajasida o‘rtacha</span>
@@ -1070,34 +922,19 @@
 						<span class="income-value">72 mln + 13 mln = 85 mln so‘m</span>
 					</div>
 				</div>
-				<p class="income-note">Bu o‘rtacha hisob-kitob bo‘lib, haqiqiy daromad natijaga, sotuv hajmiga va boshqa shartlarga qarab farq qilishi mumkin.</p>
+				<p class="income-note">Bu o‘rtacha hisob-kitob. Haqiqiy daromad natijaga, sotuv hajmiga, malakaga va boshqa shartlarga qarab farq qiladi. Kafolat emas.</p>
+			</div>
+
+			<div class="income-bridge">
+				<strong>Muhim:</strong> Yuqoridagi 20 000 so‘mlik misol — oddiy chakana savdo usuli tushuntirish uchun. 85 mln so‘m esa butunlay boshqa hisob-kitob: direktorlik darajasidagi o‘rtacha ko‘rsatkichlar asosida. Bu 20 000 so‘mni ko‘paytirib chiqarilgan raqam emas.
 			</div>
 		</div>
 	</section>
 
 	<!-- ══════════════════════════════════════
-     2. EMPATHY
+	     7. FABERLIC ASLIDA NIMA?
 	══════════════════════════════════════ -->
-	<section class="section fade-in">
-		<div class="container">
-			<div class="tag">Tushunaman</div>
-			<h2 class="section-title">Siz nima o'ylayotganingizni bilaman</h2>
-
-			<div class="thought-box"><strong>"Bu ham yana aldab pul topish yo'llaridan biri."</strong><br>Yoki: "Sotib
-				bo'lmaydi." Yoki: "Vaqtim yo'q."</div>
-
-			<p>Men ham shunday deb o'ylagan edim. Tanishlarimning aksariyati ham shunday deydi. Va ularning <strong>hammasi
-					ham noto'g'ri emas</strong> — chunki ko'p yomon sxemalar bor.</p>
-
-			<p style="margin-top:14px;">Shuning uchun men bu sahifada hech qanday va'da bermay, <strong>faqat
-					haqiqatni</strong> aytaman. O'qib, o'zingiz qaror qiling.</p>
-		</div>
-	</section>
-
-	<!-- ══════════════════════════════════════
-     3. WHAT IS FABERLIC
-	══════════════════════════════════════ -->
-	<section  id="empathy" class="section fade-in">
+	<section class="section fade-in" id="faberlic">
 		<div class="container">
 			<div class="tag">Kompaniya haqida</div>
 			<h2 class="section-title">Faberlic aslida nima?</h2>
@@ -1106,111 +943,66 @@
 			<div class="women-proof">
 				<div class="wp-item">
 					<div class="wp-icon">🏠</div>
-					<div class="wp-text">Uy bekalari, o'qituvchilar, qishloq ayollari — hammasi oddiy hayotdan boshlagan.
-					</div>
+					<div class="wp-text">Uy bekalari, o‘qituvchilar, oddiy ayollar — hammasi oddiy hayotdan boshlagan.</div>
 				</div>
 				<div class="wp-item">
 					<div class="wp-icon">📱</div>
-					<div class="wp-text">Faqat telefon kerak. Do'kon, ombor, yoki ofis shart emas.</div>
+					<div class="wp-text">Faqat telefon kerak. Do‘kon, ombor yoki ofis shart emas.</div>
 				</div>
 				<div class="wp-item">
 					<div class="wp-icon">🇺🇿</div>
-					<div class="wp-text">18+ yildan beri O'zbekistonda — sizning qo'shningiz allaqachon ishlatgan bo'lishi
-						mumkin.
-					</div>
+					<div class="wp-text">18+ yildan beri O‘zbekistonda — qo‘shningiz allaqachon ishlatgan bo‘lishi mumkin.</div>
 				</div>
 				<div class="wp-item">
 					<div class="wp-icon">🌸</div>
-					<div class="wp-text">Atirlar, kosmetikalar, parvarish vositalari, kiyimlar, bolalar uchun kerakli
-						narsalar —
-						odamlar har oy baribir sotib oladigan mahsulotlar.</div>
+					<div class="wp-text">Atirlar, kosmetikalar, parvarish vositalari, kiyimlar, bolalar uchun kerakli narsalar — odamlar har oy baribir sotib oladigan mahsulotlar.</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- ══════════════════════════════════════
-     4. HOW IT WORKS
+	     8. HOW TO START
 	══════════════════════════════════════ -->
 	<section class="section fade-in">
 		<div class="container">
-			<div class="tag">Amalda qanday ishlaydi</div>
-			<h2 class="section-title">Hech narsani bilmasangiz ham boshlashingiz mumkin</h2>
-			<p class="section-sub">Birinchi oyda qilish kerak bo'lgan narsa — atigi uchta qadam:</p>
+			<div class="tag">Boshlash</div>
+			<h2 class="section-title">Boshlash qiyin emas</h2>
+			<p class="section-sub">Avval ishni yaxshilab tushunib oling, keyin qaror qiling.</p>
 
-			<div class="steps">
-				<div class="step">
-					<div class="step-num">1</div>
-					<div class="step-body">
-						<h4>Ro'yxatdan o'ting</h4>
-						<p>Konsultant sifatida bepul ro'yxatdan o'tasiz. Hujjat kerak emas, to'lov kerak emas.</p>
-					</div>
+			<div class="start-list">
+				<div class="start-item">
+					<div class="check">✓</div>
+					<p><strong>Faberlic’ga a’zo bo‘lish bepul.</strong> Hujjat yoki to‘lov kerak emas.</p>
 				</div>
-				<div class="step">
-					<div class="step-num">2</div>
-					<div class="step-body">
-						<h4>Telegram gruppa oching</h4>
-						<p>Telegramda gruppa ochasiz va tanishlaringizni qo‘shasiz. Maxsus bot reklamani o‘zi tayyorlaydi —
-							nima
-							yozishni o‘ylamaysiz, rasm qidirib o‘tirmaysiz. Siz faqat gruppaga joylaysiz.</p>
-					</div>
+				<div class="start-item">
+					<div class="check">✓</div>
+					<p><strong>A’zo bo‘lishdan avval</strong> bemalol ish haqida qiziqtirgan savollaringizni so‘rab, yopiq gruppamizga qo'shilib boshqalar qanday ishlayotganlarini kuzatib, gruppazdagi bepul video darslar va qo'llanmalarni ko‘rib chiqishingiz mumkin.</p>
 				</div>
-				<div class="step">
-					<div class="step-num">3</div>
-					<div class="step-body">
-						<h4>Daromad qilishni boshlang</h4>
-						<p>Kompaniyadan ichki narxda olasiz, katalog narxida sotasiz.</p>
-					</div>
-				</div>
-			</div>
-
-			<div
-				style="background:var(--green-light); border-radius:14px; padding:16px 18px; font-size:14px; color:var(--green);">
-				<strong style="display:block; margin-bottom:4px;">💡 Haqiqiy raqam:</strong>
-				Ba’zilar birinchi oyda kichik pul topadi — 200–300 ming. Keyin asta-sekin ko‘payadi.
-			</div>
-		</div>
-	</section>
-
-	<!-- ══════════════════════════════════════
-     5. ZERO INVESTMENT TEASER
-	══════════════════════════════════════ -->
-	<section class="section fade-in">
-		<div class="container">
-			<div class="zero-box">
-				<div class="zero-icon">💡</div>
-				<div class="zero-text">
-					<strong>Qo'lda pul bo'lmasa ham boshlash mumkin</strong>
-					<p>
-						Eng oson yo‘li shunday: avval odamlardan buyurtma olasiz, pulni oldindan olasiz, keyin kompaniyadan
-						buyurtma
-						qilasiz.
-						Shuning uchun boshlash uchun o‘z pulingiz kerak emas.
-					</p>
+				<div class="start-item">
+					<div class="check">✓</div>
+					<p>Agar qiziqsangiz, Telegram orqali yozing — savollaringizga javob beraman. Kerak bo‘lsa, yopiq gruppasimizga ham qo‘shaman: u yerda botni ulash va boshlash tartibi haqida qo‘llanmalar bor.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- ══════════════════════════════════════
-     6. OBJECTIONS
+	     9. OBJECTIONS / FAQ (concise)
 	══════════════════════════════════════ -->
 	<section id="objections" class="section fade-in">
 		<div class="container">
-			<div class="tag">Ko'p beriladigan savollar</div>
+			<div class="tag">Ko‘p beriladigan savollar</div>
 			<h2 class="section-title">Balki siz ham shuni o‘ylayotgandirsiz</h2>
-			<p class="section-sub">Har biriga ochiq, yashirmasdan javob beraman.</p>
+			<p class="section-sub">Har biriga ochiq javob.</p>
 
 			<div class="objection" onclick="toggleObj(this)">
 				<div class="obj-header">
-					<div class="obj-q">Bu ham yana aldab pul topish yo'llaridan birimi?</div>
+					<div class="obj-q">Bu yana bir aldov emasmi?</div>
 					<div class="obj-toggle">+</div>
 				</div>
 				<div class="obj-answer">
-					<strong>To‘g‘ri savol.</strong> Rostini aytsam, yomon sxemalar ko‘p.
-					Lekin bu yerda oddiy narsa: odamlar ishlatadigan mahsulot bor — atir, krem, kiyim.
-					Odamlar baribir oladi, siz esa shu orqali pul topasiz.
-					Bir marta o‘zingiz sinab ko‘rsangiz — hammasi tushunarli bo‘ladi.
+					<strong>To‘g‘ri savol.</strong> Yomon sxemalar ko‘p. Bu yerda esa oddiy narsa: odamlar ishlatadigan mahsulot bor — atir, krem, kiyim. Ichki narx va katalog narxi o‘rtasidagi farq — sizning foydangiz. Bir marta o‘zingiz sinab ko‘rsangiz, hammasi tushunarli bo‘ladi.
 				</div>
 			</div>
 
@@ -1220,153 +1012,35 @@
 					<div class="obj-toggle">+</div>
 				</div>
 				<div class="obj-answer">
-					<strong>Siz sotmaysiz — ko‘rsatasiz.</strong> <br>
-					"Shu narsa yaxshi ekan" deb yozish — bu sotish emas. Siz buni allaqachon qila olasiz.
-
-					Siz yolg‘iz emassiz: maxsus bot reklama tayyorlab beradi, biz esa sizga bosqichma-bosqich hammasini
-					o'rgatamiz.
+					<strong>Bot reklama materialini tayyorlab beradi</strong> — nima yozishni o‘ylamaysiz. Lekin mijoz bilan muloqot qilish va buyurtmani olish sizning vazifangiz bo'ladi. Bularni yopiq gruppamizda tayyorlab quyilgan qisqa darslar orqali darrov o'rganib olishingiz mumkin. Shuningdek, sizga yordam beradigan boshqa mentorlar ham bor.
 				</div>
 			</div>
 
 			<div class="objection" onclick="toggleObj(this)">
 				<div class="obj-header">
-					<div class="obj-q">Vaqtim yo'q, uch bolam bor, ishim bor</div>
+					<div class="obj-q">Boshlash uchun pulim yo‘q</div>
 					<div class="obj-toggle">+</div>
 				</div>
 				<div class="obj-answer">
-					<strong>Ko‘pchilik aynan shunday holatda boshlagan.</strong> <br>
-					Bola, uy, ish — hammasi bor. Shunga qaramay asta sekin oz-ozdan boshlashadi. <br>
-
-					Bu ishda majburiy vaqt yo‘q: bo‘sh paytda — bola uxlaganda yoki tushlikda — ishlash ham yetarli.
-					Kuniga 20–30 daqiqa yetadi boshlash uchun.
+					<strong>Ro‘yxatdan o‘tish bepul.</strong> Sarmoyasiz boshlamoqchi bo'lganlar avval odamlardan buyurtma oladi, pulni oldindan qabul qiladi, keyin kompaniyadan buyurtma qiladi. Ya’ni o‘z pulingizni oldindan sarflashingiz shart emas.
 				</div>
 			</div>
 
 			<div class="objection" onclick="toggleObj(this)">
 				<div class="obj-header">
-					<div class="obj-q">Erim yoki oilam ruxsat bermaydi</div>
+					<div class="obj-q">Vaqtim yo‘q</div>
 					<div class="obj-toggle">+</div>
 				</div>
 				<div class="obj-answer">
-					<strong>Bu haqiqatan ham qiyin holat.</strong> <br>
-					Shuning uchun ko‘pchilik juda kichik qadam bilan boshlaydi — bitta buyurtma, bitta daromad.
-
-					Natijani ko‘rgandan keyin ko‘p hollarda qarash o‘zgaradi. Sekin-sekin tushunishadi.
-				</div>
-			</div>
-
-			<div class="objection" onclick="toggleObj(this)">
-				<div class="obj-header">
-					<div class="obj-q">Boshlash uchun pulim yo'q</div>
-					<div class="obj-toggle">+</div>
-				</div>
-				<div class="obj-answer">
-					<strong>Tushunarli.</strong> <br>
-					Bunaqa qilsangiz ham bo'ladi: avval odamlardan buyurtma olasiz, pulni oldindan olasiz, keyin kompaniyadan
-					buyurtma qilasiz.
-
-					Ya’ni siz o‘z pulingizni ishlatmaysiz. Ro‘yxatdan o‘tish bepul — boshlash uchun bir so‘m ham kerak emas.
+					<strong>Moslashuvchan.</strong> Majburiy ish soati yo‘q — bo‘sh paytda ishlash mumkin. Lekin “kuniga 20 daqiqada katta daromad” degan va’da berolmaymiz. Natija sarflangan vaqt va harakatga bog‘liq.
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- ══════════════════════════════════════
-     7. TESTIMONIALS
+	     10. CONSULTANT — UMIDA
 	══════════════════════════════════════ -->
-	<section class="section fade-in">
-		<div class="container">
-			<div class="tag">Tajribalar</div>
-			<h2 class="section-title">Oddiy ayollar qanday boshlagan</h2>
-			<p class="section-sub">Hammasi ham boshida shubha bilan boshlagan</p>
-
-			<div class="testi-card">
-				<p class="testi-text">
-					"Avval kerak emas dedim. Keyin shunchaki sinab ko‘rdim. Birinchi oyda ozgina daromadga chiqdim, lekin shu
-					menga ishonch berdi. Hozir asta-sekin davom ettiryapman."
-				</p>
-				<div class="testi-author">
-					<div class="testi-avatar">🌸</div>
-					<div>
-						<div class="testi-name">Nodira X., Farg'ona</div>
-						<div class="testi-meta">Uy bekasi, 2 bolali</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="testi-card">
-				<p class="testi-text">
-					"Men qishloqdanman. Avval bu narsa ishlamaydi deb o‘ylardim. Lekin telefon orqali buyurtma olish mumkin
-					ekan. Hozir oz-ozdan daromad qilayapman."
-				</p>
-				<div class="testi-author">
-					<div class="testi-avatar">🌻</div>
-					<div>
-						<div class="testi-name">Shahnoza M., Namangan viloyati</div>
-						<div class="testi-meta">Dehqon oilasidan</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="testi-card">
-				<p class="testi-text">
-					"Ikki yil oldin turmushga chiqdim, ishlashni to'xtatdim. O'zimni g'am bosdi. Faberlic orqali nafaqat
-					daromad — o'z ishim, o'z pulum bor. Bu ko'proq ruhiy ozodlik."
-				</p>
-				<div class="testi-author">
-					<div class="testi-avatar">🌹</div>
-					<div>
-						<div class="testi-name">Mohira T., Toshkent</div>
-						<div class="testi-meta">25 yosh, yangi oila</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- ══════════════════════════════════════
-     7b. COMMUNITY
-	══════════════════════════════════════ -->
-	<section class="section fade-in">
-		<div class="container">
-			<div class="tag">Yolg‘iz boshlamaysiz</div>
-			<h2 class="section-title">Boshlaganda ko‘pchilikda bir xil savol bo‘ladi: nimadan boshlayman?</h2>
-			<p class="section-sub">Shuning uchun siz yolg‘iz qolmaysiz — hammasini birga o‘rganamiz.</p>
-
-			<div class="community-card">
-				<div class="comm-header">
-					<span class="comm-icon">🤝</span>
-					<strong>Yopiq guruhimizga qo‘shilasiz</strong>
-				</div>
-
-				<p class="comm-text">
-					Bu yerda siz kabi oddiy ayollar bor — uy bekalari, onalar, yangi boshlovchilar. Hammasi shu yo‘lni endi
-					boshlagan yoki o‘rganayapti.
-				</p>
-
-				<div class="comm-features">
-					<div class="comm-feat">
-						<span>💬</span>
-						<span>Savol bersangiz — tezda javob beramiz, yolg‘iz qolmaysiz</span>
-					</div>
-					<div class="comm-feat">
-						<span>📚</span>
-						<span>Birinchi kundan nima qilish kerakligini oddiy qilib tushuntiramiz</span>
-					</div>
-					<div class="comm-feat">
-						<span>🎉</span>
-						<span>Birinchi buyurtma kelganda — siz bilan birga xursand bo‘lamiz</span>
-					</div>
-					<div class="comm-feat">
-						<span>🚫</span>
-						<span>Hech qanday majburiyat yo'q — o‘z vaqtingiz va sharoitingizdan kelib chiqib ishlaysiz</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
 	<section id="consultant" class="section fade-in">
 		<div class="container">
 			<div class="tag">Men ham shunday boshlaganman</div>
@@ -1374,113 +1048,132 @@
 				<img id="consultant-photo" src="" alt="Konsultant rasmi">
 				<div>
 					<div class="consult-name" id="consultant-name"></div>
-					<div class="testi-meta" style="margin-top:4px;" id="consultant-title">Oddiy ayol | Faberlic Direktor</div>
+					<div style="font-size:13px; color:var(--muted); margin-top:4px;" id="consultant-title">Oddiy ayol · Faberlic Direktor</div>
 				</div>
 				<p class="consult-story" id="consultant-story"></p>
-				<p style="font-size:13px; color:var(--muted); text-align:center;">
-					Agar bu ish sizga mos deb o'ylasangiz, bemalol yozing. Keyingi qadamni birga boshlaymiz.</p>
+				<p style="font-size:13px; color:var(--muted);">
+					Agar bu ish sizga qiziq tuyulsa, bemalol menga yozavering. Barcha savollaringizga javob beraman.
+				</p>
 			</div>
 		</div>
 	</section>
 
 	<!-- ══════════════════════════════════════
-     9. CTA
+	     11. FINAL CTA — DM ONLY
 	══════════════════════════════════════ -->
 	<section id="cta">
 		<div class="container">
-			<div class="tag" style="background:rgba(255,255,255,0.2); color:#fff;">Qaror qiling</div>
-			<h2>Qaror qilishdan oldin</h2>
-			<p class="cta-intro">Quyidagilarga rozi bo'lsangiz, keyingi qadamni qo'yishga tayyorsiz:</p>
-
-			<div class="decision-list">
-				<div class="decision-item">
-					<div class="decision-check">✓</div>
-					<span class="decision-text">Men qo'shimcha daromad qilishni xohlayman</span>
-				</div>
-				<div class="decision-item">
-					<div class="decision-check">✓</div>
-					<span class="decision-text">Kuniga 1–2 soat vaqt ajrata olaman</span>
-				</div>
-				<div class="decision-item">
-					<div class="decision-check">✓</div>
-					<span class="decision-text">O'rganishga tayyorman</span>
-				</div>
-				<div class="decision-item">
-					<div class="decision-check">✓</div>
-					<span class="decision-text">Tez boyishni kutmayman</span>
-				</div>
-			</div>
-
-			<p class="cta-final-text">
-				Agar yuqoridagilarga rozi bo‘lsangiz va bu ish bilan yanada yaqindan tanishmoqchi bo‘lsangiz, menga Telegram orqali yozing.
+			<div class="tag" style="background:rgba(255,255,255,0.2); color:#fff;">Keyingi qadam</div>
+			<h2>Qiziqyapsizmi? Avval batafsil bilib oling</h2>
+			<p class="cta-intro">
+				Agar bu ish sizga qiziq tuyulgan bo‘lsa, menga Telegram orqali yozing. Savollaringizga javob beraman va keyingi qadamlarni tushuntiraman. Kerak bo‘lsa, yopiq gruppasimizga ham qo‘shamiz.
 			</p>
 
-			<div class="cta-arrow-row">
-				<span class="cta-arrow">→</span>
-				<a class="btn btn-primary" id="cta-telegram" href="#" target="_blank">
-					Ha, batafsil bilmoqchiman
-				</a>
-				<span class="cta-arrow">←</span>
-			</div>
+			<a class="btn btn-primary" id="cta-final" href="#" target="_blank" onclick="trackCTA('final')">
+				Ha, batafsil bilmoqchiman
+			</a>
 
-			<div class="fine-print">Ro'yxatdan o'tganingizda hech qanday to'lov talab qilinmaydi.</div>
+			<div class="fine-print">
+				Hech qanday majburiyat yo‘q. Avval ishni to'liq o'rganib chiqing, keyin qaror qilasiz.<br>
+				Ro‘yxatdan o‘tish bepul.
+			</div>
 		</div>
 	</section>
 
-	<!-- <footer>
-		<div class="container"style="margin-bottom: 12px;">
-			Faberlic Rasmiy Konsultanti · O'zbekiston
-		</div>
-	</footer> -->
+	<!-- ══════════════════════════════════════
+	     STICKY CTA — DM ONLY
+	══════════════════════════════════════ -->
+	<div class="sticky-bar" id="stickyBar">
+		<a class="btn" id="cta-sticky" href="#" target="_blank" onclick="trackCTA('sticky')">
+			Batafsil bilmoqchiman →
+		</a>
+	</div>
+
 	<script>
-		const vid = document.getElementById('main-video');
-
-
 		function startVideo() {
 			const vid = document.getElementById('main-video');
 			const overlay = document.getElementById('play-overlay');
 			vid.play();
 			overlay.classList.add('hidden');
 		}
-	</script>
-	<script>
-		// ── Fill consultant data ──
+
+		function trackCTA(source) {
+			try {
+				fbq('trackCustom', 'TelegramDM_Click', { source: source });
+				fbq('trackCustom', 'CTA_Click', { source: source });
+			} catch (e) { }
+		}
+
 		document.addEventListener('DOMContentLoaded', () => {
 			document.getElementById('consultant-photo').src = CONSULTANT.photo;
 			document.getElementById('consultant-name').textContent = CONSULTANT.name;
-			// document.getElementById('consultant-title').textContent = CONSULTANT.city + ' · Faberlic konsultanti';
 			document.getElementById('consultant-story').textContent = CONSULTANT.shortStory;
 
-			const message = `?text=Assalomu alaykum! Sahifangizni o‘qib chiqdim. Faberlic’da ishlashga qiziqib qoldim. Bu ishni yaqindan tushuntirib bera olasizmi?`;
-			['cta-telegram'].forEach(id => {
-				document.getElementById(id).href = CONSULTANT.telegram + message;
+			const message = `?text=${encodeURIComponent("Assalomu alaykum! Sahifangizni o‘qib chiqdim. Faberlic’da ishlashga qiziqib qoldim. Bu ishni yaqindan tushuntirib bera olasizmi?")}`;
+			const dmUrl = CONSULTANT.telegram + message;
+
+			['cta-consultant', 'cta-final', 'cta-sticky'].forEach(id => {
+				const el = document.getElementById(id);
+				if (el) el.href = dmUrl;
 			});
 		});
 
-		// ── Progress bar ──
+		// Progress bar
 		window.addEventListener('scroll', () => {
 			const s = document.documentElement;
 			const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
 			document.getElementById('progress').style.width = pct + '%';
 		});
 
-		// ── Fade-in on scroll ──
+		// Fade-in
 		const fadeEls = document.querySelectorAll('.fade-in');
 		const io = new IntersectionObserver((entries) => {
 			entries.forEach(e => {
 				if (e.isIntersecting) e.target.classList.add('visible');
 			});
-		}, {
-			threshold: 0.1
-		});
+		}, { threshold: 0.1 });
 		fadeEls.forEach(el => io.observe(el));
 
-		// ── Accordion objections ──
+		// Accordion
 		function toggleObj(el) {
 			const isOpen = el.classList.contains('open');
 			document.querySelectorAll('.objection').forEach(o => o.classList.remove('open'));
 			if (!isOpen) el.classList.add('open');
 		}
+
+		// Sticky CTA visibility
+		const sticky = document.getElementById('stickyBar');
+		const heroSection = document.getElementById('hero');
+		const finalSection = document.getElementById('cta');
+
+		function updateSticky() {
+			const heroRect = heroSection.getBoundingClientRect();
+			const finalRect = finalSection.getBoundingClientRect();
+			const pastHero = heroRect.bottom < 0;
+			const reachedFinal = finalRect.top < window.innerHeight * 0.55;
+			if (pastHero && !reachedFinal) {
+				sticky.classList.add('visible');
+			} else {
+				sticky.classList.remove('visible');
+			}
+		}
+		window.addEventListener('scroll', updateSticky, { passive: true });
+		window.addEventListener('resize', updateSticky);
+		updateSticky();
+
+		// Scroll depth tracking
+		var scroll50Fired = false, scroll75Fired = false;
+		window.addEventListener('scroll', function () {
+			var scrolled = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+			if (!scroll50Fired && scrolled > 0.5) {
+				scroll50Fired = true;
+				try { fbq('trackCustom', 'Scroll50'); } catch (e) { }
+			}
+			if (!scroll75Fired && scrolled > 0.75) {
+				scroll75Fired = true;
+				try { fbq('trackCustom', 'Scroll75'); } catch (e) { }
+			}
+		}, { passive: true });
 	</script>
 </body>
 
