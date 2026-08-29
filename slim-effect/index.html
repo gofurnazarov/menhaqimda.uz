@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Umida Ochilova — Nima tavsiya qildim?</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,540;0,9..144,650;0,9..144,720;1,9..144,480;1,9..144,600&family=Public+Sans:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<style>
+		:root {
+			--bg: #FAF6F1;
+			--paper: #FFFFFF;
+			--ink: #241E19;
+			--ink-soft: #574E44;
+			--ink-faint: #8C8175;
+			--line: #E6DACB;
+			--rose: #8C3A3A;
+			--rose-deep: #6E2C2C;
+			--sage: #425438;
+			--sage-tint: #EDF0DF;
+			--ochre: #946017;
+			--ochre-tint: #F8EEDA;
+			--ochre-line: #E7CE9C;
+			--shadow: 0 18px 40px -22px rgba(36, 30, 25, 0.38);
+			--container: 620px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--ink);
+			font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-family: 'Fraunces', Georgia, serif;
+			font-weight: 650;
+			color: var(--ink);
+			letter-spacing: -0.01em;
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		strong {
+			font-weight: 700;
+		}
+
+		.wrap {
+			max-width: var(--container);
+			margin: 0 auto;
+			padding: 0 24px;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 12px;
+			font-weight: 700;
+			letter-spacing: 0.10em;
+			text-transform: uppercase;
+			color: var(--rose);
+		}
+
+		.eyebrow::before {
+			content: "";
+			width: 16px;
+			height: 2px;
+			background: var(--rose);
+			display: inline-block;
+		}
+
+		.eyebrow.c-sage {
+			color: var(--sage);
+		}
+
+		.eyebrow.c-sage::before {
+			background: var(--sage);
+		}
+
+		/* header */
+		.masthead {
+			padding: 22px 0 18px;
+		}
+
+		.masthead-inner {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.avatar {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 1px solid var(--line);
+			flex-shrink: 0;
+		}
+
+		.masthead-name {
+			font-size: 14.5px;
+			font-weight: 700;
+			color: var(--ink);
+		}
+
+		.masthead-role {
+			font-size: 12.5px;
+			color: var(--ink-faint);
+			margin-top: 1px;
+		}
+
+		/* hero */
+		.hero {
+			padding: 28px 0 6px;
+		}
+
+		.hero h1 {
+			font-size: 29px;
+			line-height: 1.22;
+			margin: 14px 0 18px;
+		}
+
+		.hero h1 em {
+			font-style: italic;
+			color: var(--rose);
+		}
+
+		.intro-text {
+			font-size: 16px;
+			color: var(--ink-soft);
+			max-width: 52ch;
+		}
+
+		/* result / photo-note */
+		.result {
+			margin: 32px 0 8px;
+		}
+
+		.result-caveat {
+			font-size: 12.5px;
+			color: var(--ink-faint);
+			font-style: italic;
+			margin: 14px 0 16px;
+		}
+
+		.result-bullets {
+			list-style: none;
+			margin: 0 0 22px;
+			padding: 0;
+		}
+
+		.result-bullets li {
+			font-size: 15.5px;
+			font-weight: 500;
+			color: var(--ink);
+			padding: 7px 0 7px 20px;
+			position: relative;
+		}
+
+		.result-bullets li::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 15px;
+			width: 9px;
+			height: 2px;
+			background: var(--rose);
+		}
+
+		.photo-note {
+			position: relative;
+			margin: 8px auto 6px;
+			max-width: 340px;
+		}
+
+		.photo-note .frame {
+			background: var(--paper);
+			padding: 10px 10px 40px;
+			border-radius: 2px;
+			box-shadow: var(--shadow);
+			transform: rotate(-2deg);
+		}
+
+		.photo-note img {
+			width: 100%;
+			border-radius: 1px;
+			filter: sepia(6%) saturate(96%);
+		}
+
+		.photo-note .tag {
+			position: absolute;
+			top: -16px;
+			right: -10px;
+			background: var(--rose);
+			color: #FBEFE9;
+			font-family: 'Fraunces', serif;
+			font-style: italic;
+			font-weight: 600;
+			font-size: 15px;
+			padding: 8px 18px;
+			border-radius: 2px;
+			transform: rotate(4deg);
+			box-shadow: 0 8px 18px -8px rgba(110, 44, 44, 0.55);
+			white-space: nowrap;
+		}
+
+		.photo-caption {
+			font-size: 12px;
+			color: var(--ink-faint);
+			text-align: center;
+			margin: 18px auto 0;
+			max-width: 32ch;
+			line-height: 1.5;
+		}
+
+		.divider {
+			border: none;
+			border-top: 1px solid var(--line);
+			margin: 44px 0;
+		}
+
+		.section-head {
+			margin-bottom: 20px;
+		}
+
+		.section-head h2 {
+			font-size: 24px;
+			line-height: 1.28;
+			margin-top: 10px;
+		}
+
+		/* product 1 */
+		.product-lede {
+			font-size: 16.5px;
+			color: var(--ink-soft);
+			margin-bottom: 22px;
+		}
+
+		.product-lede strong {
+			color: var(--ink);
+			font-weight: 700;
+		}
+
+		.price-row {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 8px;
+			margin: 0 0 20px;
+		}
+
+		.price-tag {
+			font-family: 'Fraunces', serif;
+			font-weight: 700;
+			font-size: 18px;
+			color: var(--ink);
+		}
+
+		.spec-tag {
+			font-size: 12.5px;
+			color: var(--ink-soft);
+			border: 1px solid var(--line);
+			padding: 4px 10px;
+			border-radius: 20px;
+		}
+
+		.product-figure {
+			background: var(--paper);
+			border-radius: 4px;
+			padding: 26px 20px;
+			box-shadow: var(--shadow);
+			margin-bottom: 22px;
+		}
+
+		.product-figure img {
+			margin: 0 auto;
+			max-width: 78%;
+		}
+
+		.benefit-rows {
+			list-style: none;
+			margin: 0 0 6px;
+			padding: 0;
+			border-top: 2px solid var(--ink);
+		}
+
+		.benefit-rows li {
+			display: flex;
+			gap: 14px;
+			align-items: flex-start;
+			padding: 16px 0;
+			border-bottom: 1px solid var(--line);
+			font-size: 15px;
+			color: var(--ink-soft);
+		}
+
+		.benefit-rows .ico {
+			font-size: 20px;
+			line-height: 1.3;
+			flex-shrink: 0;
+		}
+
+		.benefit-rows strong {
+			display: block;
+			color: var(--ink);
+			font-weight: 700;
+			font-size: 15.5px;
+			margin-bottom: 2px;
+		}
+
+		details.accordion {
+			margin: 22px 0 4px;
+			/* border-top: 1px solid var(--line); */
+			padding-top: 14px;
+		}
+
+		details.accordion summary {
+			cursor: pointer;
+			font-weight: 700;
+			font-size: 13.5px;
+			color: var(--rose);
+			list-style: none;
+		}
+
+		details.accordion summary::-webkit-details-marker {
+			display: none;
+		}
+
+		details.accordion summary::after {
+			content: "→";
+			margin-left: 6px;
+		}
+
+		details.accordion[open] summary::after {
+			content: "↓";
+		}
+
+		details.accordion .acc-body {
+			font-size: 13.5px;
+			color: var(--ink-soft);
+			margin-top: 12px;
+			line-height: 1.7;
+		}
+
+		details.accordion .acc-body strong {
+			color: var(--ink);
+		}
+
+		/* credibility */
+		.band {
+			margin: 44px 0;
+			padding: 36px 0;
+		}
+
+		.band-sage {
+			background: var(--sage-tint);
+		}
+
+		.band-sage .section-head h2 {
+			color: #2C3623;
+			font-size: 23px;
+		}
+
+		.credibility-inner {
+			display: flex;
+			flex-direction: column-reverse;
+			gap: 22px;
+		}
+
+		.credibility-portrait {
+			max-width: 380px;
+			margin: 0 auto;
+		}
+
+		.credibility-portrait .frame {
+			background: var(--paper);
+			padding: 8px 8px 30px;
+			box-shadow: var(--shadow);
+			transform: rotate(1.6deg);
+		}
+
+		.credibility-portrait img {
+			border-radius: 1px;
+		}
+
+		.quote {
+			font-family: 'Fraunces', serif;
+			font-style: italic;
+			font-weight: 480;
+			font-size: 18px;
+			line-height: 1.52;
+			color: #2C3623;
+		}
+
+		.quote p {
+			margin-bottom: 14px;
+		}
+
+		.quote p:last-child {
+			margin-bottom: 0;
+		}
+
+		.quote strong {
+			font-style: normal;
+			font-weight: 700;
+		}
+
+		/* secondary products as editorial steps */
+		.step {
+			margin: 0 0 40px;
+		}
+
+		.step-num {
+			font-family: 'Fraunces', serif;
+			font-weight: 700;
+			font-style: italic;
+			color: var(--rose);
+			font-size: 15px;
+			margin-bottom: 4px;
+		}
+
+		.step h3 {
+			font-size: 19px;
+			margin-bottom: 2px;
+		}
+
+		.step .sub {
+			font-size: 12.5px;
+			color: var(--ink-faint);
+			margin-bottom: 12px;
+		}
+
+		.step .ask {
+			font-family: 'Fraunces', serif;
+			font-style: italic;
+			font-size: 14.5px;
+			color: var(--sage);
+			margin-bottom: 8px;
+		}
+
+		.step .why {
+			font-size: 14.5px;
+			color: var(--ink-soft);
+			margin-bottom: 16px;
+		}
+
+		.step-body {
+			display: flex;
+			gap: 18px;
+			align-items: center;
+		}
+
+		.step-body .thumb {
+			width: 96px;
+			flex-shrink: 0;
+			background: var(--paper);
+			border-radius: 4px;
+			padding: 11px;
+			box-shadow: 0 10px 24px -16px rgba(36, 30, 25, 0.32);
+		}
+
+		.step.tertiary .thumb {
+			width: 76px;
+			padding: 9px;
+		}
+
+		.step.tertiary .why {
+			font-size: 14px;
+		}
+
+		/* safety */
+		.band-ochre {
+			background: var(--ochre-tint);
+			border-top: 1px solid var(--ochre-line);
+			border-bottom: 1px solid var(--ochre-line);
+		}
+
+		.band-ochre h2 {
+			font-size: 21px;
+			color: #4A320D;
+			margin-bottom: 14px;
+		}
+
+		.band-lede {
+			font-size: 15px;
+			color: #5C3F10;
+			margin-bottom: 16px;
+			font-weight: 500;
+		}
+
+		.safety-list {
+			list-style: none;
+			margin: 0 0 20px;
+			padding: 0;
+		}
+
+		.safety-list li {
+			font-size: 15px;
+			font-weight: 600;
+			color: #4A320D;
+			padding: 9px 0 9px 22px;
+			position: relative;
+			border-bottom: 1px solid var(--ochre-line);
+		}
+
+		.safety-list li:first-child {
+			border-top: 1px solid var(--ochre-line);
+		}
+
+		.safety-list li::before {
+			content: "—";
+			position: absolute;
+			left: 0;
+			color: var(--ochre);
+		}
+
+		.band-final {
+			font-size: 15.5px;
+			font-weight: 700;
+			color: #4A320D;
+		}
+
+		/* distinction pull-quote */
+		.pullquote {
+			padding: 8px 0 6px;
+			text-align: center;
+		}
+
+		.pullquote .mark {
+			font-family: 'Fraunces', serif;
+			font-size: 52px;
+			color: var(--rose);
+			line-height: 1;
+			margin-bottom: 4px;
+		}
+
+		.pullquote blockquote {
+			/* font-family: 'Fraunces', serif; */
+			font-family: serif;
+			font-style: italic;
+			font-weight: 600;
+			font-size: 25px;
+			line-height: 1.32;
+			color: var(--ink);
+			margin: 0 0 20px;
+		}
+
+		.pullquote .support {
+			font-size: 15px;
+			color: var(--ink-soft);
+			max-width: 44ch;
+			margin: 0 auto;
+		}
+
+		.pullquote .support strong {
+			color: var(--ink);
+		}
+
+		/* final */
+		.final {
+			padding: 4px 0 8px;
+		}
+
+		.final .eyebrow {
+			margin-bottom: 14px;
+		}
+
+		.final h2 {
+			font-size: 27px;
+			margin-bottom: 14px;
+			line-height: 1.2;
+		}
+
+		.final p {
+			font-size: 16px;
+			color: var(--ink-soft);
+			margin-bottom: 24px;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			background: var(--rose);
+			color: #FBEFE9;
+			font-family: 'Public Sans', sans-serif;
+			font-weight: 700;
+			font-size: 15.5px;
+			padding: 16px 26px;
+			border-radius: 30px;
+			text-decoration: none;
+			width: 100%;
+			box-shadow: 0 14px 28px -14px rgba(110, 44, 44, 0.55);
+		}
+
+		.btn:active {
+			background: var(--rose-deep);
+		}
+
+		.btn.ghost {
+			background: transparent;
+			color: var(--rose);
+			box-shadow: none;
+			border: 1.5px solid var(--rose);
+			font-weight: 700;
+		}
+
+		.sticky-cta {
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 20;
+			background: rgba(250, 246, 241, 0.92);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border-top: 1px solid var(--line);
+			padding: 12px 24px calc(12px + env(safe-area-inset-bottom));
+		}
+
+		.sticky-cta-inner {
+			max-width: var(--container);
+			margin: 0 auto;
+		}
+
+		.sticky-pretext {
+			font-size: 12px;
+			color: var(--ink-faint);
+			text-align: center;
+			margin-bottom: 8px;
+		}
+
+		.spacer-bottom {
+			height: 112px;
+		}
+
+		.reveal {
+			opacity: 0;
+			transform: translateY(14px);
+			transition: opacity 0.7s ease, transform 0.7s ease;
+		}
+
+		.reveal.in {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.reveal {
+				opacity: 1;
+				transform: none;
+				transition: none;
+			}
+		}
+
+		@media (min-width:860px) {
+			:root {
+				--container: 920px;
+			}
+
+			body {
+				font-size: 16.5px;
+			}
+
+			.wrap {
+				padding: 0 40px;
+			}
+
+			.hero-grid {
+				display: grid;
+				grid-template-columns: 1.05fr 0.95fr;
+				gap: 56px;
+				align-items: center;
+			}
+
+			.hero {
+				padding: 54px 0 10px;
+			}
+
+			.hero h1 {
+				font-size: 39px;
+			}
+
+			.intro-text {
+				font-size: 17px;
+			}
+
+			.photo-note {
+				margin: 0;
+				max-width: none;
+			}
+
+			.product1-grid {
+				display: grid;
+				grid-template-columns: 0.95fr 1.05fr;
+				gap: 48px;
+				align-items: start;
+			}
+
+			.product-figure {
+				margin-bottom: 0;
+			}
+
+			.product1-text .section-head h2 {
+				font-size: 29px;
+			}
+
+			.credibility-inner {
+				flex-direction: row;
+				align-items: center;
+				gap: 52px;
+			}
+
+			.credibility-portrait {
+				max-width: 220px;
+				flex-shrink: 0;
+			}
+
+			.quote {
+				font-size: 19px;
+			}
+
+			.steps-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+			}
+
+			.step {
+				margin-bottom: 0;
+			}
+
+			.pullquote blockquote {
+				font-size: 32px;
+			}
+
+			.final-grid {
+				display: grid;
+				grid-template-columns: 1.2fr 0.8fr;
+				gap: 48px;
+				align-items: end;
+			}
+
+			.btn {
+				width: auto;
+				padding: 17px 34px;
+			}
+
+			.sticky-cta-inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 24px;
+			}
+
+			.sticky-pretext {
+				text-align: left;
+				margin-bottom: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="wrap">
+
+		<header class="masthead">
+			<div class="masthead-inner">
+				<img src="avatar.png" alt="Umida Ochilova" class="avatar">
+				<div>
+					<div class="masthead-name">Umida Ochilova</div>
+					<div class="masthead-role">Faberlic konsultanti</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- HERO / STORY BRIDGE -->
+		<section class="hero">
+			<div class="hero-grid">
+				<div>
+					<span class="eyebrow">Instagram'dagi hikoyaning davomi</span>
+					<h1>Qo'shnimga <em>nima tavsiya qilganimni</em> bilmoqchimisiz?</h1>
+					<p class="intro-text">Instagram'dagi hikoyada ko'rganingizdek, u operatsiya qildirmoqchi bo'lib yurgan ekan. Men
+						u bilan gaplashib, holatini bilganimdan keyin 3 ta mahsulot tavsiya qildim. Nega aynan shu
+						mahsulotlarni tavsiya qilganimni quyida tushuntiraman.</p>
+				</div>
+
+				<div class="result reveal">
+					<div class="photo-note">
+						<div class="frame"><img src="client.jpg" alt="10 kunlik natija"></div>
+						<div class="tag">10 kunda −5 kg</div>
+					</div>
+					<p class="photo-caption">Qo'shnimning shaxsiy hayotini hurmat qilgan holda, yuzi berkitilgan.</p>
+				</div>
+			</div>
+
+			<div class="result reveal" style="margin-top:34px;">
+				<p class="result-caveat">Bu — uning shaxsiy natijasi. Har bir odamda natija har xil bo'lishi mumkin.</p>
+				<ul class="result-bullets">
+					<li>Qorni va baqbaqasi sezilarli kichraydi.</li>
+					<li>Kiyimlari katta bo'lib qoldi — yonlarini qisqartirib kiyishga to'g'ri keldi.</li>
+				</ul>
+			</div>
+		</section>
+
+		<hr class="divider">
+
+		<!-- PRODUCT 1: SLIM EFFECT -->
+		<section class="reveal">
+			<div class="product1-grid">
+				<div>
+					<div class="section-head">
+						<span class="eyebrow">Men unga nimalarni tavsiya qilgandim?</span>
+						<h2>Birinchisi — Slim Effect.</h2>
+					</div>
+					<p class="product-lede"><strong>Slim Effect</strong> shirinlik va gazli ichimlikni
+						nazorat qilishda qiynalayotgandi. Shuning uchun ozish maqsadi bilan birga, ishtahasini nazorat
+						qilishga yordam berishi uchun Slim Effectni tavsiya qilgandim.</p>
+					
+				</div>
+
+				<div class="product-figure">
+					<img src="./slim-effect.png" alt="Slim Effect">
+				</div>
+
+				<div class="product1-text">
+					<p class="product-lede"><strong>Slim Effect</strong> — biologik faol oziq-ovqat qo‘shimchasi, dori emas. Quyida narxi va xususiyatlari keltirilgan.</p>
+
+					<div class="price-row">
+						<span class="price-tag">250 000 so'm</span>
+						<span class="spec-tag">60 kapsula</span>
+					</div>
+
+					<ul class="benefit-rows">
+						<li><span class="ico">🍽️</span><span><strong>Ishtaha</strong>Kamroq ovqatlanishga va ishtahani
+								nazorat qilishga yordam beradi.</span></li>
+						<li><span class="ico">🍬</span><span><strong>Shirinlikka xohish</strong>Shirinlik va ortiqcha tamaddi
+								qilish istagini kamaytirishga yordam beradi.</span></li>
+						<li><span class="ico">⚡</span><span><strong>Modda almashinuvi</strong>Organizmning modda almashinuvi
+								jarayonlarini qo'llab-quvvatlaydi.</span></li>
+					</ul>
+
+					<details class="accordion" open>
+						<summary>Tarkibi va qabul qilish tartibi</summary>
+						<div class="acc-body" >
+							<strong>Tarkibi:</strong> Apelsin mevasi ekstrakti (sinefrin), Xrom pikolinati, Alfa-lipoik
+							kislota, Yohimbe qobig'i ekstrakti.<br><br>
+							<strong>Qabul qilish:</strong> Kuniga 1 kapsuladan ertalab ovqat paytida.
+						</div>
+					</details>
+				</div>
+			</div>
+		</section>
+
+	</div><!-- /wrap -->
+
+	<!-- SAFETY — moved after the product set -->
+	<section class="band band-ochre reveal" style="margin-bottom:0;">
+		<div class="wrap">
+			<h2>⚠️ Avval buni tekshirib oling</h2>
+			<p class="band-lede">Slim Effect hamma uchun ham tavsiya etilmaydi.</p>
+			<ul class="safety-list">
+				<li>Yurak kasalliklari yoki yuqori qon bosimi</li>
+				<li>Emizish yoki homiladorlik davri</li>
+				<li>Oshqozon yarasi</li>
+				<li>Qandli diabet yoki onkologik kasalliklar</li>
+			</ul>
+			<p class="band-final">Agar sizda yuqoridagilardan biri bo'lsa, Slim Effectni qabul qilish tavfsiya etilmaydi.</p>
+		</div>
+	</section>
+
+	<!-- CREDIBILITY — moved up, right after Slim Effect -->
+	<section class="band band-sage reveal" style="margin-top:0;">
+		<div class="wrap">
+			<div class="section-head">
+				<span class="eyebrow c-sage">Shunchaki sotish uchun emas</span>
+				<h2>Nega men bu mahsulotlarni tavsiya qilaman?</h2>
+			</div>
+			<div class="credibility-inner">
+				<div class="quote">
+					<p>"Men bu mahsulotlarni shunchaki sotish uchun tavsiya qilmayman. <strong>O'zimda ham</strong> ortiqcha
+						vazn va gormonal muvozanat bilan bog'liq muammolar bo'lgani uchun, bu mahsulotlarni o'zim ham qabul
+						qilib ko'rganman.</p>
+					<p><strong>O'zimda ham 3 kunda 2 kg kamayish</strong> bo'ldi. Eng qizig'i, faqat tarozidagi raqam emas,
+						tanadagi hajm ham sezilarli o'zgardi — qorin yog'lari ancha kamaydi, baqbaqa ham deyarli yo'qoldi.</p>
+					<p>Shuning uchun mijozlarimga mahsulotlarni faqat sotish uchun emas, o'zim bilgan va o'zimda sinab
+						ko'rgan tajribam asosida tavsiya qilaman. Lekin har bir odamning holati har xil. Shuning uchun avval
+						sizning holatingizni bilishni xohlayman."</p>
+				</div>
+				<div class="credibility-portrait">
+					<div class="frame"><img src="me.png" alt="Umida Ochilova"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="wrap">
+
+		<!-- SECONDARY PRODUCTS — presented as editorial steps -->
+		<section class="reveal" style="margin-top:8px;">
+			<div class="steps-grid">
+				<div class="step">
+					<div class="step-num">Ikkinchisi — Molecular Force</div>
+					<h3>Ayollar gormonal muvozanatini qo‘llab-quvvatlash uchun.</h3>
+					<p class="ask">Bu mahsulotni nega qo'shdim?</p>
+					<div class="step-body">
+						<p class="why">U bilan gaplashganimda hayz sikli bilan bog'liq muammolari, kuchli stress va boshqa
+							gormonal o'zgarishlarga o'xshash holatlari borligini bilganman. Bunday holatlar vazn ortishi yoki
+							vaznni kamaytirishni qiyinlashtiruvchi omillardan biri bo'lishi mumkin. Shuning uchun unga Slim
+							Effect bilan birga Molecular Force'ni ham tavsiya qilgandim.</p>
+					</div>
+					<div class="thumb" style="margin-top:14px; width:140px;"><img src="./molecular-force.png"
+							alt="Molecular Force"></div>
+				</div>
+
+				<div class="step tertiary">
+					<div class="step-num">Uchunchisi — «Tozalash. Tong» o'simlik to'plami</div>
+					<h3>Shlak va toksinlarni chiqarish uchun qo'shimcha o'simlik choyi</h3>
+					<p class="sub">&nbsp;</p>
+					<p class="ask">Bu mahsulotni nega qo'shdim?</p>
+					<div class="step-body">
+						<p class="why">Slim Effect bilan birga shishlarni kamaytirishga va organizmdan ortiqcha suyuqlik chiqishiga yordam berishi uchun tavsiya qilgandim.</p>
+					</div>
+					<div class="thumb" style="margin-top:14px; width:150px;"><img src="./detox-morning.png"
+							alt="Tozalash Tong Choyi"></div>
+				</div>
+			</div>
+		</section>
+
+	</div><!-- /wrap -->
+
+
+
+	<div class="wrap">
+
+		<!-- DISTINCTION — large editorial pull-quote, no button -->
+		<section class="pullquote reveal" style="margin-top:44px;">
+			<div class="mark">"</div>
+			<blockquote>Bu 3 ta mahsulotni har bir ayolga bir xil tavsiya qilmayman.</blockquote>
+			<p class="support"><strong>Yoshingiz, vazningiz, sog'ligingiz, hayz holatingiz</strong> va boshqa muhim
+				jihatlaringizni hisobga olamiz. Shuning uchun "menga ham uchalasi kerak" deb o'ylamang — avval holatingizni
+				yozing.</p>
+		</section>
+
+		<hr class="divider">
+
+		<!-- FINAL CTA — the one strong destination -->
+		<section class="final reveal">
+			<div class="final-grid">
+				<div>
+					<span class="eyebrow">Sizga mos keladimi?</span>
+					<h2>Endi sizning holatingizni ko'ramiz</h2>
+					<p>Instagram orqali yoshingiz, vazningiz va sizni eng ko'p qiynayotgan muammoni yozing — holatingizga qarab maslahat beraman.</p>
+				</div>
+				<div>
+					<a href="https://ig.me/m/umidafab" class="btn">Direct orqali yozish →</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- <div class="spacer-bottom"></div> -->
+
+	</div><!-- /wrap -->
+
+	<!-- <div class="sticky-cta">
+		<div class="sticky-cta-inner">
+			<p class="sticky-pretext">Holatingizni yozing. Avval sizga Slim Effect mos keladimi-yo'qmi ko'rib chiqamiz.</p>
+			<a href="https://instagram.com/direct/inbox/" class="btn ghost">Umidaga yozish →</a>
+		</div>
+	</div> -->
+
+	<script>
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			var els = document.querySelectorAll('.reveal');
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+				});
+			}, { threshold: 0.12 });
+			els.forEach(function (el) { io.observe(el); });
+		} else {
+			document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+		}
+	</script>
+
+</body>
+
+</html>
